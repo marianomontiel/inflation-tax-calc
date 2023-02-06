@@ -51,25 +51,37 @@ function monthList(a) {
 
 const calculate = document.querySelector('#calculate');
 calculate.addEventListener('click', () => {
-    const form = document.querySelector('.first');
     //convert form into Array
-    const formData = new FormData(form)
-    const values = Array.from(formData.values());
-    console.log(values);
+    const salaryForm = document.querySelector('.first');
+    const salaryFormData = new FormData(salaryForm);
+    const salaryArray = Array.from(salaryFormData.values());
 
     //divide array by
-    var salaryIndex = Array(values.length);
-    for (var i = 0, length = values.length; i < length; i++) {
-        salaryIndex[i] = values[i] / values[0];
+    /*     var salaryIndex = Array (salaryArray.length);
+        for (var i = 0, length = salaryArray.length; i < length; i++) {
+            salaryIndex[i] = salaryArray[i] / salaryArray[0];
+        } */
+
+    //convert form into Array
+    const inflationForm = document.querySelector('.second');
+    const inflationFormData = new FormData(inflationForm)
+    const inflationArray = Array.from(inflationFormData.values());
+
+    //create inflation salary index
+    var inflationIndex = Array(inflationArray.length);
+    for (var i = 0, length = inflationArray.length; i < length; i++) {
+        if (i < 1) { inflationIndex[0] = inflationArray[0] / 100 + 1 }
+        else {
+            inflationIndex[i] = inflationIndex[i - 1] * (inflationArray[i] / 100 + 1);
+        }
+
     }
 
-    const body = document.querySelector('body');
     //output value on DOM
-    const output =
-        document.createElement('p');
-    output.innerText = `${values} luego de dividir es ${salaryIndex}`;
+    const body = document.querySelector('body');
+    const output = document.createElement('p');
+    output.innerText = `${salaryArray}. El indice inflacionario es ${inflationIndex}`;
     body.appendChild(output);
-
 });
 
 
