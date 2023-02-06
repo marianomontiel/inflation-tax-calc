@@ -48,22 +48,33 @@ function monthList() {
         secondDiv.appendChild(inflationLabel);
         secondDiv.appendChild(inflationInput);        
     };
+/* const container = document.querySelector('.container');
+  const calculate = document.createElement('button');
+  calculate.innerText = 'Calculate!'
+  container.appendChild(calculate);*/
 }
 
 
 const calculate = document.querySelector('#calculate');
 calculate.addEventListener('click', () => {
-  const form = document.querySelector('form');
-  
+  const form = document.querySelector('.first');
+    //convert form into Array
     const formData = new FormData(form)
-    const values= Array.from(formData.values());
+    const values = Array.from(formData.values());
     console.log(values);
+
+    //divide array by
+  var salaryIndex = Array(values.length);
+  for(var i = 0, length = values.length; i < length; i++) {
+    salaryIndex[i] = values[i] / values[0];
+}
+  console.log(salaryIndex);
   
   const container = document.querySelector('.container');
   //output value on DOM
   const output =
   document.createElement('p');
-  output.innerText = `${values}`
+  output.innerText = `${values} luego de dividir es ${salaryIndex}`
   container.appendChild(output);
   
 });
