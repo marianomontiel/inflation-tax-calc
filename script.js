@@ -50,6 +50,25 @@ function monthList() {
     };
 }
 
+
+const calculate = document.querySelector('#calculate');
+calculate.addEventListener('click', () => {
+  const form = document.querySelector('form');
+  
+    const formData = new FormData(form)
+    const values= Array.from(formData.values());
+    console.log(values);
+  
+  const container = document.querySelector('.container');
+  //output value on DOM
+  const output =
+  document.createElement('p');
+  output.innerText = `${values}`
+  container.appendChild(output);
+  
+});
+
+
 function inflationIndex() {
 
 }
