@@ -54,13 +54,11 @@ calculate.addEventListener('click', () => {
     //convert form into Array
     const salaryForm = document.querySelector('.first');
     const salaryFormData = new FormData(salaryForm);
-    const salaryArray = Array.from(salaryFormData.values());
-
-    //divide array by
-    /*     var salaryIndex = Array (salaryArray.length);
-        for (var i = 0, length = salaryArray.length; i < length; i++) {
-            salaryIndex[i] = salaryArray[i] / salaryArray[0];
-        } */
+    let salaryArray = Array.from(salaryFormData.values());
+    //convert Array input to number
+    salaryArray = salaryArray.map(function(v) {
+        return parseInt(v);
+      });
 
     //convert form into Array
     const inflationForm = document.querySelector('.second');
@@ -68,23 +66,35 @@ calculate.addEventListener('click', () => {
     const inflationArray = Array.from(inflationFormData.values());
 
     //create inflation salary index
-    var inflationIndex = Array(inflationArray.length);
-    for (var i = 0, length = inflationArray.length; i < length; i++) {
+    let inflationIndex = Array(inflationArray.length);
+    let salaryAdjusted = Array(inflationArray.length);
+    for (let i = 0, length = inflationArray.length; i < length; i++) {
         if (i < 1) { inflationIndex[0] = inflationArray[0] / 100 + 1 }
         else {
             inflationIndex[i] = inflationIndex[i - 1] * (inflationArray[i] / 100 + 1);
-        }
+        };
+        salaryAdjusted[i] = inflationIndex[i] * salaryArray[i];
 
     }
+
+    //subtract salary adjusted with original salary
+    const initialValue = 0;
+    const sumWithInitial = salaryArray.reduce(
+        (accumulator, currentValue) => accumulator + currentValue,
+        initialValue
+    );
+    console.log(sumWithInitial);
+
+    const sumWithInitial2 = salaryAdjusted.reduce(
+        (accumulator, currentValue) => accumulator + currentValue,
+        initialValue
+    );
+    console.log(sumWithInitial2)
+
 
     //output value on DOM
     const body = document.querySelector('body');
     const output = document.createElement('p');
-    output.innerText = `${salaryArray}. El indice inflacionario es ${inflationIndex}`;
+    output.innerText = `Pagaste $ ${Math.floor((sumWithInitial2 - sumWithInitial)*100)/100} en impuesto inflacionado en ese periodo`;
     body.appendChild(output);
 });
-
-
-function inflationIndex() {
-
-}
