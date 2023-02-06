@@ -1,11 +1,11 @@
 const salary = document.querySelector('#salary');
 const ok = document.querySelector('.ok');
-let meses = ok.addEventListener('click', () => { monthList() });
+let meses = ok.addEventListener('click', () => { monthList(document.querySelector('#salary').value) });
+monthList(6);
 
-//still need to remove the first inputs before modifying the input amount
-function monthList() {
+function monthList(a) {
     let mes = 0;
-    let meses = document.querySelector('#salary').value;
+    meses = a;
     const body = document.querySelector('body');
 
     //remove inputs before adding newones
@@ -17,11 +17,11 @@ function monthList() {
     const secondDiv = document.querySelector('.second');
     inflation.forEach(inflation => { secondDiv.removeChild(inflation); });
 
-        //create inputs
+    //create inputs
     for (let i = 0; i < meses; i++) {
         mes += 1;
-        //need to put all of this in a div
-        
+
+        //salary inputs
         const label = document.createElement('label');
         label.setAttribute('for', `salary-${mes}`);
         label.setAttribute('class', 'salary');
@@ -33,9 +33,7 @@ function monthList() {
         firstDiv.appendChild(label);
         firstDiv.appendChild(input);
 
-        //modify to allow input for inflation
-        //need to put all of this in a div
-        
+        //inflation inputs
         const inflationLabel = document.createElement('label');
         inflationLabel.setAttribute('for', `inflation-${mes}`);
         inflationLabel.setAttribute('class', 'inflation');
@@ -46,37 +44,32 @@ function monthList() {
         inflationInput.setAttribute('class', 'inflation');
 
         secondDiv.appendChild(inflationLabel);
-        secondDiv.appendChild(inflationInput);        
+        secondDiv.appendChild(inflationInput);
     };
-/* const container = document.querySelector('.container');
-  const calculate = document.createElement('button');
-  calculate.innerText = 'Calculate!'
-  container.appendChild(calculate);*/
 }
 
 
 const calculate = document.querySelector('#calculate');
 calculate.addEventListener('click', () => {
-  const form = document.querySelector('.first');
+    const form = document.querySelector('.first');
     //convert form into Array
     const formData = new FormData(form)
     const values = Array.from(formData.values());
     console.log(values);
 
     //divide array by
-  var salaryIndex = Array(values.length);
-  for(var i = 0, length = values.length; i < length; i++) {
-    salaryIndex[i] = values[i] / values[0];
-}
-  console.log(salaryIndex);
-  
-  const container = document.querySelector('.container');
-  //output value on DOM
-  const output =
-  document.createElement('p');
-  output.innerText = `${values} luego de dividir es ${salaryIndex}`
-  container.appendChild(output);
-  
+    var salaryIndex = Array(values.length);
+    for (var i = 0, length = values.length; i < length; i++) {
+        salaryIndex[i] = values[i] / values[0];
+    }
+
+    const body = document.querySelector('body');
+    //output value on DOM
+    const output =
+        document.createElement('p');
+    output.innerText = `${values} luego de dividir es ${salaryIndex}`;
+    body.appendChild(output);
+
 });
 
 
