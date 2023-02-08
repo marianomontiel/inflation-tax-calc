@@ -30,7 +30,7 @@ function monthList(a) {
     const label = document.createElement("label");
     label.setAttribute("for", `salary-${mes}`);
     label.setAttribute("class", "salary mes");
-    label.innerText = `mes ${mes}`;
+    label.innerText = `Salario mes ${mes}`;
 
     const spanSalary = document.createElement("span");
     spanSalary.setAttribute("name", `salary-${mes}`);
