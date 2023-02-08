@@ -112,10 +112,10 @@ calculate.addEventListener("click", () => {
   console.log(sumWithInitial2);
 
   //output value on DOM
-  const body = document.querySelector("body");
-  const output = document.createElement("p");
+  const boxDiv = document.querySelector(".box > div");
+  const output = document.querySelector(".output");
   output.innerText = `Pagaste $ ${
     Math.floor((sumWithInitial2 - sumWithInitial) * 100) / 100
-  } en impuesto inflacionado en ese periodo`;
-  body.appendChild(output);
+  } en impuesto inflacionado en ese periodo.`;
+  boxDiv.appendChild(output);
 });
