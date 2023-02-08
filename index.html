@@ -2,35 +2,47 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Impuesto Inflacionario</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impuesto Inflacionario</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <div class='box'>
-        <h1>Calculadora de impuesto inflacionario</h1>
-        <h2>Calculá cuanto te roban con la inflación todos los meses!</h2>
-        <div>
-            <div class='input'>
-                <label for="salary">¿Cuantos meses querés analizar?</label>
-                <input type="text" id="salary" name="salary">
-                <button class='ok'>Ok</button>
-            </div>
+  <div class='box'>
+    <h1>Calculadora de impuesto inflacionario</h1>
+    <h2>Calculá cuanto te roban con la inflación todos los meses!</h2>
+    <div>
+      <div class='input'>
+        <label for="salary">¿Cuantos meses querés analizar?</label>
+        <input type="text" id="salary" name="salary">
+        <button class='ok'>Ok</button>
+      </div>
 
-
-            <div class='container'>
-                <form class='first'></form>
-                <form class='second'></form>
-            </div>
-            <button id='calculate'>Calcular</button>
-        </div>
+      <div class='container'>
+        <form class='first'>
+          <label for="salary-1" class="salary mes">mes 1</label>
+          <span name="salary-1" class="salary">$<input name="salary-1" class="input"></span>
+          <label for="salary-2" class="salary mes">mes 2</label>
+          <span name="salary-2" class="salary">$<input name="salary-2" class="input"></span>
+          <label for="salary-3" class="salary mes">mes 3</label>
+          <span name="salary-3" class="salary">$<input name="salary-3" class="input"></span>
+        </form>
+        <form class='second'>
+          <label for="inflation-1" class="inflation mes">Inflación mes 1</label>
+          <span name="salary-1" class="inflation">%<input name="inflation-1" class="input"></span>
+          <label for="inflation-2" class="inflation mes">Inflación mes 2</label>
+          <span name="salary-2" class="inflation">%<input name="inflation-2" class="input"></span>
+          <label for="inflation-3" class="inflation mes">Inflación mes 3</label>
+          <span name="salary-3" class="inflation">%<input name="inflation-3" class="input"></span>
+        </form>
+      </div>
+      <button id='calculate'>Calcular</button>
     </div>
+  </div>
 
-
-    <script src="script.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 
 </html>
