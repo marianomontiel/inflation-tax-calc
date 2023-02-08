@@ -1,12 +1,12 @@
 const salary = document.querySelector('#salary');
 const ok = document.querySelector('.ok');
 let meses = ok.addEventListener('click', () => { monthList(document.querySelector('#salary').value) });
-monthList(6);
+monthList(3);
 
 function monthList(a) {
     let mes = 0;
     meses = a;
-    const body = document.querySelector('body');
+    const body = document.querySelector('.box');
 
     //remove inputs before adding newones
     const salary = document.querySelectorAll('.salary');
@@ -73,6 +73,8 @@ calculate.addEventListener('click', () => {
     salaryArray = salaryArray.map(function(v) {
         return parseInt(v) || 0;
       });
+    console.log(salaryArray);
+
 
     //convert form into Array
     const inflationForm = document.querySelector('.second');
@@ -90,6 +92,7 @@ calculate.addEventListener('click', () => {
         salaryAdjusted[i] = inflationIndex[i] * salaryArray[i];
 
     }
+    console.log(salaryAdjusted);
 
     //subtract salary adjusted with original salary
     const initialValue = 0;
