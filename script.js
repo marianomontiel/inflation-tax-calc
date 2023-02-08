@@ -114,6 +114,7 @@ calculate.addEventListener("click", () => {
   //output value on DOM
   const boxDiv = document.querySelector(".box > div");
   const output = document.querySelector(".output");
+  output.setAttribute("style", "padding-top: 0px");
   output.innerText = `Pagaste $ ${
     Math.floor((sumWithInitial2 - sumWithInitial) * 100) / 100
   } en impuesto inflacionado en ese periodo.`;
