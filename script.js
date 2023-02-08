@@ -10,10 +10,10 @@ function monthList(a) {
   const body = document.querySelector(".box");
 
   //remove inputs before adding newones
-  const salary = document.querySelectorAll(".salary");
-  const firstDiv = document.querySelector(".first");
+  const container = document.querySelector(".container");
+  const salary = document.querySelectorAll(".componentWrapper");
   salary.forEach((salary) => {
-    firstDiv.removeChild(salary);
+    container.removeChild(salary);
   });
 
   const inflation = document.querySelectorAll(".inflation");
@@ -26,11 +26,22 @@ function monthList(a) {
   for (let i = 0; i < meses; i++) {
     mes += 1;
 
+    //content wrapper
+    const body = document.querySelector(".container");
+    const div = document.createElement("div");
+    div.setAttribute("class", "componentWrapper");
+    body.appendChild(div);
+
+    const divChild = document.createElement("div");
+    divChild.setAttribute("class", "header");
+    divChild.innerText = `Mes ${mes}`;
+    div.appendChild(divChild);
+    
     //salary inputs
     const label = document.createElement("label");
     label.setAttribute("for", `salary-${mes}`);
     label.setAttribute("class", "salary mes");
-    label.innerText = `Salario mes ${mes}`;
+    label.innerText = `Salario`;
 
     const spanSalary = document.createElement("span");
     spanSalary.setAttribute("name", `salary-${mes}`);
@@ -39,18 +50,17 @@ function monthList(a) {
 
     const input = document.createElement("input");
     input.setAttribute("name", `salary-${mes}`);
-    input.setAttribute("class", "input");
+    input.setAttribute("class", "input-salary");
 
-    firstDiv.appendChild(label);
-    //firstDiv.appendChild(input);
-    firstDiv.appendChild(spanSalary);
+    div.appendChild(label);
+    div.appendChild(spanSalary);
     spanSalary.appendChild(input);
 
     //inflation inputs
     const inflationLabel = document.createElement("label");
     inflationLabel.setAttribute("for", `inflation-${mes}`);
     inflationLabel.setAttribute("class", "inflation mes");
-    inflationLabel.innerText = `Inflación mes ${mes}`;
+    inflationLabel.innerText = `Inflación`;
 
     const spanInflation = document.createElement("span");
     spanInflation.setAttribute("name", `salary-${mes}`);
@@ -59,10 +69,10 @@ function monthList(a) {
 
     const inflationInput = document.createElement("input");
     inflationInput.setAttribute("name", `inflation-${mes}`);
-    inflationInput.setAttribute("class", "input");
+    inflationInput.setAttribute("class", "input-inflation");
 
-    secondDiv.appendChild(inflationLabel);
-    secondDiv.appendChild(spanInflation);
+    div.appendChild(inflationLabel);
+    div.appendChild(spanInflation);
     spanInflation.appendChild(inflationInput);
   }
 }
@@ -70,8 +80,12 @@ function monthList(a) {
 const calculate = document.querySelector("#calculate");
 calculate.addEventListener("click", () => {
   //convert form into Array
-  const salaryForm = document.querySelector(".first");
-  const salaryFormData = new FormData(salaryForm);
+  const salaryForm = document.querySelectorAll(".input-salary");
+  console.log(salaryForm);
+  const salaryFormData = new FormData();
+  salaryForm.forEach((salaryForm) => {
+    salaryFormData.append(salaryForm.name, salaryForm.value);
+  });
   let salaryArray = Array.from(salaryFormData.values());
   //convert Array input to number
   salaryArray = salaryArray.map(function (v) {
@@ -80,8 +94,11 @@ calculate.addEventListener("click", () => {
   console.log(salaryArray);
 
   //convert form into Array
-  const inflationForm = document.querySelector(".second");
-  const inflationFormData = new FormData(inflationForm);
+  const inflationForm = document.querySelectorAll(".input-inflation");
+  const inflationFormData = new FormData();
+  inflationForm.forEach((inflationForm) => {
+    inflationFormData.append(inflationForm.name, inflationForm.value);
+  });
   const inflationArray = Array.from(inflationFormData.values());
 
   //create inflation salary index

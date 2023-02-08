@@ -21,26 +21,29 @@
       </div>
 
       <div class='container'>
-        <form class='first'>
-          <label for="salary-1" class="salary mes">mes 1</label>
-          <span name="salary-1" class="salary">$<input name="salary-1" class="input"></span>
-          <label for="salary-2" class="salary mes">mes 2</label>
-          <span name="salary-2" class="salary">$<input name="salary-2" class="input"></span>
-          <label for="salary-3" class="salary mes">mes 3</label>
-          <span name="salary-3" class="salary">$<input name="salary-3" class="input"></span>
-        </form>
-        <form class='second'>
-          <label for="inflation-1" class="inflation mes">Inflación mes 1</label>
-          <span name="salary-1" class="inflation">%<input name="inflation-1" class="input"></span>
-          <label for="inflation-2" class="inflation mes">Inflación mes 2</label>
-          <span name="salary-2" class="inflation">%<input name="inflation-2" class="input"></span>
-          <label for="inflation-3" class="inflation mes">Inflación mes 3</label>
-          <span name="salary-3" class="inflation">%<input name="inflation-3" class="input"></span>
-        </form>
+        <div class="componentWrapper">
+          <div class="header">Mes 1</div><label for="salary-1" class="salary mes">Salario</label><span name="salary-1"
+            class="salary">$<input name="salary-1" class="input-salary"></span><label for="inflation-1"
+            class="inflation mes">Inflación</label><span name="salary-1" class="inflation">%<input name="inflation-1"
+              class="input-inflation"></span>
+        </div>
+        <div class="componentWrapper">
+          <div class="header">Mes 2</div><label for="salary-2" class="salary mes">Salario</label><span name="salary-2"
+            class="salary">$<input name="salary-2" class="input-salary"></span><label for="inflation-2"
+            class="inflation mes">Inflación</label><span name="salary-2" class="inflation">%<input name="inflation-2"
+              class="input-inflation"></span>
+        </div>
+        <div class="componentWrapper">
+          <div class="header">Mes 3</div><label for="salary-3" class="salary mes">Salario</label><span name="salary-3"
+            class="salary">$<input name="salary-3" class="input-salary"></span><label for="inflation-3"
+            class="inflation mes">Inflación</label><span name="salary-3" class="inflation">%<input name="inflation-3"
+              class="input-inflation"></span>
+        </div>
       </div>
-      <button id='calculate'>Calcular</button>
-      <p class='output'></p>
     </div>
+    <button id='calculate'>Calcular</button>
+    <p class='output'></p>
+  </div>
   </div>
 
   <script src="script.js" defer></script>
