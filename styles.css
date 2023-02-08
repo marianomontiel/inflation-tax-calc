@@ -99,3 +99,8 @@ span > input {
   padding: 15px;
   border-radius: 10px;
 }
+
+.output {
+  margin: 16px 0px;
+  font-size: 16px;
+}
