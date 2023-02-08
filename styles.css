@@ -6,7 +6,7 @@ body {
   align-items: center;
   justify-content: center;
   background-color: #004d99;
-  height: 97vh;
+  min-height: 97vh;
 }
 
 body > .box {
