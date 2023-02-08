@@ -24,27 +24,41 @@ function monthList(a) {
         //salary inputs
         const label = document.createElement('label');
         label.setAttribute('for', `salary-${mes}`);
-        label.setAttribute('class', 'salary');
+        label.setAttribute('class', 'salary mes');
         label.innerText = `mes ${mes}`;
 
+        const spanSalary = document.createElement('span');
+        spanSalary.setAttribute('name', `salary-${mes}`);
+        spanSalary.setAttribute('class', 'salary');
+        spanSalary.innerText = '$';
+      
         const input = document.createElement('input');
         input.setAttribute('name', `salary-${mes}`);
-        input.setAttribute('class', 'salary');
+        input.setAttribute('class', 'input');
+     
         firstDiv.appendChild(label);
-        firstDiv.appendChild(input);
+        //firstDiv.appendChild(input);
+        firstDiv.appendChild(spanSalary);
+        spanSalary.appendChild(input);
 
         //inflation inputs
         const inflationLabel = document.createElement('label');
         inflationLabel.setAttribute('for', `inflation-${mes}`);
-        inflationLabel.setAttribute('class', 'inflation');
+        inflationLabel.setAttribute('class', 'inflation mes');
         inflationLabel.innerText = `Inflación mes ${mes}`;
+      
+        const spanInflation = document.createElement('span');
+        spanInflation.setAttribute('name', `salary-${mes}`);
+        spanInflation.setAttribute('class', 'inflation');
+        spanInflation.innerText = '%';
 
         const inflationInput = document.createElement('input');
         inflationInput.setAttribute('name', `inflation-${mes}`);
-        inflationInput.setAttribute('class', 'inflation');
+        inflationInput.setAttribute('class', 'input');
 
         secondDiv.appendChild(inflationLabel);
-        secondDiv.appendChild(inflationInput);
+        secondDiv.appendChild(spanInflation);
+        spanInflation.appendChild(inflationInput);
     };
 }
 
@@ -57,7 +71,7 @@ calculate.addEventListener('click', () => {
     let salaryArray = Array.from(salaryFormData.values());
     //convert Array input to number
     salaryArray = salaryArray.map(function(v) {
-        return parseInt(v);
+        return parseInt(v) || 0;
       });
 
     //convert form into Array
