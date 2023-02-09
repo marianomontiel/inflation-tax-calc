@@ -17,7 +17,7 @@ startInput.addEventListener("change", () => {
   endMonth = document.querySelector("#end").value.slice(-2);
   endYear = document.querySelector("#end").value.slice(0, 4);
   if (startInput.value != undefined && startInput.value != undefined) {
-    monthList(endYear * 12 + endMonth - (startYear * 12 + startMonth));
+    monthList(endYear * 12 + endMonth - (startYear * 12 + startMonth) + 1);
   }
 });
 endInput.addEventListener("change", () => {
@@ -26,7 +26,7 @@ endInput.addEventListener("change", () => {
   endMonth = document.querySelector("#end").value.slice(-2);
   endYear = document.querySelector("#end").value.slice(0, 4);
   if (startInput.value !== null && startInput.value !== null) {
-    monthList(endYear * 12 + endMonth - (startYear * 12 + startMonth));
+    monthList(endYear * 12 + endMonth - (startYear * 12 + startMonth) + 1);
   }
 });
 
@@ -83,9 +83,9 @@ function monthList(a) {
     spanSalary.appendChild(input);
   }
 }
-const calculate = document.querySelectorAll("input");
-calculate.forEach((calculate) => {
-  calculate.addEventListener("change", () => {
+const inputs = document.querySelectorAll(".input-salary");
+inputs.forEach((input) => {
+  input.addEventListener("change", () => {
     //convert form into Array
     const salaryForm = document.querySelectorAll(".input-salary");
     const salaryFormData = new FormData();
@@ -227,20 +227,8 @@ calculate.forEach((calculate) => {
 //redundant function for calculate button
 const calculateButton = document.querySelector("#calculate");
 calculateButton.addEventListener("click", () => {
-  //pupulate inputs with specific value
-  /* const one = document.querySelectorAll('.input-salary');
-    one.forEach(one => {
-        one.value = 100
-    });
-
-    const two = document.querySelectorAll('.input-inflation');
-    two.forEach(two => {
-        two.value = 100
-    }); */
-
   //convert form into Array
   const salaryForm = document.querySelectorAll(".input-salary");
-  console.log(salaryForm);
   const salaryFormData = new FormData();
   salaryForm.forEach((salaryForm) => {
     salaryFormData.append(salaryForm.name, salaryForm.value);
@@ -251,7 +239,6 @@ calculateButton.addEventListener("click", () => {
     return parseInt(v) || 0;
   });
   console.log(salaryArray);
-
   //inflation array database
   const inflationTable = [
     { Mes: 1, Año: 2017, Index: 1.6 },
@@ -331,16 +318,14 @@ calculateButton.addEventListener("click", () => {
   //filter array to desired period
   const filterTable = inflationTable.filter(
     (date) =>
-      date.Mes >= "1" &&
-      date.Año >= 2022 &&
-      date.Mes <= "12" &&
-      date.Año <= 2022
+      date.Mes >= startMonth &&
+      date.Año >= startYear &&
+      date.Mes <= endMonth &&
+      date.Año <= endYear
   );
-  console.table(filterTable);
   //return array of inflation values
   const inflationArray = filterTable.map((index) => index.Index);
   console.table(inflationArray);
-
   //create inflation salary index
   let inflationIndex = Array(inflationArray.length);
   let salaryAdjusted = Array(inflationArray.length);
