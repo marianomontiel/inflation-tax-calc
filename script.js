@@ -226,7 +226,6 @@ calculateButton.addEventListener("click", () => {
   salaryArray = salaryArray.map(function (v) {
     return parseInt(v) || 0;
   });
-
   //inflation array database
   const inflationTable = [
     { Mes: 1, Año: 2017, Index: 1.6 },
@@ -313,7 +312,6 @@ calculateButton.addEventListener("click", () => {
   );
   //return array of inflation values
   const inflationArray = filterTable.map((index) => index.Index);
-
   //create inflation salary index
   let inflationIndex = Array(inflationArray.length);
   let salaryAdjusted = Array(inflationArray.length);
