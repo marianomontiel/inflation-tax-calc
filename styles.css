@@ -130,7 +130,8 @@ span > input {
   width: 65px;
 }
 
-.componentWrapper > label, .componentWrapper > span {
+.componentWrapper > label,
+.componentWrapper > span {
   display: inline-block;
   margin: 10px 0px 10px 5px;
 }

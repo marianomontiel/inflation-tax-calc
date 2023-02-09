@@ -15,29 +15,22 @@
     <h2>Descubrí cuanto te roban con la inflación todos los meses!</h2>
     <div>
       <div class='input'>
-        <label for="salary">¿Cuantos meses querés analizar?</label>
-        <input type="text" id="salary" name="salary">
-        <button class='ok'>Ok</button>
+        <p>¿Cuantos meses querés analizar?</p>
+        <label for="start"> Inicio</label>
+        <input type="month" id="start" name="start" min="2017-01" max="2022-12">
+        <label for="end">Fin</label>
+        <input type="month" id="end" name="end" min="2017-01" max="2022-12">
       </div>
 
       <div class='container'>
         <div class="componentWrapper">
-          <div class="header">Mes 1</div><label for="salary-1" class="salary mes">Salario</label><span name="salary-1"
-            class="salary">$<input name="salary-1" class="input-salary"></span><label for="inflation-1"
-            class="inflation mes">Inflación</label><span name="salary-1" class="inflation">%<input name="inflation-1"
-              class="input-inflation"></span>
+          <div class="header">Mes 1</div><label for="salary-1" class="salary mes">Salario</label><span name="salary-1" class="salary">$<input name="salary-1" class="input-salary"></span>
         </div>
         <div class="componentWrapper">
-          <div class="header">Mes 2</div><label for="salary-2" class="salary mes">Salario</label><span name="salary-2"
-            class="salary">$<input name="salary-2" class="input-salary"></span><label for="inflation-2"
-            class="inflation mes">Inflación</label><span name="salary-2" class="inflation">%<input name="inflation-2"
-              class="input-inflation"></span>
+          <div class="header">Mes 2</div><label for="salary-2" class="salary mes">Salario</label><span name="salary-2" class="salary">$<input name="salary-2" class="input-salary"></span>
         </div>
         <div class="componentWrapper">
-          <div class="header">Mes 3</div><label for="salary-3" class="salary mes">Salario</label><span name="salary-3"
-            class="salary">$<input name="salary-3" class="input-salary"></span><label for="inflation-3"
-            class="inflation mes">Inflación</label><span name="salary-3" class="inflation">%<input name="inflation-3"
-              class="input-inflation"></span>
+          <div class="header">Mes 3</div><label for="salary-3" class="salary mes">Salario</label><span name="salary-3" class="salary">$<input name="salary-3" class="input-salary"></span>
         </div>
       </div>
       <button id='calculate'>Calcular</button>
