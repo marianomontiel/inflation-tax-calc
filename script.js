@@ -58,15 +58,10 @@ function monthList(a) {
 
     const divChild = document.createElement("div");
     divChild.setAttribute("class", "header");
-    divChild.innerText = `Mes ${mes}`;
+    divChild.innerText = `Salario mes ${mes}`;
     div.appendChild(divChild);
 
     //salary inputs
-    const label = document.createElement("label");
-    label.setAttribute("for", `salary-${mes}`);
-    label.setAttribute("class", "salary mes");
-    label.innerText = `Salario`;
-
     const spanSalary = document.createElement("span");
     spanSalary.setAttribute("name", `salary-${mes}`);
     spanSalary.setAttribute("class", "salary");
@@ -76,7 +71,6 @@ function monthList(a) {
     input.setAttribute("name", `salary-${mes}`);
     input.setAttribute("class", "input-salary");
 
-    div.appendChild(label);
     div.appendChild(spanSalary);
     spanSalary.appendChild(input);
   }
