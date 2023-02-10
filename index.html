@@ -12,31 +12,33 @@
 <body>
   <div class='box'>
     <h1>Calculadora de impuesto inflacionario</h1>
-    <h2>Descubrí cuanto te roban con la inflación todos los meses!</h2>
+    <p>Descubrí cuanto te roban con la inflación todos los meses!</p>
     <div>
       <div class='input'>
         <p>¿Cuantos meses querés analizar?</p>
-        <label for="start"> Inicio</label>
-        <input type="month" id="start" name="start" min="2017-01" max="2022-12">
-        <label for="end">Fin</label>
-        <input type="month" id="end" name="end" min="2017-01" max="2022-12">
+        <div>
+          <label for="start"> Inicio</label>
+          <input type="month" id="start" name="start" min="2017-01" max="2022-12">
+          <label for="end">Fin</label>
+          <input type="month" id="end" name="end" min="2017-01" max="2022-12">  
+        </div>
       </div>
 
       <div class='container'>
         <div class="componentWrapper">
-          <div class="header">Salario mes 1</div><span name="salary-1" class="salary">$<input name="salary-1"
+          <div class="header">Salario Enero 2022</div><span name="salary-0" class="salary">$<input name="salary-0"
               class="input-salary"></span>
         </div>
         <div class="componentWrapper">
-          <div class="header">Salario mes 2</div><span name="salary-2" class="salary">$<input name="salary-2"
+          <div class="header">Salario Febrero 2022</div><span name="salary-1" class="salary">$<input name="salary-1"
               class="input-salary"></span>
         </div>
         <div class="componentWrapper">
-          <div class="header">Salario mes 3</div><span name="salary-3" class="salary">$<input name="salary-3"
+          <div class="header">Salario Marzo 2022</div><span name="salary-2" class="salary">$<input name="salary-2"
               class="input-salary"></span>
         </div>
+        <button id='calculate'>Calcular</button>
       </div>
-      <button id='calculate'>Calcular</button>
     </div>
     <p class='output'></p>
   </div>
