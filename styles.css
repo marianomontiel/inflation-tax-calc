@@ -5,144 +5,151 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #004d99;
+    background-color: rgb(0, 85, 133);
     min-height: 97vh;
   }
 
   .box {
+    position: relative;
     font-family: "Roboto", sans-serif;
     display: flex;
     flex-direction: column;
-    padding: 64px 32px;
+    align-items: center;
+    margin-top: 72px;
+    margin-bottom: 32px;
+    padding: 32px 64px;
     border-radius: 10px;
     background-color: white;
     min-width: 350px;
     max-width: 650px;
-    }
+    box-shadow: 1px 7px 30px -10px rgb(0 0 0 / 77%);
+  }
+
+  .icon-header {
+    position: absolute;
+    top: -36px;
+    left: calc(50%-36px);
+    height: 72px;
+    width: 72px;
+  }
 
   h1,
   p {
+    text-align: left;
     width: 100%;
-    margin: 10px
+    font-weight: 400;
   }
 
   h1 {
-    color: #004080;
-    font-weight: 500;
+    color: rgb(21, 62, 103);
+    margin-bottom: 4px;
   }
 
   p {
     font-size: 20px;
     color: #696969;
     padding-left: 2px;
-    font-weight: 400;
   }
 
-  .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    border-radius: 5px;
-    margin: 10px;
-    width: 400px;
-  }
-
-  .box>div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+  .input-title {
+    text-align: center;
   }
 
   .input {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin: 10px 0px 30px 0px;
   }
 
-  .input>p {
-    font-weight: 700;
+  .input>div {
+    margin: 0px 30px;
+  }
+
+  .calendar-label {
+    margin-bottom: 5px;
+    display: block;
     text-align: center;
-    font-size: larger;
+    font-weight: 500;
   }
 
-  #start,
-  #end {
-    margin-right: 10px;
+  .componentWrapper {
+    position: relative;
+    width: 100%;
+    margin: 15px 0px;
+    height: auto;
+    box-sizing: border-box;
   }
 
-  button {
-    color: white;
-    background-color: #0066cc;
-    border: none;
-    width: 100px;
-    height: 25px;
+  .componentWrapper .header {
+    position: absolute;
+    margin-top: -10px;
+    margin-left: 5px;
+    color: rgb(22, 29, 64);
+    background: white;
+    border-radius: 10px;
+    padding: 2px 5px;
+    font-weight: 500;
   }
 
-  .mes {
+  .input-salary {
+    border: 2px solid rgb(239, 239, 239);
+    border-radius: 5px;
+    margin-left: 0px;
     color: black;
-    border: 0;
+    font-size: 16px;
+    width: 100%;
+    padding: 16px;
+    padding-left: 25px;
+    box-sizing: border-box;
   }
+
+  .salary {
+    position: absolute;
+    top: 16px;
+    left: 12px;
+    border: 0;
+    color: grey;
+    font-size: 16px;
+    pointer-events: none;
+  }
+
 
   #calculate {
     color: white;
-    background-color: #0066cc;
+    background-color: rgb(0, 85, 133);
     border: none;
+    border-radius: 5px;
     width: 100%;
     height: 50px;
     font-size: 20px;
     font-weight: 700;
     padding: 15px;
     margin: 15px 0px 15px;
+    box-shadow: rgb(0 0 0 / 70%) 1px 7px 28px -15px;
   }
 
-  .output {
-    margin: 0px;
-    font-size: 16px;
-    padding-top: 19px;
-  }
-
-  .componentWrapper {
-    border: solid cadetblue;
-    border-radius: 40px;
-    padding: 2px 10px;
-    width: 93%;
-    margin: 10px 0px;
-    height: auto;
-  }
-
-  .componentWrapper .header {
-    position: absolute;
-    margin-top: -15px;
-    margin-left: 10px;
-    color: white;
-    background: cadetblue;
-    border-radius: 10px;
-    padding: 2px 10px;
-  }
-
-  .componentWrapper>label,
-  .componentWrapper>span {
-    display: inline-block;
-    margin: 9px 5px;
-  }
-
-  .salary {
-    border: 0;
-    color: grey;
-    font-size: 16px;
-    padding: 2px;
-  }
-
-  span.salary {
+  footer {
+    display: flex;
+    justify-content: space-between;
     width: 100%;
   }
 
-  span>input {
-    margin: 0px;
-    border: 0;
+  #upper {
     color: black;
+    background-color: rgb(199, 212, 222);
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    height: 50px;
     font-size: 16px;
-    outline: none;
-    width: 90%;
+    font-weight: 300;
+    padding: 15px;
+    margin: 15px;
+    white-space: nowrap
+  }
+
+  .output {
+    width: 100%;
+    margin: 10px;
+    font-size: 16px;
+    padding-top: 19px;
   }

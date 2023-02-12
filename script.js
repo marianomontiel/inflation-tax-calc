@@ -1,10 +1,5 @@
 const salary = document.querySelector("#salary");
-const ok = document.querySelector(".ok");
-/*let meses = ok.addEventListener("change", () => {
-  if (startInput.value !== null && startInput.value !== null) {
-  monthList((endYear*12 + endMonth) - (startYear + startMonth));
-  }
-});*/
+
 let startInput = document.querySelector("#start");
 let endInput = document.querySelector("#end");
 
@@ -39,13 +34,12 @@ endInput.addEventListener("change", () => {
 
 function monthList(a) {
   let mes = 0;
-  const body = document.querySelector(".box");
 
   //remove inputs before adding newones
-  const container = document.querySelector(".container");
+  const box = document.querySelector(".box");
   const salary = document.querySelectorAll(".componentWrapper");
   salary.forEach((salary) => {
-    container.removeChild(salary);
+    box.removeChild(salary);
   });
 
   //convert month number to string
@@ -60,7 +54,7 @@ function monthList(a) {
   }
 
   function getYear(initialYearNumber) {
-    if (startMonth > 12) {startMonth = startMonth - 12; startYear++; return startYear;} else {return startYear}
+    if (startMonth > 12) { startMonth = startMonth - 12; startYear++; return startYear; } else { return startYear }
     console.log(startMonth);
     console.log(startYear);
   }
@@ -69,32 +63,32 @@ function monthList(a) {
   for (let i = 0; i < a; i++, startMonth++, mes++) {
 
     //content wrapper
-    const body = document.querySelector(".container");
-    const div = document.createElement("div");
-    div.setAttribute("class", "componentWrapper");
-    body.appendChild(div);
+    const box = document.querySelector(".box");
+    const wrapper = document.createElement("label");
+    const calculate = document.querySelector('#calculate');
+    wrapper.setAttribute("class", "componentWrapper");
+    box.insertBefore (wrapper, calculate);
 
-    const divChild = document.createElement("div");
-    divChild.setAttribute("class", "header");
-    divChild.innerText = `Salario ${getMonthName((startMonth))} ${getYear(startYear)}`;
-    div.appendChild(divChild);
+    const header = document.createElement("span");
+    header.setAttribute("class", "header");
+    header.innerText = `Salario ${getMonthName((startMonth))} ${getYear(startYear)}`;
+    wrapper.appendChild(header);
 
     //salary inputs
-    const spanSalary = document.createElement("span");
-    spanSalary.setAttribute("name", `salary-${mes}`);
-    spanSalary.setAttribute("class", "salary");
-    spanSalary.innerText = "$";
+    const symbol = document.createElement("span");
+    symbol.setAttribute("name", `salary-${mes}`);
+    symbol.setAttribute("class", "salary");
+    symbol.innerText = "$";
+    wrapper.appendChild(symbol);
 
     const input = document.createElement("input");
     input.setAttribute("name", `salary-${mes}`);
     input.setAttribute("class", "input-salary");
-
-    div.appendChild(spanSalary);
-    spanSalary.appendChild(input);
+    wrapper.appendChild(input);
   }
 }
 
-function calculateTax () {
+function calculateTax() {
   //convert form into Array
   const salaryForm = document.querySelectorAll(".input-salary");
   const salaryFormData = new FormData();
@@ -219,12 +213,12 @@ function calculateTax () {
   );
 
   //output value on DOM
-  const boxDiv = document.querySelector(".box > div");
+  const box = document.querySelector(".box");
   const output = document.querySelector(".output");
   output.setAttribute("style", "padding-top: 0px");
   output.innerText = `Tu salario perdió el equivalente a $ ${Math.floor((sumWithInitial2 - sumWithInitial) * 100) / 100
     } en poder de compra durante este periodo.`;
-  boxDiv.appendChild(output);
+  box.appendChild(output);
 }
 
 const inputs = document.querySelectorAll(".input-salary");
