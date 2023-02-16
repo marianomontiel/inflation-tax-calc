@@ -1,155 +1,313 @@
   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
-  body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(0, 85, 133);
-    min-height: 97vh;
+  @media only screen and (min-width: 540px) {
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: rgb(0, 85, 133);
+      min-height: 97vh;
+    }
+
+    .box {
+      position: relative;
+      font-family: "Roboto", sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 72px;
+      margin-bottom: 32px;
+      padding: 32px 64px;
+      border-radius: 10px;
+      background-color: white;
+      min-width: 350px;
+      max-width: 650px;
+      box-shadow: 1px 7px 30px -10px rgb(0 0 0 / 77%);
+    }
+
+    .icon-header {
+      position: absolute;
+      top: -36px;
+      left: calc(50%-36px);
+      height: 72px;
+      width: 72px;
+    }
+
+    h1,
+    p {
+      text-align: left;
+      width: 100%;
+      font-weight: 400;
+    }
+
+    h1 {
+      color: rgb(21, 62, 103);
+      margin-bottom: 4px;
+    }
+
+    p {
+      font-size: 20px;
+      color: #696969;
+      padding-left: 2px;
+    }
+
+    .input-title {
+      text-align: center;
+    }
+
+    .input {
+      display: flex;
+      margin: 10px 0px 30px 0px;
+    }
+
+    .input>div {
+      margin: 0px 30px;
+    }
+
+    .calendar-label {
+      margin-bottom: 5px;
+      display: block;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .componentWrapper {
+      position: relative;
+      width: 100%;
+      margin: 15px 0px;
+      height: auto;
+      box-sizing: border-box;
+    }
+
+    .componentWrapper .header {
+      position: absolute;
+      margin-top: -10px;
+      margin-left: 5px;
+      color: rgb(22, 29, 64);
+      background: white;
+      border-radius: 10px;
+      padding: 2px 5px;
+      font-weight: 500;
+    }
+
+    .input-salary {
+      border: 2px solid rgb(239, 239, 239);
+      border-radius: 5px;
+      margin-left: 0px;
+      color: black;
+      font-size: 16px;
+      width: 100%;
+      padding: 16px;
+      padding-left: 25px;
+      box-sizing: border-box;
+    }
+
+    .salary {
+      position: absolute;
+      top: 16px;
+      left: 12px;
+      border: 0;
+      color: grey;
+      font-size: 16px;
+      pointer-events: none;
+    }
+
+
+    #calculate {
+      color: white;
+      background-color: rgb(0, 85, 133);
+      border: none;
+      border-radius: 5px;
+      width: 100%;
+      height: 50px;
+      font-size: 20px;
+      font-weight: 700;
+      padding: 15px;
+      margin: 15px 0px 15px;
+      box-shadow: rgb(0 0 0 / 70%) 1px 7px 28px -15px;
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    #upper {
+      color: black;
+      background-color: rgb(199, 212, 222);
+      border: none;
+      border-radius: 5px;
+      width: 100%;
+      height: 50px;
+      font-size: 16px;
+      font-weight: 300;
+      padding: 15px;
+      margin: 15px;
+      white-space: nowrap
+    }
+
+    .output {
+      width: 100%;
+      margin: 10px;
+      font-size: 16px;
+      padding-top: 19px;
+    }
   }
 
-  .box {
-    position: relative;
-    font-family: "Roboto", sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 72px;
-    margin-bottom: 32px;
-    padding: 32px 64px;
-    border-radius: 10px;
-    background-color: white;
-    min-width: 350px;
-    max-width: 650px;
-    box-shadow: 1px 7px 30px -10px rgb(0 0 0 / 77%);
-  }
+  @media only screen and (max-width: 540px) {
+    body {
+      display: flex;
+      margin: 0;
+      width: 100vw;
+      min-height: 97vh;
+    }
 
-  .icon-header {
-    position: absolute;
-    top: -36px;
-    left: calc(50%-36px);
-    height: 72px;
-    width: 72px;
-  }
+    .box {
+      box-sizing: border-box;
+      position: relative;
+      font-family: "Roboto", sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 24px;
+      background-color: white;
+      width: 100%;
+      height: 100%;
+    }
 
-  h1,
-  p {
-    text-align: left;
-    width: 100%;
-    font-weight: 400;
-  }
+    .icon-header {
+      height: 72px;
+      width: 72px;
+    }
 
-  h1 {
-    color: rgb(21, 62, 103);
-    margin-bottom: 4px;
-  }
+    h1,
+    p {
+      text-align: left;
+      width: 100%;
+      font-weight: 400;
+    }
 
-  p {
-    font-size: 20px;
-    color: #696969;
-    padding-left: 2px;
-  }
+    h1 {
+      color: rgb(21, 62, 103);
+      margin-bottom: 4px;
+    }
 
-  .input-title {
-    text-align: center;
-  }
+    p {
+      font-size: 20px;
+      color: #696969;
+      padding-left: 2px;
+    }
 
-  .input {
-    display: flex;
-    margin: 10px 0px 30px 0px;
-  }
+    .input-title {
+      text-align: center;
+    }
 
-  .input>div {
-    margin: 0px 30px;
-  }
+    .input {
+      display: flex;
+      margin: 10px 0px 30px 0px;
+    }
 
-  .calendar-label {
-    margin-bottom: 5px;
-    display: block;
-    text-align: center;
-    font-weight: 500;
-  }
+    .input>div {
+      margin: 0px 30px;
+    }
 
-  .componentWrapper {
-    position: relative;
-    width: 100%;
-    margin: 15px 0px;
-    height: auto;
-    box-sizing: border-box;
-  }
+    .calendar-label {
+      margin-bottom: 5px;
+      display: block;
+      text-align: center;
+      font-weight: 500;
+    }
 
-  .componentWrapper .header {
-    position: absolute;
-    margin-top: -10px;
-    margin-left: 5px;
-    color: rgb(22, 29, 64);
-    background: white;
-    border-radius: 10px;
-    padding: 2px 5px;
-    font-weight: 500;
-  }
+    .componentWrapper {
+      position: relative;
+      width: 100%;
+      margin: 15px 0px;
+      height: auto;
+      box-sizing: border-box;
+    }
 
-  .input-salary {
-    border: 2px solid rgb(239, 239, 239);
-    border-radius: 5px;
-    margin-left: 0px;
-    color: black;
-    font-size: 16px;
-    width: 100%;
-    padding: 16px;
-    padding-left: 25px;
-    box-sizing: border-box;
-  }
+    .componentWrapper .header {
+      position: absolute;
+      margin-top: -10px;
+      margin-left: 5px;
+      color: rgb(22, 29, 64);
+      background: white;
+      border-radius: 10px;
+      padding: 2px 5px;
+      font-weight: 500;
+    }
 
-  .salary {
-    position: absolute;
-    top: 16px;
-    left: 12px;
-    border: 0;
-    color: grey;
-    font-size: 16px;
-    pointer-events: none;
-  }
+    .input-salary {
+      border: 2px solid rgb(239, 239, 239);
+      border-radius: 5px;
+      margin-left: 0px;
+      color: black;
+      font-size: 16px;
+      width: 100%;
+      padding: 16px;
+      padding-left: 25px;
+      box-sizing: border-box;
+    }
+
+    .salary {
+      position: absolute;
+      top: 16px;
+      left: 12px;
+      border: 0;
+      color: grey;
+      font-size: 16px;
+      pointer-events: none;
+    }
 
 
-  #calculate {
-    color: white;
-    background-color: rgb(0, 85, 133);
-    border: none;
-    border-radius: 5px;
-    width: 100%;
-    height: 50px;
-    font-size: 20px;
-    font-weight: 700;
-    padding: 15px;
-    margin: 15px 0px 15px;
-    box-shadow: rgb(0 0 0 / 70%) 1px 7px 28px -15px;
-  }
+    #calculate {
+      color: white;
+      background-color: rgb(0, 85, 133);
+      border: none;
+      border-radius: 5px;
+      width: 100%;
+      height: 50px;
+      font-size: 20px;
+      font-weight: 700;
+      padding: 15px;
+      margin: 15px 0px 15px;
+      box-shadow: rgb(0 0 0 / 70%) 1px 7px 28px -15px;
+    }
 
-  footer {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-  }
+    footer {
+      display: flex;
+      flex: 0 0 100%;
+      flex-shrink: 1;
+      justify-content: space-evenly;
+      width: 100%;
+    }
 
-  #upper {
-    color: black;
-    background-color: rgb(199, 212, 222);
-    border: none;
-    border-radius: 5px;
-    width: 100%;
-    height: 50px;
-    font-size: 16px;
-    font-weight: 300;
-    padding: 15px;
-    margin: 15px;
-    white-space: nowrap
-  }
+    #upper {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      color: black;
+      background-color: rgb(199, 212, 222);
+      border: none;
+      border-radius: 5px;
+      width: 100%;
+      height: 50px;
+      font-size: 16px;
+      font-weight: 300;
+      padding-top: 2px;
+      margin: 15px;
+      text-align: center;
+      vertical-align: middle;
+    }
 
-  .output {
-    width: 100%;
-    margin: 10px;
-    font-size: 16px;
-    padding-top: 19px;
+    .output {
+      width: 100%;
+      margin: 10px;
+      font-size: 16px;
+      padding-top: 19px;
+    }
+
+
   }
