@@ -3,7 +3,7 @@ const salary = document.querySelector("#salary");
 let startInput = document.querySelector("#start");
 let endInput = document.querySelector("#end");
 
-//assign initial values 
+//assign initial values
 startInput.value = "2022-01";
 endInput.value = "2022-03";
 let startMonth = parseInt(startInput.value.slice(-2));
@@ -16,7 +16,8 @@ startInput.addEventListener("change", () => {
   startYear = parseInt(startInput.value.slice(0, 4));
   endMonth = parseInt(endInput.value.slice(-2));
   endYear = parseInt(endInput.value.slice(0, 4));
-  const listLenght = ((endYear * 12 + endMonth) - (startYear * 12 + startMonth) + 1);
+  const listLenght =
+    endYear * 12 + endMonth - (startYear * 12 + startMonth) + 1;
   if (listLenght >= 1) {
     monthList(listLenght);
   }
@@ -26,7 +27,9 @@ endInput.addEventListener("change", () => {
   startYear = parseInt(startInput.value.slice(0, 4));
   endMonth = parseInt(endInput.value.slice(-2));
   endYear = parseInt(endInput.value.slice(0, 4));
-  const listLenght = ((endYear * 12 + endMonth) - (startYear * 12 + startMonth) + 1);
+  console.log(startMonth + "/" + startYear + "." + endMonth + "/" + endYear);
+  const listLenght =
+    endYear * 12 + endMonth - (startYear * 12 + startMonth) + 1;
   if (listLenght >= 1) {
     monthList(listLenght);
   }
@@ -47,31 +50,38 @@ function monthList(a) {
     const date = new Date();
     date.setMonth(monthNumber - 1);
 
-    const name = date.toLocaleString('es', { month: 'long' });
+    const name = date.toLocaleString("es", { month: "long" });
     const upper = name.slice(0, 1).toUpperCase();
     const lower = name.slice(1);
     return upper + lower;
   }
 
+  let monthCount = startMonth; //counter for labeling inputs
+  let yearCount = startYear;
   function getYear(initialYearNumber) {
-    if (startMonth > 12) { startMonth = startMonth - 12; startYear++; return startYear; } else { return startYear }
-    console.log(startMonth);
-    console.log(startYear);
+    if (monthCount > 12) {
+      monthCount = monthCount - 12;
+      yearCount++;
+      return yearCount;
+    } else {
+      return yearCount;
+    }
   }
 
   //create inputs
-  for (let i = 0; i < a; i++, startMonth++, mes++) {
-
+  for (let i = 0; i < a; i++, monthCount++, mes++) {
     //content wrapper
     const box = document.querySelector(".box");
     const wrapper = document.createElement("label");
-    const calculate = document.querySelector('#calculate');
+    const calculate = document.querySelector("#calculate");
     wrapper.setAttribute("class", "componentWrapper");
-    box.insertBefore (wrapper, calculate);
+    box.insertBefore(wrapper, calculate);
 
     const header = document.createElement("span");
     header.setAttribute("class", "header");
-    header.innerText = `Salario ${getMonthName((startMonth))} ${getYear(startYear)}`;
+    header.innerText = `Salario ${getMonthName(monthCount)} ${getYear(
+      yearCount
+    )}`;
     wrapper.appendChild(header);
 
     //salary inputs
@@ -85,6 +95,13 @@ function monthList(a) {
     input.setAttribute("name", `salary-${mes}`);
     input.setAttribute("class", "input-salary");
     wrapper.appendChild(input);
+
+    const inputs = document.querySelectorAll(".input-salary");
+    inputs.forEach((input) => {
+      input.addEventListener("change", () => {
+        calculateTax();
+      });
+    });
   }
 }
 
@@ -175,7 +192,6 @@ function calculateTax() {
     { Mes: 11, Año: 2022, Index: 4.9 },
     { Mes: 12, Año: 2022, Index: 5.1 }
   ];
-
   //filter array to desired period
   const filterTable = inflationTable.filter(
     (date) =>
@@ -187,6 +203,7 @@ function calculateTax() {
 
   //return array of inflation values
   const inflationArray = filterTable.map((index) => index.Index);
+  console.table(inflationArray);
   //create inflation salary index
   let inflationIndex = Array(inflationArray.length);
   let salaryAdjusted = Array(inflationArray.length);
@@ -194,12 +211,11 @@ function calculateTax() {
     if (i < 1) {
       inflationIndex[0] = inflationArray[0] / 100 + 1;
     } else {
-      inflationIndex[i] =
-        inflationIndex[i - 1] * (inflationArray[i] / 100 + 1);
+      inflationIndex[i] = inflationIndex[i - 1] * (inflationArray[i] / 100 + 1);
     }
     salaryAdjusted[i] = inflationIndex[i] * salaryArray[i];
   }
-
+  console.table(inflationIndex);
   //subtract salary adjusted with original salary
   const initialValue = 0;
   const sumWithInitial = salaryArray.reduce(
@@ -216,13 +232,14 @@ function calculateTax() {
   const box = document.querySelector(".box");
   const output = document.querySelector(".output");
   output.setAttribute("style", "padding-top: 0px");
-  output.innerText = `Tu salario perdió el equivalente a $ ${Math.floor((sumWithInitial2 - sumWithInitial) * 100) / 100
-    } en poder de compra durante este periodo.`;
+  output.innerText = `Tu salario perdió el equivalente a $ ${
+    Math.floor((sumWithInitial2 - sumWithInitial) * 100) / 100
+  } en poder de compra durante este periodo.`;
   box.appendChild(output);
 }
 
 const inputs = document.querySelectorAll(".input-salary");
-inputs.forEach(input => {
+inputs.forEach((input) => {
   input.addEventListener("change", () => {
     calculateTax();
   });
