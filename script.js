@@ -36,14 +36,11 @@ function errorMessage(listLenght) {
   if (listLenght >= 1) {
     const dateError = document.querySelector('#error');
     dateError.innerText = '';
-    dateError.setAttribute('style', 'margin-top: 0');
     monthList(listLenght);
   }
   else {
     const dateError = document.querySelector('#error');
     dateError.innerText = 'Por favor, seleccione una fecha valida.';
-    dateError.setAttribute('style', 'color: red; text-align: center; margin-top: 0');
-
     //remove inputs before adding newones
     const box = document.querySelector('.box');
     const salary = document.querySelectorAll(".componentWrapper");
