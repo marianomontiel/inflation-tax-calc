@@ -34,6 +34,8 @@ endInput.addEventListener("change", () => {
 
 function errorMessage(listLenght) {
   if (listLenght >= 1) {
+    const inputs = document.querySelectorAll('.componentWrapper > input');
+    inputs.forEach(input => input.disabled = true);
     const dateError = document.querySelector('#error');
     dateError.innerText = '';
     monthList(listLenght);
@@ -41,12 +43,9 @@ function errorMessage(listLenght) {
   else {
     const dateError = document.querySelector('#error');
     dateError.innerText = 'Por favor, seleccione una fecha valida.';
-    //remove inputs before adding newones
-    const box = document.querySelector('.box');
-    const salary = document.querySelectorAll(".componentWrapper");
-    salary.forEach((salary) => {
-      box.removeChild(salary);
-    });
+
+    const inputs = document.querySelectorAll('.componentWrapper > input');
+    inputs.forEach(input => input.disabled = true);
   }
 }
 
