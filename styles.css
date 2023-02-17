@@ -72,6 +72,13 @@
       font-weight: 500;
     }
 
+    #error {
+      width: 100%;
+      color: red;
+      margin-top: 0;
+      text-align: center;
+    }
+
     .componentWrapper {
       position: relative;
       width: 100%;
