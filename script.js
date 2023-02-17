@@ -16,8 +16,7 @@ startInput.addEventListener("change", () => {
   startYear = parseInt(startInput.value.slice(0, 4));
   endMonth = parseInt(endInput.value.slice(-2));
   endYear = parseInt(endInput.value.slice(0, 4));
-  const listLenght =
-    endYear * 12 + endMonth - (startYear * 12 + startMonth) + 1;
+  const listLenght = endYear * 12 + endMonth - (startYear * 12 + startMonth) + 1;
   errorMessage(listLenght);
 
 });
@@ -26,9 +25,7 @@ endInput.addEventListener("change", () => {
   startYear = parseInt(startInput.value.slice(0, 4));
   endMonth = parseInt(endInput.value.slice(-2));
   endYear = parseInt(endInput.value.slice(0, 4));
-  console.log(startMonth + "/" + startYear + "." + endMonth + "/" + endYear);
-  const listLenght =
-    endYear * 12 + endMonth - (startYear * 12 + startMonth) + 1;
+  const listLenght = endYear * 12 + endMonth - (startYear * 12 + startMonth) + 1;
   errorMessage(listLenght);
 });
 
@@ -132,93 +129,91 @@ function calculateTax() {
     return parseInt(v) || 0;
   });
   //inflation array database
-  const inflationTable = [
-    { Mes: 1, Año: 2017, Index: 1.6 },
-    { Mes: 2, Año: 2017, Index: 2.1 },
-    { Mes: 3, Año: 2017, Index: 2.4 },
-    { Mes: 4, Año: 2017, Index: 2.7 },
-    { Mes: 5, Año: 2017, Index: 1.4 },
-    { Mes: 6, Año: 2017, Index: 1.2 },
-    { Mes: 7, Año: 2017, Index: 1.7 },
-    { Mes: 8, Año: 2017, Index: 1.4 },
-    { Mes: 9, Año: 2017, Index: 1.9 },
-    { Mes: 10, Año: 2017, Index: 1.5 },
-    { Mes: 11, Año: 2017, Index: 1.4 },
-    { Mes: 12, Año: 2017, Index: 3.1 },
-    { Mes: 1, Año: 2018, Index: 1.8 },
-    { Mes: 2, Año: 2018, Index: 2.4 },
-    { Mes: 3, Año: 2018, Index: 2.3 },
-    { Mes: 4, Año: 2018, Index: 2.7 },
-    { Mes: 5, Año: 2018, Index: 2.1 },
-    { Mes: 6, Año: 2018, Index: 3.7 },
-    { Mes: 7, Año: 2018, Index: 3.1 },
-    { Mes: 8, Año: 2018, Index: 3.9 },
-    { Mes: 9, Año: 2018, Index: 6.5 },
-    { Mes: 10, Año: 2018, Index: 5.4 },
-    { Mes: 11, Año: 2018, Index: 3.2 },
-    { Mes: 12, Año: 2018, Index: 2.6 },
-    { Mes: 1, Año: 2019, Index: 2.9 },
-    { Mes: 2, Año: 2019, Index: 3.8 },
-    { Mes: 3, Año: 2019, Index: 4.7 },
-    { Mes: 4, Año: 2019, Index: 3.4 },
-    { Mes: 5, Año: 2019, Index: 3.1 },
-    { Mes: 6, Año: 2019, Index: 2.7 },
-    { Mes: 7, Año: 2019, Index: 2.2 },
-    { Mes: 8, Año: 2019, Index: 4 },
-    { Mes: 9, Año: 2019, Index: 5.9 },
-    { Mes: 10, Año: 2019, Index: 3.3 },
-    { Mes: 11, Año: 2019, Index: 4.3 },
-    { Mes: 12, Año: 2019, Index: 3.7 },
-    { Mes: 1, Año: 2020, Index: 2.3 },
-    { Mes: 2, Año: 2020, Index: 2 },
-    { Mes: 3, Año: 2020, Index: 3.3 },
-    { Mes: 4, Año: 2020, Index: 1.5 },
-    { Mes: 5, Año: 2020, Index: 1.5 },
-    { Mes: 6, Año: 2020, Index: 2.2 },
-    { Mes: 7, Año: 2020, Index: 1.9 },
-    { Mes: 8, Año: 2020, Index: 2.7 },
-    { Mes: 9, Año: 2020, Index: 2.8 },
-    { Mes: 10, Año: 2020, Index: 3.8 },
-    { Mes: 11, Año: 2020, Index: 3.2 },
-    { Mes: 12, Año: 2020, Index: 4 },
-    { Mes: 1, Año: 2021, Index: 4 },
-    { Mes: 2, Año: 2021, Index: 3.6 },
-    { Mes: 3, Año: 2021, Index: 4.8 },
-    { Mes: 4, Año: 2021, Index: 4.1 },
-    { Mes: 5, Año: 2021, Index: 3.3 },
-    { Mes: 6, Año: 2021, Index: 3.2 },
-    { Mes: 7, Año: 2021, Index: 3 },
-    { Mes: 8, Año: 2021, Index: 2.5 },
-    { Mes: 9, Año: 2021, Index: 3.5 },
-    { Mes: 10, Año: 2021, Index: 3.5 },
-    { Mes: 11, Año: 2021, Index: 2.5 },
-    { Mes: 12, Año: 2021, Index: 3.8 },
-    { Mes: 1, Año: 2022, Index: 3.9 },
-    { Mes: 2, Año: 2022, Index: 4.7 },
-    { Mes: 3, Año: 2022, Index: 6.7 },
-    { Mes: 4, Año: 2022, Index: 6 },
-    { Mes: 5, Año: 2022, Index: 5.1 },
-    { Mes: 6, Año: 2022, Index: 5.3 },
-    { Mes: 7, Año: 2022, Index: 7.4 },
-    { Mes: 8, Año: 2022, Index: 7 },
-    { Mes: 9, Año: 2022, Index: 6.2 },
-    { Mes: 10, Año: 2022, Index: 6.3 },
-    { Mes: 11, Año: 2022, Index: 4.9 },
-    { Mes: 12, Año: 2022, Index: 5.1 },
-    { Mes: 1, Año: 2023, Index: 6.0 }
-  ];
+  const inflationTable = [{ "Mes": 1, "Año": 2017, "Fecha": 24205, "Index": 1.6 },
+  { "Mes": 2, "Año": 2017, "Fecha": 24206, "Index": 2.1 },
+  { "Mes": 3, "Año": 2017, "Fecha": 24207, "Index": 2.4 },
+  { "Mes": 4, "Año": 2017, "Fecha": 24208, "Index": 2.7 },
+  { "Mes": 5, "Año": 2017, "Fecha": 24209, "Index": 1.4 },
+  { "Mes": 6, "Año": 2017, "Fecha": 24210, "Index": 1.2 },
+  { "Mes": 7, "Año": 2017, "Fecha": 24211, "Index": 1.7 },
+  { "Mes": 8, "Año": 2017, "Fecha": 24212, "Index": 1.4 },
+  { "Mes": 9, "Año": 2017, "Fecha": 24213, "Index": 1.9 },
+  { "Mes": 10, "Año": 2017, "Fecha": 24214, "Index": 1.5 },
+  { "Mes": 11, "Año": 2017, "Fecha": 24215, "Index": 1.4 },
+  { "Mes": 12, "Año": 2017, "Fecha": 24216, "Index": 3.1 },
+  { "Mes": 1, "Año": 2018, "Fecha": 24217, "Index": 1.8 },
+  { "Mes": 2, "Año": 2018, "Fecha": 24218, "Index": 2.4 },
+  { "Mes": 3, "Año": 2018, "Fecha": 24219, "Index": 2.3 },
+  { "Mes": 4, "Año": 2018, "Fecha": 24220, "Index": 2.7 },
+  { "Mes": 5, "Año": 2018, "Fecha": 24221, "Index": 2.1 },
+  { "Mes": 6, "Año": 2018, "Fecha": 24222, "Index": 3.7 },
+  { "Mes": 7, "Año": 2018, "Fecha": 24223, "Index": 3.1 },
+  { "Mes": 8, "Año": 2018, "Fecha": 24224, "Index": 3.9 },
+  { "Mes": 9, "Año": 2018, "Fecha": 24225, "Index": 6.5 },
+  { "Mes": 10, "Año": 2018, "Fecha": 24226, "Index": 5.4 },
+  { "Mes": 11, "Año": 2018, "Fecha": 24227, "Index": 3.2 },
+  { "Mes": 12, "Año": 2018, "Fecha": 24228, "Index": 2.6 },
+  { "Mes": 1, "Año": 2019, "Fecha": 24229, "Index": 2.9 },
+  { "Mes": 2, "Año": 2019, "Fecha": 24230, "Index": 3.8 },
+  { "Mes": 3, "Año": 2019, "Fecha": 24231, "Index": 4.7 },
+  { "Mes": 4, "Año": 2019, "Fecha": 24232, "Index": 3.4 },
+  { "Mes": 5, "Año": 2019, "Fecha": 24233, "Index": 3.1 },
+  { "Mes": 6, "Año": 2019, "Fecha": 24234, "Index": 2.7 },
+  { "Mes": 7, "Año": 2019, "Fecha": 24235, "Index": 2.2 },
+  { "Mes": 8, "Año": 2019, "Fecha": 24236, "Index": 4 },
+  { "Mes": 9, "Año": 2019, "Fecha": 24237, "Index": 5.9 },
+  { "Mes": 10, "Año": 2019, "Fecha": 24238, "Index": 3.3 },
+  { "Mes": 11, "Año": 2019, "Fecha": 24239, "Index": 4.3 },
+  { "Mes": 12, "Año": 2019, "Fecha": 24240, "Index": 3.7 },
+  { "Mes": 1, "Año": 2020, "Fecha": 24241, "Index": 2.3 },
+  { "Mes": 2, "Año": 2020, "Fecha": 24242, "Index": 2 },
+  { "Mes": 3, "Año": 2020, "Fecha": 24243, "Index": 3.3 },
+  { "Mes": 4, "Año": 2020, "Fecha": 24244, "Index": 1.5 },
+  { "Mes": 5, "Año": 2020, "Fecha": 24245, "Index": 1.5 },
+  { "Mes": 6, "Año": 2020, "Fecha": 24246, "Index": 2.2 },
+  { "Mes": 7, "Año": 2020, "Fecha": 24247, "Index": 1.9 },
+  { "Mes": 8, "Año": 2020, "Fecha": 24248, "Index": 2.7 },
+  { "Mes": 9, "Año": 2020, "Fecha": 24249, "Index": 2.8 },
+  { "Mes": 10, "Año": 2020, "Fecha": 24250, "Index": 3.8 },
+  { "Mes": 11, "Año": 2020, "Fecha": 24251, "Index": 3.2 },
+  { "Mes": 12, "Año": 2020, "Fecha": 24252, "Index": 4 },
+  { "Mes": 1, "Año": 2021, "Fecha": 24253, "Index": 4 },
+  { "Mes": 2, "Año": 2021, "Fecha": 24254, "Index": 3.6 },
+  { "Mes": 3, "Año": 2021, "Fecha": 24255, "Index": 4.8 },
+  { "Mes": 4, "Año": 2021, "Fecha": 24256, "Index": 4.1 },
+  { "Mes": 5, "Año": 2021, "Fecha": 24257, "Index": 3.3 },
+  { "Mes": 6, "Año": 2021, "Fecha": 24258, "Index": 3.2 },
+  { "Mes": 7, "Año": 2021, "Fecha": 24259, "Index": 3 },
+  { "Mes": 8, "Año": 2021, "Fecha": 24260, "Index": 2.5 },
+  { "Mes": 9, "Año": 2021, "Fecha": 24261, "Index": 3.5 },
+  { "Mes": 10, "Año": 2021, "Fecha": 24262, "Index": 3.5 },
+  { "Mes": 11, "Año": 2021, "Fecha": 24263, "Index": 2.5 },
+  { "Mes": 12, "Año": 2021, "Fecha": 24264, "Index": 3.8 },
+  { "Mes": 1, "Año": 2022, "Fecha": 24265, "Index": 3.9 },
+  { "Mes": 2, "Año": 2022, "Fecha": 24266, "Index": 4.7 },
+  { "Mes": 3, "Año": 2022, "Fecha": 24267, "Index": 6.7 },
+  { "Mes": 4, "Año": 2022, "Fecha": 24268, "Index": 6 },
+  { "Mes": 5, "Año": 2022, "Fecha": 24269, "Index": 5.1 },
+  { "Mes": 6, "Año": 2022, "Fecha": 24270, "Index": 5.3 },
+  { "Mes": 7, "Año": 2022, "Fecha": 24271, "Index": 7.4 },
+  { "Mes": 8, "Año": 2022, "Fecha": 24272, "Index": 7 },
+  { "Mes": 9, "Año": 2022, "Fecha": 24273, "Index": 6.2 },
+  { "Mes": 10, "Año": 2022, "Fecha": 24274, "Index": 6.3 },
+  { "Mes": 11, "Año": 2022, "Fecha": 24275, "Index": 4.9 },
+  { "Mes": 12, "Año": 2022, "Fecha": 24276, "Index": 5.1 },
+  { "Mes": 1, "Año": 2023, "Fecha": 24277, "Index": 5.1 }];
+
+  const startDate = startMonth + startYear * 12
+  const endDate = endMonth + endYear * 12
   //filter array to desired period
   const filterTable = inflationTable.filter(
     (date) =>
-      date.Mes >= startMonth &&
-      date.Año >= startYear &&
-      date.Mes <= endMonth &&
-      date.Año <= endYear
+      date.Fecha >= startDate &&
+      date.Fecha <= endDate
   );
 
   //return array of inflation values
   const inflationArray = filterTable.map((index) => index.Index);
-  console.table(inflationArray);
   //create inflation salary index
   let inflationIndex = Array(inflationArray.length);
   let salaryAdjusted = Array(inflationArray.length);
@@ -230,7 +225,6 @@ function calculateTax() {
     }
     salaryAdjusted[i] = inflationIndex[i] * salaryArray[i];
   }
-  console.table(inflationIndex);
   //subtract salary adjusted with original salary
   const initialValue = 0;
   const sumWithInitial = salaryArray.reduce(
