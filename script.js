@@ -18,9 +18,8 @@ startInput.addEventListener("change", () => {
   endYear = parseInt(endInput.value.slice(0, 4));
   const listLenght =
     endYear * 12 + endMonth - (startYear * 12 + startMonth) + 1;
-  if (listLenght >= 1) {
-    monthList(listLenght);
-  }
+  errorMessage(listLenght);
+
 });
 endInput.addEventListener("change", () => {
   startMonth = parseInt(startInput.value.slice(-2));
@@ -30,10 +29,29 @@ endInput.addEventListener("change", () => {
   console.log(startMonth + "/" + startYear + "." + endMonth + "/" + endYear);
   const listLenght =
     endYear * 12 + endMonth - (startYear * 12 + startMonth) + 1;
+  errorMessage(listLenght);
+});
+
+function errorMessage(listLenght) {
   if (listLenght >= 1) {
+    const dateError = document.querySelector('#error');
+    dateError.innerText = '';
+    dateError.setAttribute('style', 'margin-top: 0');
     monthList(listLenght);
   }
-});
+  else {
+    const dateError = document.querySelector('#error');
+    dateError.innerText = 'Por favor, seleccione una fecha valida.';
+    dateError.setAttribute('style', 'color: red; text-align: center; margin-top: 0');
+
+    //remove inputs before adding newones
+    const box = document.querySelector('.box');
+    const salary = document.querySelectorAll(".componentWrapper");
+    salary.forEach((salary) => {
+      box.removeChild(salary);
+    });
+  }
+}
 
 function monthList(a) {
   let mes = 0;
@@ -232,9 +250,8 @@ function calculateTax() {
   const box = document.querySelector(".box");
   const output = document.querySelector(".output");
   output.setAttribute("style", "padding-top: 0px");
-  output.innerText = `Tu salario perdió el equivalente a $ ${
-    Math.floor((sumWithInitial2 - sumWithInitial) * 100) / 100
-  } en poder de compra durante este periodo.`;
+  output.innerText = `Tu salario perdió el equivalente a $ ${Math.floor((sumWithInitial2 - sumWithInitial) * 100) / 100
+    } en poder de compra durante este periodo.`;
   box.appendChild(output);
 }
 
