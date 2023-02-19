@@ -350,7 +350,6 @@ function calculateMinimumWage() {
   );
 
   const wageMapped = wageFiltered.map((value) => value.Sueldo);
-  console.table(wageMapped);
 
   //filter array to desired period
   inflationTable.forEach(function (element) {
@@ -404,7 +403,6 @@ function tweetButton(a) {
   const box = document.querySelector(".box");
   const iframe = document.querySelector('iframe');
   if (iframe == null) {
-    console.log(iframe);
     const twit = document.querySelector('#twitter');
     twit.setAttribute('class', "twitter-share-button");
     twit.setAttribute('data-text', `${a} respecto de la inflación en el periodo comprendido entre ${getDateName(startMonth, startYear)} y ${getDateName(endMonth, endYear)}. Esto fue calculado usando el sitio web:`);
@@ -442,4 +440,5 @@ calculateButton.addEventListener("click", () => {
 const minimumWageButton = document.querySelector("#calculate-1");
 minimumWageButton.addEventListener("click", () => {
   calculateMinimumWage();
+  window.scrollTo(0,document.body.scrollHeight,'smooth')
 });
