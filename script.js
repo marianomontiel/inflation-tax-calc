@@ -317,11 +317,12 @@ function calculateTax() {
   const box = document.querySelector(".box");
   const output = document.querySelector(".output");
   output.setAttribute("style", "padding-top: 0px");
-  output.innerText = `Tu salario perdió el equivalente a $ ${calculation} en poder de compra durante este periodo.`;
+  output.innerText = `Tu salario acumula una perdida de $${calculation} respecto de la inflación durante este periodo.`;
+  const twitText = `Mi salario acumula una perdida de $${calculation}`
   box.appendChild(output);
 
   //set twit button settings
-  tweetButton(`Mi${output.innerText.substring(2)}`);
+  tweetButton(twitText);
 }
 
 
@@ -384,10 +385,10 @@ function calculateMinimumWage() {
   const box = document.querySelector(".box");
   const output = document.querySelector(".output");
   output.setAttribute("style", "padding-top: 0px");
-  output.innerText = `El salario minimo vital y movil perdió el equivalente a $ ${calculation} en poder de compra durante este periodo.`;
-  console.log(output.innerText)
+  output.innerText = `El salario minimo vital y movil acumula una perdida de $${calculation} respecto de la inflación en este periodo.`;
+  const twitText = `El salario minimo vital y movil acumula una perdida de $${calculation}`
   box.appendChild(output);
-  tweetButton(output.innerText);
+  tweetButton(twitText);
 }
 
 function tweetButton(a) {
@@ -397,7 +398,7 @@ function tweetButton(a) {
     console.log(iframe);
     const twit = document.querySelector('#twitter');
     twit.setAttribute('class', "twitter-share-button");
-    twit.setAttribute('data-text', `${a} Esto fue calculado usando el sitio web:`);
+    twit.setAttribute('data-text', `${a} respecto de la inflación en el periodo comprendido entre ${startInput.value} y ${startInput.value} Esto fue calculado usando el sitio web:`);
 
     var addScript = document.createElement('script');
     addScript.setAttribute('id', 'tweet-script');
@@ -408,7 +409,7 @@ function tweetButton(a) {
     // document.head.removeChild(addScript);
     const tweetButton = document.createElement('a');
     tweetButton.setAttribute('class', "twitter-share-button");
-    tweetButton.setAttribute('data-text', `${a} Esto fue calculado usando el sitio web:`);
+    tweetButton.setAttribute('data-text', `${a} respecto de la inflación en el periodo comprendido entre ${startInput.value} y ${startInput.value} Esto fue calculado usando el sitio web:`);
     tweetButton.setAttribute('href', "https://twitter.com/intent/tweet");
     tweetButton.setAttribute('data-size', 'large');
     tweetButton.setAttribute('data-url', 'https://marianomontiel.github.io');
