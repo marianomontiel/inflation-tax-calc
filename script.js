@@ -106,91 +106,84 @@ function monthList(a) {
     input.setAttribute("name", `salary-${mes}`);
     input.setAttribute("class", "input-salary");
     wrapper.appendChild(input);
-
-    const inputs = document.querySelectorAll(".input-salary");
-    inputs.forEach((input) => {
-      input.addEventListener("change", () => {
-        calculateTax();
-      });
-    });
   }
 }
 //inflation array database
 const inflationTable = [
-    { Mes: 1, Año: 2017, Index: 1.6 },
-    { Mes: 2, Año: 2017, Index: 2.1 },
-    { Mes: 3, Año: 2017, Index: 2.4 },
-    { Mes: 4, Año: 2017, Index: 2.7 },
-    { Mes: 5, Año: 2017, Index: 1.4 },
-    { Mes: 6, Año: 2017, Index: 1.2 },
-    { Mes: 7, Año: 2017, Index: 1.7 },
-    { Mes: 8, Año: 2017, Index: 1.4 },
-    { Mes: 9, Año: 2017, Index: 1.9 },
-    { Mes: 10, Año: 2017, Index: 1.5 },
-    { Mes: 11, Año: 2017, Index: 1.4 },
-    { Mes: 12, Año: 2017, Index: 3.1 },
-    { Mes: 1, Año: 2018, Index: 1.8 },
-    { Mes: 2, Año: 2018, Index: 2.4 },
-    { Mes: 3, Año: 2018, Index: 2.3 },
-    { Mes: 4, Año: 2018, Index: 2.7 },
-    { Mes: 5, Año: 2018, Index: 2.1 },
-    { Mes: 6, Año: 2018, Index: 3.7 },
-    { Mes: 7, Año: 2018, Index: 3.1 },
-    { Mes: 8, Año: 2018, Index: 3.9 },
-    { Mes: 9, Año: 2018, Index: 6.5 },
-    { Mes: 10, Año: 2018, Index: 5.4 },
-    { Mes: 11, Año: 2018, Index: 3.2 },
-    { Mes: 12, Año: 2018, Index: 2.6 },
-    { Mes: 1, Año: 2019, Index: 2.9 },
-    { Mes: 2, Año: 2019, Index: 3.8 },
-    { Mes: 3, Año: 2019, Index: 4.7 },
-    { Mes: 4, Año: 2019, Index: 3.4 },
-    { Mes: 5, Año: 2019, Index: 3.1 },
-    { Mes: 6, Año: 2019, Index: 2.7 },
-    { Mes: 7, Año: 2019, Index: 2.2 },
-    { Mes: 8, Año: 2019, Index: 4 },
-    { Mes: 9, Año: 2019, Index: 5.9 },
-    { Mes: 10, Año: 2019, Index: 3.3 },
-    { Mes: 11, Año: 2019, Index: 4.3 },
-    { Mes: 12, Año: 2019, Index: 3.7 },
-    { Mes: 1, Año: 2020, Index: 2.3 },
-    { Mes: 2, Año: 2020, Index: 2 },
-    { Mes: 3, Año: 2020, Index: 3.3 },
-    { Mes: 4, Año: 2020, Index: 1.5 },
-    { Mes: 5, Año: 2020, Index: 1.5 },
-    { Mes: 6, Año: 2020, Index: 2.2 },
-    { Mes: 7, Año: 2020, Index: 1.9 },
-    { Mes: 8, Año: 2020, Index: 2.7 },
-    { Mes: 9, Año: 2020, Index: 2.8 },
-    { Mes: 10, Año: 2020, Index: 3.8 },
-    { Mes: 11, Año: 2020, Index: 3.2 },
-    { Mes: 12, Año: 2020, Index: 4 },
-    { Mes: 1, Año: 2021, Index: 4 },
-    { Mes: 2, Año: 2021, Index: 3.6 },
-    { Mes: 3, Año: 2021, Index: 4.8 },
-    { Mes: 4, Año: 2021, Index: 4.1 },
-    { Mes: 5, Año: 2021, Index: 3.3 },
-    { Mes: 6, Año: 2021, Index: 3.2 },
-    { Mes: 7, Año: 2021, Index: 3 },
-    { Mes: 8, Año: 2021, Index: 2.5 },
-    { Mes: 9, Año: 2021, Index: 3.5 },
-    { Mes: 10, Año: 2021, Index: 3.5 },
-    { Mes: 11, Año: 2021, Index: 2.5 },
-    { Mes: 12, Año: 2021, Index: 3.8 },
-    { Mes: 1, Año: 2022, Index: 3.9 },
-    { Mes: 2, Año: 2022, Index: 4.7 },
-    { Mes: 3, Año: 2022, Index: 6.7 },
-    { Mes: 4, Año: 2022, Index: 6 },
-    { Mes: 5, Año: 2022, Index: 5.1 },
-    { Mes: 6, Año: 2022, Index: 5.3 },
-    { Mes: 7, Año: 2022, Index: 7.4 },
-    { Mes: 8, Año: 2022, Index: 7 },
-    { Mes: 9, Año: 2022, Index: 6.2 },
-    { Mes: 10, Año: 2022, Index: 6.3 },
-    { Mes: 11, Año: 2022, Index: 4.9 },
-    { Mes: 12, Año: 2022, Index: 5.1 },
-    { Mes: 1, Año: 2023, Index: 6.0 }
-  ];
+  { Mes: 1, Año: 2017, Index: 1.6 },
+  { Mes: 2, Año: 2017, Index: 2.1 },
+  { Mes: 3, Año: 2017, Index: 2.4 },
+  { Mes: 4, Año: 2017, Index: 2.7 },
+  { Mes: 5, Año: 2017, Index: 1.4 },
+  { Mes: 6, Año: 2017, Index: 1.2 },
+  { Mes: 7, Año: 2017, Index: 1.7 },
+  { Mes: 8, Año: 2017, Index: 1.4 },
+  { Mes: 9, Año: 2017, Index: 1.9 },
+  { Mes: 10, Año: 2017, Index: 1.5 },
+  { Mes: 11, Año: 2017, Index: 1.4 },
+  { Mes: 12, Año: 2017, Index: 3.1 },
+  { Mes: 1, Año: 2018, Index: 1.8 },
+  { Mes: 2, Año: 2018, Index: 2.4 },
+  { Mes: 3, Año: 2018, Index: 2.3 },
+  { Mes: 4, Año: 2018, Index: 2.7 },
+  { Mes: 5, Año: 2018, Index: 2.1 },
+  { Mes: 6, Año: 2018, Index: 3.7 },
+  { Mes: 7, Año: 2018, Index: 3.1 },
+  { Mes: 8, Año: 2018, Index: 3.9 },
+  { Mes: 9, Año: 2018, Index: 6.5 },
+  { Mes: 10, Año: 2018, Index: 5.4 },
+  { Mes: 11, Año: 2018, Index: 3.2 },
+  { Mes: 12, Año: 2018, Index: 2.6 },
+  { Mes: 1, Año: 2019, Index: 2.9 },
+  { Mes: 2, Año: 2019, Index: 3.8 },
+  { Mes: 3, Año: 2019, Index: 4.7 },
+  { Mes: 4, Año: 2019, Index: 3.4 },
+  { Mes: 5, Año: 2019, Index: 3.1 },
+  { Mes: 6, Año: 2019, Index: 2.7 },
+  { Mes: 7, Año: 2019, Index: 2.2 },
+  { Mes: 8, Año: 2019, Index: 4 },
+  { Mes: 9, Año: 2019, Index: 5.9 },
+  { Mes: 10, Año: 2019, Index: 3.3 },
+  { Mes: 11, Año: 2019, Index: 4.3 },
+  { Mes: 12, Año: 2019, Index: 3.7 },
+  { Mes: 1, Año: 2020, Index: 2.3 },
+  { Mes: 2, Año: 2020, Index: 2 },
+  { Mes: 3, Año: 2020, Index: 3.3 },
+  { Mes: 4, Año: 2020, Index: 1.5 },
+  { Mes: 5, Año: 2020, Index: 1.5 },
+  { Mes: 6, Año: 2020, Index: 2.2 },
+  { Mes: 7, Año: 2020, Index: 1.9 },
+  { Mes: 8, Año: 2020, Index: 2.7 },
+  { Mes: 9, Año: 2020, Index: 2.8 },
+  { Mes: 10, Año: 2020, Index: 3.8 },
+  { Mes: 11, Año: 2020, Index: 3.2 },
+  { Mes: 12, Año: 2020, Index: 4 },
+  { Mes: 1, Año: 2021, Index: 4 },
+  { Mes: 2, Año: 2021, Index: 3.6 },
+  { Mes: 3, Año: 2021, Index: 4.8 },
+  { Mes: 4, Año: 2021, Index: 4.1 },
+  { Mes: 5, Año: 2021, Index: 3.3 },
+  { Mes: 6, Año: 2021, Index: 3.2 },
+  { Mes: 7, Año: 2021, Index: 3 },
+  { Mes: 8, Año: 2021, Index: 2.5 },
+  { Mes: 9, Año: 2021, Index: 3.5 },
+  { Mes: 10, Año: 2021, Index: 3.5 },
+  { Mes: 11, Año: 2021, Index: 2.5 },
+  { Mes: 12, Año: 2021, Index: 3.8 },
+  { Mes: 1, Año: 2022, Index: 3.9 },
+  { Mes: 2, Año: 2022, Index: 4.7 },
+  { Mes: 3, Año: 2022, Index: 6.7 },
+  { Mes: 4, Año: 2022, Index: 6 },
+  { Mes: 5, Año: 2022, Index: 5.1 },
+  { Mes: 6, Año: 2022, Index: 5.3 },
+  { Mes: 7, Año: 2022, Index: 7.4 },
+  { Mes: 8, Año: 2022, Index: 7 },
+  { Mes: 9, Año: 2022, Index: 6.2 },
+  { Mes: 10, Año: 2022, Index: 6.3 },
+  { Mes: 11, Año: 2022, Index: 4.9 },
+  { Mes: 12, Año: 2022, Index: 5.1 },
+  { Mes: 1, Año: 2023, Index: 6.0 }
+];
 const minimumWage = [
   { Mes: 01, Año: 2017, Sueldo: 8060 },
   { Mes: 02, Año: 2017, Sueldo: 8060 },
@@ -267,7 +260,7 @@ const minimumWage = [
   { Mes: 01, Año: 2023, Sueldo: 67743 },
   { Mes: 02, Año: 2023, Sueldo: 69500 }
 ]
-
+let calculation = 0;
 function calculateTax() {
   //convert form into Array
   const salaryForm = document.querySelectorAll(".input-salary");
@@ -280,7 +273,7 @@ function calculateTax() {
   salaryArray = salaryArray.map(function (v) {
     return parseInt(v) || 0;
   });
-    
+
   //filter array to desired period
   inflationTable.forEach(function (element) {
     element.date = element.Mes + element.Año * 12;
@@ -305,28 +298,32 @@ function calculateTax() {
     } else {
       inflationIndex[i] = inflationIndex[i - 1] * (inflationArray[i] / 100 + 1);
     }
-    salaryAdjusted[i] = inflationIndex[i] * salaryArray[i];
+    salaryAdjusted[i] = inflationIndex[i] * salaryArray[0];
   }
   //subtract salary adjusted with original salary
-  const initialValue = 0;
   const sumWithInitial = salaryArray.reduce(
     (accumulator, currentValue) => accumulator + currentValue,
-    initialValue
+    0
   );
 
   const sumWithInitial2 = salaryAdjusted.reduce(
     (accumulator, currentValue) => accumulator + currentValue,
-    initialValue
+    0
   );
+
+  calculation = Math.floor((sumWithInitial2 - sumWithInitial) * 100) / 100;
 
   //output value on DOM
   const box = document.querySelector(".box");
   const output = document.querySelector(".output");
   output.setAttribute("style", "padding-top: 0px");
-  output.innerText = `Tu salario perdió el equivalente a $ ${Math.floor((sumWithInitial2 - sumWithInitial) * 100) / 100
-    } en poder de compra durante este periodo.`;
+  output.innerText = `Tu salario perdió el equivalente a $ ${calculation} en poder de compra durante este periodo.`;
   box.appendChild(output);
+
+  //set twit button settings
+  tweetButton(`Mi${output.innerText.substring(2)}`);
 }
+
 
 function calculateMinimumWage() {
   //convert form into Array
@@ -336,7 +333,7 @@ function calculateMinimumWage() {
 
   const startDate = startMonth + startYear * 12;
   const endDate = endMonth + endYear * 12;
-  const wageFiltered= minimumWage.filter(
+  const wageFiltered = minimumWage.filter(
     (element) =>
       element.date >= startDate &&
       element.date <= endDate
@@ -344,7 +341,7 @@ function calculateMinimumWage() {
 
   const wageMapped = wageFiltered.map((value) => value.Sueldo);
   console.table(wageMapped);
-    
+
   //filter array to desired period
   inflationTable.forEach(function (element) {
     element.date = element.Mes + element.Año * 12;
@@ -367,7 +364,7 @@ function calculateMinimumWage() {
     } else {
       inflationIndex[i] = inflationIndex[i - 1] * (inflationArray[i] / 100 + 1);
     }
-    salaryAdjusted[i] = inflationIndex[i] * wageMapped[i];
+    salaryAdjusted[i] = inflationIndex[i] * wageMapped[0];
   }
   //subtract salary adjusted with original salary
   const initialValue = 0;
@@ -381,21 +378,51 @@ function calculateMinimumWage() {
     initialValue
   );
 
+  calculation = Math.floor((sumWithInitial2 - sumWithInitial) * 100) / 100;
+
   //output value on DOM
   const box = document.querySelector(".box");
   const output = document.querySelector(".output");
   output.setAttribute("style", "padding-top: 0px");
-  output.innerText = `El salario minimo vital y movil perdió el equivalente a $ ${Math.floor((sumWithInitial2 - sumWithInitial) * 100) / 100
-    } en poder de compra durante este periodo.`;
+  output.innerText = `El salario minimo vital y movil perdió el equivalente a $ ${calculation} en poder de compra durante este periodo.`;
+  console.log(output.innerText)
   box.appendChild(output);
+  tweetButton(output.innerText);
 }
 
-const inputs = document.querySelectorAll(".input-salary");
-inputs.forEach((input) => {
-  input.addEventListener("change", () => {
-    calculateTax();
-  });
-});
+function tweetButton(a) {
+  const box = document.querySelector(".box");
+  const iframe = document.querySelector('iframe');
+  if (iframe == null) {
+    console.log(iframe);
+    const twit = document.querySelector('#twitter');
+    twit.setAttribute('class', "twitter-share-button");
+    twit.setAttribute('data-text', `${a} Esto fue calculado usando el sitio web:`);
+
+    var addScript = document.createElement('script');
+    addScript.setAttribute('id', 'tweet-script');
+    addScript.setAttribute('src', 'https://platform.twitter.com/widgets.js');
+    document.head.appendChild(addScript);
+  } else {
+    box.removeChild(iframe);
+    // document.head.removeChild(addScript);
+    const tweetButton = document.createElement('a');
+    tweetButton.setAttribute('class', "twitter-share-button");
+    tweetButton.setAttribute('data-text', `${a} Esto fue calculado usando el sitio web:`);
+    tweetButton.setAttribute('href', "https://twitter.com/intent/tweet");
+    tweetButton.setAttribute('data-size', 'large');
+    tweetButton.setAttribute('data-url', 'https://marianomontiel.github.io');
+    tweetButton.setAttribute('data-hashtags', '#impuestazo');
+    tweetButton.setAttribute('data-lang', 'es');
+    tweetButton.setAttribute('data-show-count', 'false');
+    box.appendChild(tweetButton);
+
+    var addScript = document.createElement('script');
+    addScript.setAttribute('id', 'tweet-script');
+    addScript.setAttribute('src', 'https://platform.twitter.com/widgets.js');
+    document.head.appendChild(addScript);
+  }
+}
 
 const calculateButton = document.querySelector("#calculate");
 calculateButton.addEventListener("click", () => {
