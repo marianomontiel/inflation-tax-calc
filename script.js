@@ -429,3 +429,8 @@ const calculateButton = document.querySelector("#calculate");
 calculateButton.addEventListener("click", () => {
   calculateTax();
 });
+
+const minimumWageButton = document.querySelector("#calculate-1");
+minimumWageButton.addEventListener("click", () => {
+  calculateMinimumWage();
+});
