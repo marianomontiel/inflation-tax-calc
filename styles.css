@@ -80,6 +80,20 @@
       text-align: center;
     }
 
+    #calculate-1 {
+      color: white;
+      background-color: rgb(0, 85, 133);
+      border: none;
+      border-radius: 5px;
+      width: 60%;
+      height: auto;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 15px;
+      margin: 15px 0px 15px;
+      box-shadow: rgb(0 0 0 / 70%) 1px 7px 28px -15px;
+    }
+
     .componentWrapper {
       position: relative;
       width: 559px;
@@ -226,6 +240,20 @@
       display: block;
       text-align: center;
       font-weight: 500;
+    }
+
+    #calculate-1 {
+      color: white;
+      background-color: rgb(0, 85, 133);
+      border: none;
+      border-radius: 5px;
+      width: 60%;
+      height: auto;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 15px;
+      margin: 15px 0px 15px;
+      box-shadow: rgb(0 0 0 / 70%) 1px 7px 28px -15px;
     }
 
     .componentWrapper {

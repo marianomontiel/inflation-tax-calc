@@ -46,6 +46,15 @@ function errorMessage(listLenght) {
   }
 }
 
+function getDateName(month, year) {
+  const date = new Date();
+  date.setMonth(month - 1);
+  date.setFullYear(year);
+
+  const name = date.toLocaleString("es", { month: "long" }) + " " + year;
+  return name;
+}
+
 function monthList(a) {
   let mes = 0;
 
@@ -398,7 +407,7 @@ function tweetButton(a) {
     console.log(iframe);
     const twit = document.querySelector('#twitter');
     twit.setAttribute('class', "twitter-share-button");
-    twit.setAttribute('data-text', `${a} respecto de la inflación en el periodo comprendido entre ${startInput.value} y ${startInput.value} Esto fue calculado usando el sitio web:`);
+    twit.setAttribute('data-text', `${a} respecto de la inflación en el periodo comprendido entre ${getDateName(startMonth, startYear)} y ${getDateName(endMonth, endYear)}. Esto fue calculado usando el sitio web:`);
 
     var addScript = document.createElement('script');
     addScript.setAttribute('id', 'tweet-script');
@@ -409,7 +418,7 @@ function tweetButton(a) {
     // document.head.removeChild(addScript);
     const tweetButton = document.createElement('a');
     tweetButton.setAttribute('class', "twitter-share-button");
-    tweetButton.setAttribute('data-text', `${a} respecto de la inflación en el periodo comprendido entre ${startInput.value} y ${startInput.value} Esto fue calculado usando el sitio web:`);
+    tweetButton.setAttribute('data-text', `${a} respecto de la inflación en el periodo comprendido entre ${getDateName(startMonth, startYear)} y ${getDateName(endMonth, endYear)}. Esto fue calculado usando el sitio web:`);
     tweetButton.setAttribute('href', "https://twitter.com/intent/tweet");
     tweetButton.setAttribute('data-size', 'large');
     tweetButton.setAttribute('data-url', 'https://marianomontiel.github.io');
