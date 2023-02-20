@@ -348,8 +348,11 @@ function calculateTax() {
   //output value on DOM
   const box = document.querySelector(".box");
   const output = document.querySelector(".output");
-  output.setAttribute("style", "padding-top: 0px");
-  output.innerText = `Tu salario acumula una perdida de $${calculation} respecto de la inflación en el periodo comprendido entre ${getDateName(
+  output.setAttribute(
+    "style",
+    "padding-top: 0px; color: black; font-size: 20px;"
+  );
+  output.innerText = `Según INDEC tu salario acumula una perdida de $${calculation} respecto de la inflación en el periodo comprendido entre ${getDateName(
     startMonth,
     startYear
   )} y ${getDateName(endMonth, endYear)}.`;
@@ -451,7 +454,10 @@ function calculateMinimumWage() {
   //output value on DOM
   const box = document.querySelector(".box");
   const output = document.querySelector(".output");
-  output.setAttribute("style", "padding-top: 0px");
+  output.setAttribute(
+    "style",
+    "padding-top: 0px; color: black; font-size: 20px;"
+  );
   output.innerText = `Según INDEC el Salario Minimo Vital y Movil acumula una perdida de $${calculation} respecto de la inflación en el periodo comprendido entre ${getDateName(
     startMonth,
     startYear
