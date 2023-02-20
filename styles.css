@@ -387,4 +387,9 @@
       padding-bottom: 20px;
     }
 
+    img {
+      height: 200px;
+      width: auto;
+    }
+
   }
