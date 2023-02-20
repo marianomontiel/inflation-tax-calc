@@ -345,8 +345,8 @@ function calculateTax() {
   const box = document.querySelector(".box");
   const output = document.querySelector(".output");
   output.setAttribute("style", "padding-top: 0px");
-  output.innerText = `Tu salario acumula una perdida de $${calculation} respecto de la inflación durante este periodo.`;
-  const twitText = `Mi salario acumula una perdida de $${calculation}`
+  output.innerText = `Tu salario acumula una perdida de $${calculation} respecto de la inflación en el periodo comprendido entre ${getDateName(startMonth, startYear)} y ${getDateName(endMonth, endYear)}.`;
+  const twitText = `Según INDEC mi salario acumula una perdida de $${calculation} respecto de la inflación en el periodo comprendido entre ${getDateName(startMonth, startYear)} y ${getDateName(endMonth, endYear)}.` 
   box.appendChild(output);
 
   //set twit button settings
@@ -430,8 +430,8 @@ function calculateMinimumWage() {
   const box = document.querySelector(".box");
   const output = document.querySelector(".output");
   output.setAttribute("style", "padding-top: 0px");
-  output.innerText = `El salario minimo vital y movil acumula una perdida de $${calculation} respecto de la inflación en este periodo.`;
-  const twitText = `El salario minimo vital y movil acumula una perdida de $${calculation}`
+  output.innerText = `Según INDEC el Salario Minimo Vital y Movil acumula una perdida de $${calculation} respecto de la inflación en el periodo comprendido entre ${getDateName(startMonth, startYear)} y ${getDateName(endMonth, endYear)}.`;
+  const twitText = output.innerText;
   box.appendChild(output);
   tweetButton(twitText);
 }
@@ -442,7 +442,7 @@ function tweetButton(a) {
   if (iframe == null) {
     const twit = document.querySelector('#twitter');
     twit.setAttribute('class', "twitter-share-button");
-    twit.setAttribute('data-text', `${a} respecto de la inflación en el periodo comprendido entre ${getDateName(startMonth, startYear)} y ${getDateName(endMonth, endYear)}. Esto fue calculado usando el sitio web:`);
+    twit.setAttribute('data-text', `${a}  Esto fue calculado usando el sitio web:`);
 
     var addScript = document.createElement('script');
     addScript.setAttribute('id', 'tweet-script');
