@@ -12,8 +12,8 @@
 <body>
   <div class='box'>
     <img class="icon-header" src="./icons/money-printer.png" alt="money-printer">
-    <h1>Calculadora de impuesto inflacionario</h1>
-    <p>Descubrí cuanto te roban con la inflación todos los meses!</p>
+    <h1><strong>Impuestazo</strong> inflacionario</h1>
+    <p id="subtitle">Descubrí cuanto te vienen con la inflación!</p>
     <footer>
       <a href="https://cafecito.app/mariano-montiel" id='upper'>Invitame un cafecito <img src="./icons/cafecito.svg"
           alt="cafecito"></a>
@@ -31,8 +31,9 @@
         <input type="month" id="end" name="end" min="2017-01" max="2023-01">
       </div>
     </div>
-    <button id='calculate-1'>Calcular salario minimo vital y movil</button>
     <p id="error"></p>
+      <button id='calculate-1'>Calcular salario minimo</button>
+      <!-- <button id='calculate-2'>Calcular jubilaciones</button>    -->
     <label class="componentWrapper">
       <span class="header">Salario Noviembre 2022</span>
       <span name="salary-0" class="salary">$</span>
@@ -48,7 +49,7 @@
       <span name="salary-2" class="salary">$</span>
       <input name="salary-2" class="input-salary">
     </label>
-    <button id='calculate'>Calcular</button>
+    <button id='calculate'>CALCULAR</button>
     <p class='output'></p>
     <a href="https://twitter.com/intent/tweet" id="twitter" data-size="large" data-url="https://marianomontiel.github.io" data-hashtags="impuestazo" data-lang="es" data-show-count="false"></a>
   </div>
