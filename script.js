@@ -16,33 +16,33 @@ startInput.addEventListener("change", () => {
   startYear = parseInt(startInput.value.slice(0, 4));
   endMonth = parseInt(endInput.value.slice(-2));
   endYear = parseInt(endInput.value.slice(0, 4));
-  const listLenght = endYear * 12 + endMonth - (startYear * 12 + startMonth) + 1;
+  const listLenght =
+    endYear * 12 + endMonth - (startYear * 12 + startMonth) + 1;
   errorMessage(listLenght);
-
 });
 endInput.addEventListener("change", () => {
   startMonth = parseInt(startInput.value.slice(-2));
   startYear = parseInt(startInput.value.slice(0, 4));
   endMonth = parseInt(endInput.value.slice(-2));
   endYear = parseInt(endInput.value.slice(0, 4));
-  const listLenght = endYear * 12 + endMonth - (startYear * 12 + startMonth) + 1;
+  const listLenght =
+    endYear * 12 + endMonth - (startYear * 12 + startMonth) + 1;
   errorMessage(listLenght);
 });
 
 function errorMessage(listLenght) {
   if (listLenght >= 1) {
-    const inputs = document.querySelectorAll('.componentWrapper > input');
-    inputs.forEach(input => input.disabled = true);
-    const dateError = document.querySelector('#error');
-    dateError.innerText = '';
+    const inputs = document.querySelectorAll(".componentWrapper > input");
+    inputs.forEach((input) => (input.disabled = true));
+    const dateError = document.querySelector("#error");
+    dateError.innerText = "";
     monthList(listLenght);
-  }
-  else {
-    const dateError = document.querySelector('#error');
-    dateError.innerText = 'Por favor, seleccione una fecha valida.';
+  } else {
+    const dateError = document.querySelector("#error");
+    dateError.innerText = "Por favor, seleccione una fecha valida.";
 
-    const inputs = document.querySelectorAll('.componentWrapper > input');
-    inputs.forEach(input => input.disabled = true);
+    const inputs = document.querySelectorAll(".componentWrapper > input");
+    inputs.forEach((input) => (input.disabled = true));
   }
 }
 
@@ -268,7 +268,7 @@ const minimumWage = [
   { Mes: 12, Año: 2022, Sueldo: 65427 },
   { Mes: 01, Año: 2023, Sueldo: 67743 },
   { Mes: 02, Año: 2023, Sueldo: 69500 }
-]
+];
 let calculation = 0;
 function calculateTax() {
   //convert form into Array
@@ -291,9 +291,7 @@ function calculateTax() {
   const startDate = startMonth + startYear * 12;
   const endDate = endMonth + endYear * 12;
   const filterTable = inflationTable.filter(
-    (element) =>
-      element.date >= startDate &&
-      element.date <= endDate
+    (element) => element.date >= startDate && element.date <= endDate
   );
 
   //return array of inflation values
@@ -313,9 +311,9 @@ function calculateTax() {
   //Calculate the final $ amount and adjust it to the end of the period value(present value)
   let accumulatedLosses = Array(inflationArray.length);
   for (let i = 0, length = inflationArray.length; i < length; i++) {
-    accumulatedLosses[i] = (salaryAdjusted[i] - salaryArray[i]);
+    accumulatedLosses[i] = salaryAdjusted[i] - salaryArray[i];
   }
-  console.table(accumulatedLosses)
+  console.table(accumulatedLosses);
   // const totalLosses = accumulatedLosses.reduce((total, salaries) => total + salaries, 0);
 
   //Calculate the final $ amount and adjust it to the end of the period value(present value)
@@ -326,18 +324,24 @@ function calculateTax() {
     for (let b = i, length = inflationArray.length; b < length; b++) {
       if (b === i) {
         indexesToAdjustInflation[i] = 1;
-        console.log("gola")
+        console.log("gola");
       } else {
-        indexesToAdjustInflation[b] = (inflationArray[b] / 100 + 1) * indexesToAdjustInflation[b - 1];
+        indexesToAdjustInflation[b] =
+          (inflationArray[b] / 100 + 1) * indexesToAdjustInflation[b - 1];
       }
-    };
-    finalAdjustedLosses[i] = indexesToAdjustInflation[indexesToAdjustInflation.length - 1] * accumulatedLosses[i];
+    }
+    finalAdjustedLosses[i] =
+      indexesToAdjustInflation[indexesToAdjustInflation.length - 1] *
+      accumulatedLosses[i];
   }
   console.table(salaryArray);
   console.table(salaryAdjusted);
   console.table(finalAdjustedLosses);
 
-  const totalLosses = finalAdjustedLosses.reduce((total, monthlylosses) => total + monthlylosses, 0)
+  const totalLosses = finalAdjustedLosses.reduce(
+    (total, monthlylosses) => total + monthlylosses,
+    0
+  );
 
   calculation = Math.floor(totalLosses * 100) / 100;
 
@@ -345,14 +349,30 @@ function calculateTax() {
   const box = document.querySelector(".box");
   const output = document.querySelector(".output");
   output.setAttribute("style", "padding-top: 0px");
-  output.innerText = `Tu salario acumula una perdida de $${calculation} respecto de la inflación en el periodo comprendido entre ${getDateName(startMonth, startYear)} y ${getDateName(endMonth, endYear)}.`;
-  const twitText = `Según INDEC mi salario acumula una perdida de $${calculation} respecto de la inflación en el periodo comprendido entre ${getDateName(startMonth, startYear)} y ${getDateName(endMonth, endYear)}.` 
+  output.innerText = `Tu salario acumula una perdida de $${calculation} respecto de la inflación en el periodo comprendido entre ${getDateName(
+    startMonth,
+    startYear
+  )} y ${getDateName(endMonth, endYear)}.`;
+  const twitText = `Según INDEC mi salario acumula una perdida de $${calculation} respecto de la inflación en el periodo comprendido entre ${getDateName(
+    startMonth,
+    startYear
+  )} y ${getDateName(endMonth, endYear)}.`;
   box.appendChild(output);
 
   //set twit button settings
   tweetButton(twitText);
 }
 
+function fillAll(Array) {
+  let inputArray = [...document.querySelectorAll("input")];
+  console.log(inputArray);
+  for (let i = 2; i < inputArray.length; i++) {
+    if (inputArray[i].getAttribute("type") != "month") {
+      inputArray[i].value = Array[i-2];
+      console.log(Array[i-2]);
+           }
+  }
+}
 
 function calculateMinimumWage() {
   //convert form into Array
@@ -363,22 +383,18 @@ function calculateMinimumWage() {
   const startDate = startMonth + startYear * 12;
   const endDate = endMonth + endYear * 12;
   const wageFiltered = minimumWage.filter(
-    (element) =>
-      element.date >= startDate &&
-      element.date <= endDate
+    (element) => element.date >= startDate && element.date <= endDate
   );
 
   const wageMapped = wageFiltered.map((value) => value.Sueldo);
-
+  fillAll(wageMapped);
   //filter array to desired period
   inflationTable.forEach(function (element) {
     element.date = element.Mes + element.Año * 12;
   });
 
   const filterTable = inflationTable.filter(
-    (element) =>
-      element.date >= startDate &&
-      element.date <= endDate
+    (element) => element.date >= startDate && element.date <= endDate
   );
 
   //return array of inflation values
@@ -398,9 +414,9 @@ function calculateMinimumWage() {
   //Calculate the final $ amount and adjust it to the end of the period value(present value)
   let accumulatedLosses = Array(inflationArray.length);
   for (let i = 0, length = inflationArray.length; i < length; i++) {
-    accumulatedLosses[i] = (salaryAdjusted[i] - wageMapped[i]);
+    accumulatedLosses[i] = salaryAdjusted[i] - wageMapped[i];
   }
-  console.table(accumulatedLosses)
+  console.table(accumulatedLosses);
   // const totalLosses = accumulatedLosses.reduce((total, salaries) => total + salaries, 0);
 
   //Calculate the final $ amount and adjust it to the end of the period value(present value)
@@ -411,18 +427,24 @@ function calculateMinimumWage() {
     for (let b = i, length = inflationArray.length; b < length; b++) {
       if (b === i) {
         indexesToAdjustInflation[i] = 1;
-        console.log("gola")
+        console.log("gola");
       } else {
-        indexesToAdjustInflation[b] = (inflationArray[b] / 100 + 1) * indexesToAdjustInflation[b - 1];
+        indexesToAdjustInflation[b] =
+          (inflationArray[b] / 100 + 1) * indexesToAdjustInflation[b - 1];
       }
-    };
-    finalAdjustedLosses[i] = indexesToAdjustInflation[indexesToAdjustInflation.length - 1] * accumulatedLosses[i];
+    }
+    finalAdjustedLosses[i] =
+      indexesToAdjustInflation[indexesToAdjustInflation.length - 1] *
+      accumulatedLosses[i];
   }
   console.table(wageMapped);
   console.table(salaryAdjusted);
   console.table(finalAdjustedLosses);
 
-  const totalLosses = finalAdjustedLosses.reduce((total, monthlylosses) => total + monthlylosses, 0)
+  const totalLosses = finalAdjustedLosses.reduce(
+    (total, monthlylosses) => total + monthlylosses,
+    0
+  );
 
   calculation = Math.floor(totalLosses * 100) / 100;
 
@@ -430,7 +452,10 @@ function calculateMinimumWage() {
   const box = document.querySelector(".box");
   const output = document.querySelector(".output");
   output.setAttribute("style", "padding-top: 0px");
-  output.innerText = `Según INDEC el Salario Minimo Vital y Movil acumula una perdida de $${calculation} respecto de la inflación en el periodo comprendido entre ${getDateName(startMonth, startYear)} y ${getDateName(endMonth, endYear)}.`;
+  output.innerText = `Según INDEC el Salario Minimo Vital y Movil acumula una perdida de $${calculation} respecto de la inflación en el periodo comprendido entre ${getDateName(
+    startMonth,
+    startYear
+  )} y ${getDateName(endMonth, endYear)}.`;
   const twitText = output.innerText;
   box.appendChild(output);
   tweetButton(twitText);
@@ -438,33 +463,45 @@ function calculateMinimumWage() {
 
 function tweetButton(a) {
   const mediaButtonsDiv = document.querySelector(".social-media-buttons");
-  const iframe = document.querySelector('iframe');
+  const iframe = document.querySelector("iframe");
   if (iframe == null) {
-    const twit = document.querySelector('#twitter');
-    twit.setAttribute('class', "twitter-share-button");
-    twit.setAttribute('data-text', `${a}  Esto fue calculado usando el sitio web:`);
+    const twit = document.querySelector("#twitter");
+    twit.setAttribute("class", "twitter-share-button");
+    twit.setAttribute(
+      "data-text",
+      `${a}  Esto fue calculado usando el sitio web:`
+    );
 
-    var addScript = document.createElement('script');
-    addScript.setAttribute('id', 'tweet-script');
-    addScript.setAttribute('src', 'https://platform.twitter.com/widgets.js');
+    var addScript = document.createElement("script");
+    addScript.setAttribute("id", "tweet-script");
+    addScript.setAttribute("src", "https://platform.twitter.com/widgets.js");
     document.head.appendChild(addScript);
   } else {
     mediaButtonsDiv.removeChild(iframe);
     // document.head.removeChild(addScript);
-    const tweetButton = document.createElement('a');
-    tweetButton.setAttribute('class', "twitter-share-button");
-    tweetButton.setAttribute('data-text', `${a} respecto de la inflación en el periodo comprendido entre ${getDateName(startMonth, startYear)} y ${getDateName(endMonth, endYear)}. Esto fue calculado usando el sitio web:`);
-    tweetButton.setAttribute('href', "https://twitter.com/intent/tweet");
-    tweetButton.setAttribute('data-size', 'large');
-    tweetButton.setAttribute('data-url', 'https://impuestazo.com.ar');
-    tweetButton.setAttribute('data-hashtags', '#impuestazo');
-    tweetButton.setAttribute('data-lang', 'es');
-    tweetButton.setAttribute('data-show-count', 'false');
+    const tweetButton = document.createElement("a");
+    tweetButton.setAttribute("class", "twitter-share-button");
+    tweetButton.setAttribute(
+      "data-text",
+      `${a} respecto de la inflación en el periodo comprendido entre ${getDateName(
+        startMonth,
+        startYear
+      )} y ${getDateName(
+        endMonth,
+        endYear
+      )}. Esto fue calculado usando el sitio web:`
+    );
+    tweetButton.setAttribute("href", "https://twitter.com/intent/tweet");
+    tweetButton.setAttribute("data-size", "large");
+    tweetButton.setAttribute("data-url", "https://impuestazo.com.ar");
+    tweetButton.setAttribute("data-hashtags", "#impuestazo");
+    tweetButton.setAttribute("data-lang", "es");
+    tweetButton.setAttribute("data-show-count", "false");
     mediaButtonsDiv.appendChild(tweetButton);
 
-    var addScript = document.createElement('script');
-    addScript.setAttribute('id', 'tweet-script');
-    addScript.setAttribute('src', 'https://platform.twitter.com/widgets.js');
+    var addScript = document.createElement("script");
+    addScript.setAttribute("id", "tweet-script");
+    addScript.setAttribute("src", "https://platform.twitter.com/widgets.js");
     document.head.appendChild(addScript);
   }
 }
@@ -477,5 +514,5 @@ calculateButton.addEventListener("click", () => {
 const minimumWageButton = document.querySelector("#calculate-1");
 minimumWageButton.addEventListener("click", () => {
   calculateMinimumWage();
-  window.scrollTo(0, document.body.scrollHeight, 'smooth')
+  window.scrollTo(0, document.body.scrollHeight, "smooth");
 });
