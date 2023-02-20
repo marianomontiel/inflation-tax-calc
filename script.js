@@ -303,7 +303,7 @@ function calculateTax() {
   let salaryAdjusted = Array(inflationArray.length);
   for (let i = 0, length = inflationArray.length; i < length; i++) {
     if (i < 1) {
-      inflationIndex[0] = 1;
+      inflationIndex[0] = inflationArray[0] / 100 + 1;
     } else {
       inflationIndex[i] = inflationIndex[i - 1] * (inflationArray[i] / 100 + 1);
     }
@@ -324,20 +324,20 @@ function calculateTax() {
 
   for (let i = 0, length = inflationArray.length; i < length; i++) {
     for (let b = i, length = inflationArray.length; b < length; b++) {
-      if (b ===i){
+      if (b === i) {
         indexesToAdjustInflation[i] = 1;
         console.log("gola")
       } else {
         indexesToAdjustInflation[b] = (inflationArray[b] / 100 + 1) * indexesToAdjustInflation[b - 1];
       }
     };
-    finalAdjustedLosses[i] = indexesToAdjustInflation[indexesToAdjustInflation.length-1] * accumulatedLosses[i];
+    finalAdjustedLosses[i] = indexesToAdjustInflation[indexesToAdjustInflation.length - 1] * accumulatedLosses[i];
   }
   console.table(salaryArray);
   console.table(salaryAdjusted);
   console.table(finalAdjustedLosses);
 
-  const totalLosses = finalAdjustedLosses.reduce((total,monthlylosses) => total + monthlylosses,0)
+  const totalLosses = finalAdjustedLosses.reduce((total, monthlylosses) => total + monthlylosses, 0)
 
   calculation = Math.floor(totalLosses * 100) / 100;
 
@@ -409,20 +409,20 @@ function calculateMinimumWage() {
 
   for (let i = 0, length = inflationArray.length; i < length; i++) {
     for (let b = i, length = inflationArray.length; b < length; b++) {
-      if (b ===i){
+      if (b === i) {
         indexesToAdjustInflation[i] = 1;
         console.log("gola")
       } else {
         indexesToAdjustInflation[b] = (inflationArray[b] / 100 + 1) * indexesToAdjustInflation[b - 1];
       }
     };
-    finalAdjustedLosses[i] = indexesToAdjustInflation[indexesToAdjustInflation.length-1] * accumulatedLosses[i];
+    finalAdjustedLosses[i] = indexesToAdjustInflation[indexesToAdjustInflation.length - 1] * accumulatedLosses[i];
   }
   console.table(wageMapped);
   console.table(salaryAdjusted);
   console.table(finalAdjustedLosses);
 
-  const totalLosses = finalAdjustedLosses.reduce((total,monthlylosses) => total + monthlylosses,0)
+  const totalLosses = finalAdjustedLosses.reduce((total, monthlylosses) => total + monthlylosses, 0)
 
   calculation = Math.floor(totalLosses * 100) / 100;
 
