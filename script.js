@@ -362,15 +362,15 @@ function calculateTax() {
   //set twit button settings
   tweetButton(twitText);
 }
-
+//Fills the entire input list with the salary values used
 function fillAll(Array) {
   let inputArray = [...document.querySelectorAll("input")];
   console.log(inputArray);
   for (let i = 2; i < inputArray.length; i++) {
     if (inputArray[i].getAttribute("type") != "month") {
-      inputArray[i].value = Array[i-2];
-      console.log(Array[i-2]);
-           }
+      inputArray[i].value = Array[i - 2];
+      console.log(Array[i - 2]);
+    }
   }
 }
 
