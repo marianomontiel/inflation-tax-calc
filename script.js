@@ -312,25 +312,32 @@ function calculateTax() {
 
   //Calculate the final $ amount and adjust it to the end of the period value(present value)
   let accumulatedLosses = Array(inflationArray.length);
-  let adjustLossesIndex = inflationIndex.reverse();
   for (let i = 0, length = inflationArray.length; i < length; i++) {
-    accumulatedLosses[i] = (salaryAdjusted[i] - salaryArray[i]) * adjustLossesIndex[i];
+    accumulatedLosses[i] = (salaryAdjusted[i] - salaryArray[i]);
   }
-  const totalLosses = accumulatedLosses.reduce((total, salaries) => total + salaries, 0);
+  console.table(accumulatedLosses)
+  // const totalLosses = accumulatedLosses.reduce((total, salaries) => total + salaries, 0);
 
-  //New final amount calculation that uses proper inflation values NOT WORKING
+  //Calculate the final $ amount and adjust it to the end of the period value(present value)
   let finalAdjustedLosses = Array(inflationArray.length);
-  const indexesToAdjustInflation = Array(inflationArray.length);
+  let indexesToAdjustInflation = Array(inflationArray.length);
 
   for (let i = 0, length = inflationArray.length; i < length; i++) {
-    indexesToAdjustInflation[i] = 1;
-    for (let b = i, length = inflationArray.length; (b) < length; b++) {
+    for (let b = i, length = inflationArray.length; b < length; b++) {
+      if (b ===i){
+        indexesToAdjustInflation[i] = 1;
+        console.log("gola")
+      } else {
         indexesToAdjustInflation[b] = (inflationArray[b] / 100 + 1) * indexesToAdjustInflation[b - 1];
-        console.log(indexesToAdjustInflation)
+      }
     };
     finalAdjustedLosses[i] = indexesToAdjustInflation[indexesToAdjustInflation.length-1] * accumulatedLosses[i];
-    // console.log(finalAdjustedLosses[i]);
   }
+  console.table(salaryArray);
+  console.table(salaryAdjusted);
+  console.table(finalAdjustedLosses);
+
+  const totalLosses = finalAdjustedLosses.reduce((total,monthlylosses) => total + monthlylosses,0)
 
   calculation = Math.floor(totalLosses * 100) / 100;
 
@@ -390,21 +397,32 @@ function calculateMinimumWage() {
 
   //Calculate the final $ amount and adjust it to the end of the period value(present value)
   let accumulatedLosses = Array(inflationArray.length);
-  let adjustLossesIndex = inflationIndex.reverse();
   for (let i = 0, length = inflationArray.length; i < length; i++) {
-    accumulatedLosses[i] = (salaryAdjusted[i] - wageMapped[i]) * adjustLossesIndex[i];
+    accumulatedLosses[i] = (salaryAdjusted[i] - wageMapped[i]);
   }
-  const totalLosses = accumulatedLosses.reduce((total, salaries) => total + salaries, 0);
-  /* 
-    //subtract salary adjusted with original salary. 
-    //this does not adjust the final value to inflation and thus longer periods will suffer from inferior returns
-    const sumWithInitial = wageMapped.reduce(
-      (accumulator, currentValue) => accumulator + currentValue,
-      0
-    );
-  
-    const sumWithInitial2 = salaryAdjusted.reduce(
-      (accumulator, currentValue) => accumulator + currentValue,0);*/
+  console.table(accumulatedLosses)
+  // const totalLosses = accumulatedLosses.reduce((total, salaries) => total + salaries, 0);
+
+  //Calculate the final $ amount and adjust it to the end of the period value(present value)
+  let finalAdjustedLosses = Array(inflationArray.length);
+  let indexesToAdjustInflation = Array(inflationArray.length);
+
+  for (let i = 0, length = inflationArray.length; i < length; i++) {
+    for (let b = i, length = inflationArray.length; b < length; b++) {
+      if (b ===i){
+        indexesToAdjustInflation[i] = 1;
+        console.log("gola")
+      } else {
+        indexesToAdjustInflation[b] = (inflationArray[b] / 100 + 1) * indexesToAdjustInflation[b - 1];
+      }
+    };
+    finalAdjustedLosses[i] = indexesToAdjustInflation[indexesToAdjustInflation.length-1] * accumulatedLosses[i];
+  }
+  console.table(wageMapped);
+  console.table(salaryAdjusted);
+  console.table(finalAdjustedLosses);
+
+  const totalLosses = finalAdjustedLosses.reduce((total,monthlylosses) => total + monthlylosses,0)
 
   calculation = Math.floor(totalLosses * 100) / 100;
 
