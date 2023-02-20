@@ -434,7 +434,7 @@ function tweetButton(a) {
     tweetButton.setAttribute('data-text', `${a} respecto de la inflación en el periodo comprendido entre ${getDateName(startMonth, startYear)} y ${getDateName(endMonth, endYear)}. Esto fue calculado usando el sitio web:`);
     tweetButton.setAttribute('href', "https://twitter.com/intent/tweet");
     tweetButton.setAttribute('data-size', 'large');
-    tweetButton.setAttribute('data-url', 'https://marianomontiel.github.io');
+    tweetButton.setAttribute('data-url', 'https://impuestazo.com.ar');
     tweetButton.setAttribute('data-hashtags', '#impuestazo');
     tweetButton.setAttribute('data-lang', 'es');
     tweetButton.setAttribute('data-show-count', 'false');
