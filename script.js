@@ -303,7 +303,7 @@ function calculateTax() {
   let salaryAdjusted = Array(inflationArray.length);
   for (let i = 0, length = inflationArray.length; i < length; i++) {
     if (i < 1) {
-      inflationIndex[0] = inflationArray[0] / 100 + 1;
+      inflationIndex[0] = 1;
     } else {
       inflationIndex[i] = inflationIndex[i - 1] * (inflationArray[i] / 100 + 1);
     }
@@ -316,18 +316,22 @@ function calculateTax() {
   for (let i = 0, length = inflationArray.length; i < length; i++) {
     accumulatedLosses[i] = (salaryAdjusted[i] - salaryArray[i]) * adjustLossesIndex[i];
   }
-  const totalLosses = accumulatedLosses.reduce((total, salaries) => total+salaries,0);
-/* 
-  //subtract salary adjusted with original salary. 
-  //this does not adjust the final value to inflation and thus longer periods will suffer from inferior returns
-  const sumWithInitial = wageMapped.reduce(
-    (accumulator, currentValue) => accumulator + currentValue,
-    0
-  );
+  const totalLosses = accumulatedLosses.reduce((total, salaries) => total + salaries, 0);
 
-  const sumWithInitial2 = salaryAdjusted.reduce(
-    (accumulator, currentValue) => accumulator + currentValue,0);*/
+  //New final amount calculation that uses proper inflation values NOT WORKING
+  let finalAdjustedLosses = Array(inflationArray.length);
+  const indexesToAdjustInflation = Array(inflationArray.length);
 
+  for (let i = 0, length = inflationArray.length; i < length; i++) {
+    indexesToAdjustInflation[i] = 1;
+    for (let b = i, length = inflationArray.length; (b) < length; b++) {
+        indexesToAdjustInflation[b] = (inflationArray[b] / 100 + 1) * indexesToAdjustInflation[b - 1];
+        console.log(indexesToAdjustInflation)
+    };
+    finalAdjustedLosses[i] = indexesToAdjustInflation[indexesToAdjustInflation.length-1] * accumulatedLosses[i];
+    // console.log(finalAdjustedLosses[i]);
+  }
+  
   calculation = Math.floor(totalLosses * 100) / 100;
 
   //output value on DOM
@@ -390,17 +394,17 @@ function calculateMinimumWage() {
   for (let i = 0, length = inflationArray.length; i < length; i++) {
     accumulatedLosses[i] = (salaryAdjusted[i] - wageMapped[i]) * adjustLossesIndex[i];
   }
-  const totalLosses = accumulatedLosses.reduce((total, salaries) => total+salaries,0);
-/* 
-  //subtract salary adjusted with original salary. 
-  //this does not adjust the final value to inflation and thus longer periods will suffer from inferior returns
-  const sumWithInitial = wageMapped.reduce(
-    (accumulator, currentValue) => accumulator + currentValue,
-    0
-  );
-
-  const sumWithInitial2 = salaryAdjusted.reduce(
-    (accumulator, currentValue) => accumulator + currentValue,0);*/
+  const totalLosses = accumulatedLosses.reduce((total, salaries) => total + salaries, 0);
+  /* 
+    //subtract salary adjusted with original salary. 
+    //this does not adjust the final value to inflation and thus longer periods will suffer from inferior returns
+    const sumWithInitial = wageMapped.reduce(
+      (accumulator, currentValue) => accumulator + currentValue,
+      0
+    );
+  
+    const sumWithInitial2 = salaryAdjusted.reduce(
+      (accumulator, currentValue) => accumulator + currentValue,0);*/
 
   calculation = Math.floor(totalLosses * 100) / 100;
 
@@ -455,5 +459,5 @@ calculateButton.addEventListener("click", () => {
 const minimumWageButton = document.querySelector("#calculate-1");
 minimumWageButton.addEventListener("click", () => {
   calculateMinimumWage();
-  window.scrollTo(0,document.body.scrollHeight,'smooth')
+  window.scrollTo(0, document.body.scrollHeight, 'smooth')
 });
