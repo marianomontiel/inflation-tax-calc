@@ -331,7 +331,7 @@ function calculateTax() {
     finalAdjustedLosses[i] = indexesToAdjustInflation[indexesToAdjustInflation.length-1] * accumulatedLosses[i];
     // console.log(finalAdjustedLosses[i]);
   }
-  
+
   calculation = Math.floor(totalLosses * 100) / 100;
 
   //output value on DOM
@@ -419,7 +419,7 @@ function calculateMinimumWage() {
 }
 
 function tweetButton(a) {
-  const box = document.querySelector(".box");
+  const mediaButtonsDiv = document.querySelector(".social-media-buttons");
   const iframe = document.querySelector('iframe');
   if (iframe == null) {
     const twit = document.querySelector('#twitter');
@@ -431,7 +431,7 @@ function tweetButton(a) {
     addScript.setAttribute('src', 'https://platform.twitter.com/widgets.js');
     document.head.appendChild(addScript);
   } else {
-    box.removeChild(iframe);
+    mediaButtonsDiv.removeChild(iframe);
     // document.head.removeChild(addScript);
     const tweetButton = document.createElement('a');
     tweetButton.setAttribute('class', "twitter-share-button");
@@ -442,7 +442,7 @@ function tweetButton(a) {
     tweetButton.setAttribute('data-hashtags', '#impuestazo');
     tweetButton.setAttribute('data-lang', 'es');
     tweetButton.setAttribute('data-show-count', 'false');
-    box.appendChild(tweetButton);
+    mediaButtonsDiv.appendChild(tweetButton);
 
     var addScript = document.createElement('script');
     addScript.setAttribute('id', 'tweet-script');
