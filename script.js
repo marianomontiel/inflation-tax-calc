@@ -309,18 +309,26 @@ function calculateTax() {
     }
     salaryAdjusted[i] = inflationIndex[i] * salaryArray[0];
   }
-  //subtract salary adjusted with original salary
-  const sumWithInitial = salaryArray.reduce(
+
+  //Calculate the final $ amount and adjust it to the end of the period value(present value)
+  let accumulatedLosses = Array(inflationArray.length);
+  let adjustLossesIndex = inflationIndex.reverse();
+  for (let i = 0, length = inflationArray.length; i < length; i++) {
+    accumulatedLosses[i] = (salaryAdjusted[i] - salaryArray[i]) * adjustLossesIndex[i];
+  }
+  const totalLosses = accumulatedLosses.reduce((total, salaries) => total+salaries,0);
+/* 
+  //subtract salary adjusted with original salary. 
+  //this does not adjust the final value to inflation and thus longer periods will suffer from inferior returns
+  const sumWithInitial = wageMapped.reduce(
     (accumulator, currentValue) => accumulator + currentValue,
     0
   );
 
   const sumWithInitial2 = salaryAdjusted.reduce(
-    (accumulator, currentValue) => accumulator + currentValue,
-    0
-  );
+    (accumulator, currentValue) => accumulator + currentValue,0);*/
 
-  calculation = Math.floor((sumWithInitial2 - sumWithInitial) * 100) / 100;
+  calculation = Math.floor(totalLosses * 100) / 100;
 
   //output value on DOM
   const box = document.querySelector(".box");
@@ -375,19 +383,26 @@ function calculateMinimumWage() {
     }
     salaryAdjusted[i] = inflationIndex[i] * wageMapped[0];
   }
-  //subtract salary adjusted with original salary
-  const initialValue = 0;
+
+  //Calculate the final $ amount and adjust it to the end of the period value(present value)
+  let accumulatedLosses = Array(inflationArray.length);
+  let adjustLossesIndex = inflationIndex.reverse();
+  for (let i = 0, length = inflationArray.length; i < length; i++) {
+    accumulatedLosses[i] = (salaryAdjusted[i] - wageMapped[i]) * adjustLossesIndex[i];
+  }
+  const totalLosses = accumulatedLosses.reduce((total, salaries) => total+salaries,0);
+/* 
+  //subtract salary adjusted with original salary. 
+  //this does not adjust the final value to inflation and thus longer periods will suffer from inferior returns
   const sumWithInitial = wageMapped.reduce(
     (accumulator, currentValue) => accumulator + currentValue,
-    initialValue
+    0
   );
 
   const sumWithInitial2 = salaryAdjusted.reduce(
-    (accumulator, currentValue) => accumulator + currentValue,
-    initialValue
-  );
+    (accumulator, currentValue) => accumulator + currentValue,0);*/
 
-  calculation = Math.floor((sumWithInitial2 - sumWithInitial) * 100) / 100;
+  calculation = Math.floor(totalLosses * 100) / 100;
 
   //output value on DOM
   const box = document.querySelector(".box");
