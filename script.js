@@ -458,16 +458,13 @@ function calculateMinimumWage() {
     "style",
     "padding-top: 0px; color: black; font-size: 20px;"
   );
-  output.innerText = `Según INDEC el Salario Minimo Vital y Movil acumula una perdida de $${calculation} respecto de la inflación en el periodo comprendido entre ${getDateName(
-    startMonth,
-    startYear
-  )} y ${getDateName(endMonth, endYear)}.`;
+  output.innerText = `Según INDEC el Salario Minimo Vital y Movil acumula una perdida de $${calculation} respecto de la inflación en el periodo comprendido entre ${getDateName(startMonth,startYear)} y ${getDateName(endMonth, endYear)}.`;
   const twitText = output.innerText;
   box.appendChild(output);
   tweetButton(twitText);
 }
 
-function tweetButton(a) {
+function tweetButton(outputInnerText) {
   const mediaButtonsDiv = document.querySelector(".social-media-buttons");
   const iframe = document.querySelector("iframe");
   if (iframe == null) {
@@ -475,10 +472,10 @@ function tweetButton(a) {
     twit.setAttribute("class", "twitter-share-button");
     twit.setAttribute(
       "data-text",
-      `${a}  Esto fue calculado usando el sitio web:`
+      `${outputInnerText} Fuente:`
     );
 
-    var addScript = document.createElement("script");
+    let addScript = document.createElement("script");
     addScript.setAttribute("id", "tweet-script");
     addScript.setAttribute("src", "https://platform.twitter.com/widgets.js");
     document.head.appendChild(addScript);
@@ -489,20 +486,14 @@ function tweetButton(a) {
     tweetButton.setAttribute("class", "twitter-share-button");
     tweetButton.setAttribute(
       "data-text",
-      `${a} respecto de la inflación en el periodo comprendido entre ${getDateName(
-        startMonth,
-        startYear
-      )} y ${getDateName(
-        endMonth,
-        endYear
-      )}. Esto fue calculado usando el sitio web:`
+      `${outputInnerText} Fuente:`
     );
     tweetButton.setAttribute("href", "https://twitter.com/intent/tweet");
     tweetButton.setAttribute("data-size", "large");
     tweetButton.setAttribute("data-url", "https://impuestazo.com.ar");
-    tweetButton.setAttribute("data-hashtags", "#impuestazo");
+    tweetButton.setAttribute("data-hashtags", "impuestazo");
     tweetButton.setAttribute("data-lang", "es");
-    tweetButton.setAttribute("data-show-count", "false");
+    tweetButton.setAttribute("data-show-count", "true");
     mediaButtonsDiv.appendChild(tweetButton);
 
     var addScript = document.createElement("script");
