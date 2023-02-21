@@ -1,0 +1,45 @@
+@import "./styles.css";
+
+@media only screen and (min-width: 540px) {
+#indec {
+    width: 100%;
+    position: relative;
+    width: 559px;
+    margin: 15px 0px;
+    height: auto;
+    box-sizing: border-box;
+  }
+
+  #indec .header {
+    position: absolute;
+    margin-top: -20px;
+    margin-left: 5px;
+    color: rgb(22, 29, 64);
+    background: white;
+    border-radius: 10px;
+    padding: 2px 5px;
+    font-weight: 500;
+  }
+}
+
+@media only screen and (max-width: 540px) {
+    #indec {
+        position: relative;
+        width: 100%;
+        margin: 15px 0px;
+        height: auto;
+        box-sizing: border-box;
+      }
+  
+      #indec .header {
+        position: absolute;
+        margin-top: -20px;
+        margin-left: 5px;
+        color: rgb(22, 29, 64);
+        background: white;
+        border-radius: 10px;
+        padding: 2px 5px;
+        font-size: 14px;
+        font-weight: 500;
+      }
+}
