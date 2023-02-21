@@ -472,7 +472,7 @@ function tweetButton(outputInnerText) {
     twit.setAttribute("class", "twitter-share-button");
     twit.setAttribute(
       "data-text",
-      `${outputInnerText} Fuente:`
+      `${outputInnerText} Esto fue calculado usando el sitio web:`
     );
 
     let addScript = document.createElement("script");
@@ -486,7 +486,7 @@ function tweetButton(outputInnerText) {
     tweetButton.setAttribute("class", "twitter-share-button");
     tweetButton.setAttribute(
       "data-text",
-      `${outputInnerText} Fuente:`
+      `${outputInnerText} Esto fue calculado usando el sitio web:`
     );
     tweetButton.setAttribute("href", "https://twitter.com/intent/tweet");
     tweetButton.setAttribute("data-size", "large");
