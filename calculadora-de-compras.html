@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <div class="box">
+        <img class="icon-header" src="./icons/money-printer.png" alt="money-printer">
+        <h1>¿Queres planificar una compra dentro de unos meses?</h1>
+        <p id="subtitle">Descubrí cuanto te conviene ahorrar por mes!</p>
+        <footer>
+            <a href="https://cafecito.app/mariano-montiel" id='upper'>Invitame un cafecito <img src="./icons/cafecito.svg"
+                alt="cafecito"></a>
+            <a href="https://twitter.com/MontielMariano2" id='upper'>Seguime en Twitter <img src="./icons/twitter.svg"
+                alt="twitter"></a>
+          </footer>
+        
+        <label class="componentWrapper">
+            <span class="header">Precio actual</span>
+            <span name="Precio" class="salary">$</span>
+            <input name="Precio" class="input-salary">
+        </label>
+
+        <label class="componentWrapper">
+            <span class="header">¿Cuantos meses faltan para la compra?</span>
+            <span name="meses-faltantes" class="salary"></span>
+            <input name="meses-faltantes" class="input-salary">
+        </label>
+
+        <label class="componentWrapper">
+            <span class="header">Inflación mensual estimada<span id="inflacionEstimada"> </span></span>
+            <span name="inflacion-estimada" class="salary">%</span>
+            <input name="inflacion-estimada" class="input-salary">
+        </label>
+
+        <button id='calculate' class="calculate-price">CALCULAR</button>
+        <p class='output'></p>
+
+    </div>
+    <div>
+        <a href="./index.html" id="footer-anchor">Calcula tu impuesto inflacionario</a>
+  
+      </div>
+  
+    <script src="./compras.js" defer></script>
+</body>
+
+</html>

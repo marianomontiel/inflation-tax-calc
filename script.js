@@ -430,7 +430,6 @@ function calculateMinimumWage() {
     for (let b = i, length = inflationArray.length; b < length; b++) {
       if (b === i) {
         indexesToAdjustInflation[i] = 1;
-        console.log("gola");
       } else {
         indexesToAdjustInflation[b] =
           (inflationArray[b] / 100 + 1) * indexesToAdjustInflation[b - 1];
