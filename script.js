@@ -511,14 +511,12 @@ function createSalaryChart(dateArray,mappedSalary,inflationAdjustedSalary,accumu
   if (chartOne == null) {
     const myChart = document.createElement("canvas");
     myChart.setAttribute('id', 'myChart');
-    //addScript.setAttribute("src", "https://platform.twitter.com/widgets.js");
     box.appendChild(myChart);
   } 
   else {
     box.removeChild(chartOne);
     const myChart = document.createElement("canvas");
     myChart.setAttribute('id', 'myChart');
-    myChart.setAttribute("style", "width:100%;max-width:700px");
     box.appendChild(myChart);
   }
   //add label to array
@@ -533,7 +531,7 @@ function createSalaryChart(dateArray,mappedSalary,inflationAdjustedSalary,accumu
     data: {
      labels: dateLabel,
      datasets: [{
-      label: 'Salario ajustado x inflación',
+      label: 'Salario indexado x inflación',
       backgroundColor: "rgba(255,0,0,0.3)",
       borderColor: "rgba(255,0,0,0.6)",
       data: inflationAdjustedSalary
@@ -555,14 +553,12 @@ function createSalaryChart(dateArray,mappedSalary,inflationAdjustedSalary,accumu
   if (chartTwo == null) {
     const adjustedChart = document.createElement("canvas");
     adjustedChart.setAttribute('id', 'adjustedChart');
-    //addScript.setAttribute("src", "https://platform.twitter.com/widgets.js");
     box.appendChild(adjustedChart);
   } 
   else {
     box.removeChild(chartTwo);
     const adjustedChart = document.createElement("canvas");
     adjustedChart.setAttribute('id', 'adjustedChart');
-    adjustedChart.setAttribute("style", "width:100%;max-width:700px");
     box.appendChild(adjustedChart);
   }
 
