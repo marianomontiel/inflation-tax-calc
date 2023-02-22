@@ -324,7 +324,6 @@ function calculateTax() {
     for (let b = i, length = inflationArray.length; b < length; b++) {
       if (b === i) {
         indexesToAdjustInflation[i] = (inflationArray[b] / 100 + 1);// it was 1 before realizing inflation ocurrs also the final month
-        console.log("gola");
       } else {
         indexesToAdjustInflation[b] =
           (inflationArray[b] / 100 + 1) * indexesToAdjustInflation[b - 1];
@@ -349,18 +348,14 @@ function calculateTax() {
   const box = document.querySelector(".box");
   const output = document.querySelector(".output");
   output.setAttribute("style", "padding-top: 0px; color: black; font-size: 20px;");
-  output.innerText = `Según INDEC tu salario acumula una perdida de $${calculation} respecto de la inflación en el periodo comprendido entre ${getDateName(
-    startMonth,
-    startYear
-  )} y ${getDateName(endMonth, endYear)}.`;
-  const twitText = `Según INDEC mi salario acumula una perdida de $${calculation} respecto de la inflación en el periodo comprendido entre ${getDateName(
-    startMonth,
-    startYear
-  )} y ${getDateName(endMonth, endYear)}.`;
+  output.innerText = `Según INDEC tu salario acumula una perdida de $${calculation} respecto de la inflación en el periodo comprendido entre ${getDateName(startMonth,startYear)} y ${getDateName(endMonth, endYear)}.`;
+  const twitText = `Según INDEC mi salario acumula una perdida de $${calculation} respecto de la inflación en el periodo comprendido entre ${getDateName(startMonth,startYear)} y ${getDateName(endMonth, endYear)}.`;
   box.appendChild(output);
 
   //set twit button settings
-  tweetButton(twitText);
+  tweetButton(twitText); 
+  //new charts
+  createSalaryChart(filterTable, salaryArray, salaryAdjusted,accumulatedLosses,finalAdjustedLosses); 
 }
 //Fills the entire input list with the salary values used
 function fillAll(Array) {
@@ -455,6 +450,9 @@ function calculateMinimumWage() {
   const twitText = output.innerText;
   box.appendChild(output);
   tweetButton(twitText);
+  
+  //new charts
+  createSalaryChart(filterTable, wageMapped, salaryAdjusted,accumulatedLosses,finalAdjustedLosses);  
 }
 
 function tweetButton(outputInnerText) {
@@ -506,3 +504,89 @@ minimumWageButton.addEventListener("click", () => {
   calculateMinimumWage();
   window.scrollTo(0, document.body.scrollHeight, "smooth");
 });
+
+function createSalaryChart(dateArray,mappedSalary,inflationAdjustedSalary,accumulatedLosses,finalAdjustedLosses) {
+  const chartOne = document.querySelector("#myChart");
+  const box = document.querySelector('.box');
+  if (chartOne == null) {
+    const myChart = document.createElement("canvas");
+    myChart.setAttribute('id', 'myChart');
+    //addScript.setAttribute("src", "https://platform.twitter.com/widgets.js");
+    box.appendChild(myChart);
+  } 
+  else {
+    box.removeChild(chartOne);
+    const myChart = document.createElement("canvas");
+    myChart.setAttribute('id', 'myChart');
+    myChart.setAttribute("style", "width:100%;max-width:700px");
+    box.appendChild(myChart);
+  }
+  //add label to array
+  dateArray.forEach(function (element) {
+    element.label = element.Mes +"/"+element.Año;
+  });  
+  const dateLabel = dateArray.map((index) => index.label);
+  
+  
+  new Chart("myChart", {
+    type: "line",
+    data: {
+     labels: dateLabel,
+     datasets: [{
+      label: 'Salario ajustado x inflación',
+      backgroundColor: "rgba(255,0,0,0.3)",
+      borderColor: "rgba(255,0,0,0.6)",
+      data: inflationAdjustedSalary
+     }, {
+      label: 'Salario',
+      backgroundColor: "rgba(0,0,255,0.3)",
+      borderColor: "rgba(0,0,255,0.6)",
+      data: mappedSalary
+     }]
+    }, 
+    options:{
+      title: {
+       display: true,
+       text: 'Evolucion salarial contra inflación'
+      }
+    }
+  });
+  const chartTwo = document.querySelector("#adjustedChart");
+  if (chartTwo == null) {
+    const adjustedChart = document.createElement("canvas");
+    adjustedChart.setAttribute('id', 'adjustedChart');
+    //addScript.setAttribute("src", "https://platform.twitter.com/widgets.js");
+    box.appendChild(adjustedChart);
+  } 
+  else {
+    box.removeChild(chartTwo);
+    const adjustedChart = document.createElement("canvas");
+    adjustedChart.setAttribute('id', 'adjustedChart');
+    adjustedChart.setAttribute("style", "width:100%;max-width:700px");
+    box.appendChild(adjustedChart);
+  }
+
+new Chart("adjustedChart", {
+    type: "line",
+    data: {
+     labels: dateLabel,
+     datasets: [{
+      label: 'Perdidas totales',
+      backgroundColor: "rgba(0,0,255,0.3)",
+      borderColor: "rgba(0,0,255,0.6)",
+      data: accumulatedLosses
+     },{
+      label: 'Perdidas totales ajustadas a "valor actual"',
+      backgroundColor: "rgba(255,0,0,0.3)",
+      borderColor: "rgba(255,0,0,0.6)",
+      data: finalAdjustedLosses
+     }]
+    }, 
+    options:{
+      title: {
+       display: true,
+       text: 'Perdidas totales'
+      }
+    }
+  });
+}
