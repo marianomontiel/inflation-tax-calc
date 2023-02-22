@@ -323,7 +323,7 @@ function calculateTax() {
   for (let i = 0, length = inflationArray.length; i < length; i++) {
     for (let b = i, length = inflationArray.length; b < length; b++) {
       if (b === i) {
-        indexesToAdjustInflation[i] = 1;
+        indexesToAdjustInflation[i] = (inflationArray[b] / 100 + 1);// it was 1 before realizing inflation ocurrs also the final month
         console.log("gola");
       } else {
         indexesToAdjustInflation[b] =
@@ -426,7 +426,7 @@ function calculateMinimumWage() {
   for (let i = 0, length = inflationArray.length; i < length; i++) {
     for (let b = i, length = inflationArray.length; b < length; b++) {
       if (b === i) {
-        indexesToAdjustInflation[i] = 1;
+        indexesToAdjustInflation[i] = (inflationArray[b] / 100 + 1);// it was 1 before realizing inflation ocurrs also the final month
       } else {
         indexesToAdjustInflation[b] =
           (inflationArray[b] / 100 + 1) * indexesToAdjustInflation[b - 1];
