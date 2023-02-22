@@ -1,208 +1,236 @@
   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
   @import "./compras.css";
 
+  * {
+    font-family: "Roboto", sans-serif;
+  }
+
+  .box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+  }
+
+  body {
+    min-height: 97vh;
+  }
+
+  .icon-header {
+    height: 72px;
+    width: 72px;
+  }
+
+  h1,
+  p {
+    text-align: left;
+    width: 100%;
+    font-weight: 400;
+  }
+
+  h1 {
+    color: rgb(21, 62, 103);
+    margin-bottom: 4px;
+  }
+
+  p {
+    font-size: 20px;
+    color: #696969;
+    padding-left: 2px;
+  }
+
+  #upper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    background-color: rgb(199, 212, 222);
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 15px;
+    text-decoration: none;
+  }
+
+  .input {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+
+  .input-title {
+    text-align: center;
+  }
+
+  .calendar-label {
+    margin-bottom: 5px;
+    display: block;
+    text-align: center;
+    font-weight: 500;
+  }
+
+  #error {
+    width: 100%;
+    color: red;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-align: center;
+  }
+
+  .calculate {
+    color: white;
+    background-color: rgb(0, 85, 133);
+    border: none;
+    border-radius: 5px;
+    height: auto;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 15px;
+    box-shadow: rgb(0 0 0 / 70%) 1px 7px 28px -15px;
+  }
+
+  .componentWrapper {
+    position: relative;
+    width: 100%;
+    margin: 15px 0px;
+    height: auto;
+    box-sizing: border-box;
+  }
+
+  .componentWrapper .header {
+    position: absolute;
+    margin-top: -10px;
+    margin-left: 5px;
+    color: rgb(22, 29, 64);
+    background: white;
+    border-radius: 10px;
+    padding: 2px 5px;
+    font-weight: 500;
+  }
+
+  .input-salary {
+    border: 2px solid rgb(239, 239, 239);
+    border-radius: 5px;
+    margin-left: 0px;
+    color: black;
+    font-size: 16px;
+    width: 100%;
+    padding: 16px;
+    padding-left: 25px;
+    box-sizing: border-box;
+  }
+
+  .salary {
+    position: absolute;
+    top: 16px;
+    left: 12px;
+    border: 0;
+    color: grey;
+    font-size: 16px;
+    pointer-events: none;
+  }
+
+  .calculate {
+    color: white;
+    background-color: rgb(0, 85, 133);
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    height: 50px;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 15px;
+    margin: 15px 0px 15px;
+    box-shadow: rgb(0 0 0 / 70%) 1px 7px 28px -15px;
+  }
+
+  footer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .output {
+    margin: 10px;
+    font-size: 16px;
+    padding-top: 19px;
+  }
+
   @media only screen and (min-width: 540px) {
-    *{
-      font-family: "Roboto", sans-serif;
-    }
-    
     body {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       background-color: rgb(0, 85, 133);
-      min-height: 97vh;
     }
 
     .box {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       margin-top: 72px;
       margin-bottom: 32px;
       padding: 32px 64px;
       border-radius: 10px;
-      background-color: white;
       min-width: 350px;
       max-width: 650px;
       box-shadow: 1px 7px 30px -10px rgb(0 0 0 / 77%);
+    }
+
+    #upper {
+      padding: 15px;
     }
 
     .icon-header {
       position: absolute;
       top: -36px;
       left: calc(50%-36px);
-      height: 72px;
-      width: 72px;
-    }
-
-    h1,
-    p {
-      text-align: left;
-      width: 100%;
-      font-weight: 400;
-    }
-
-    h1 {
-      color: rgb(21, 62, 103);
-      margin-bottom: 4px;
-    }
-
-    p {
-      font-size: 20px;
-      color: #696969;
-      padding-left: 2px;
     }
 
     .input {
-      display: flex;
-      justify-content: space-evenly;
       margin: 15px 0px;
-      width: 100%;
     }
 
     .input-title {
-      text-align: center;
       margin-bottom: 5px;
     }
 
-    .calendar-label {
-      margin-bottom: 5px;
-      display: block;
-      text-align: center;
-      font-weight: 500;
-    }
-
-    #error {
-      width: 100%;
-      color: red;
-      margin-top: 0px;
-      margin-bottom: 0px;
-      text-align: center;
-    }
-
-    .calculate{
-      color: white;
-      background-color: rgb(0, 85, 133);
-      border: none;
-      border-radius: 5px;
-      width: 250px;
-      height: auto;
-      font-size: 15px;
-      font-weight: 700;
-      padding: 15px;
+    .calculate {
       margin: 5px 0px 15px;
-      box-shadow: rgb(0 0 0 / 70%) 1px 7px 28px -15px;
+      width: 250px;
     }
 
-    .calculate>span{
+    .calculate>span {
       display: inline;
     }
 
-    .componentWrapper {
-      position: relative;
-      width: 559px;
-      margin: 15px 0px;
-      height: auto;
-      box-sizing: border-box;
-    }
-
-    .componentWrapper .header {
-      position: absolute;
-      margin-top: -10px;
-      margin-left: 5px;
-      color: rgb(22, 29, 64);
-      background: white;
-      border-radius: 10px;
-      padding: 2px 5px;
-      font-weight: 500;
-    }
-
-    .input-salary {
-      border: 2px solid rgb(239, 239, 239);
-      border-radius: 5px;
-      margin-left: 0px;
-      color: black;
-      font-size: 16px;
-      width: 100%;
-      padding: 16px;
-      padding-left: 25px;
-      box-sizing: border-box;
-    }
-
-    .salary {
-      position: absolute;
-      top: 16px;
-      left: 12px;
-      border: 0;
-      color: grey;
-      font-size: 16px;
-      pointer-events: none;
-    }
-
-
-    .calculate {
-      color: white;
-      background-color: rgb(0, 85, 133);
-      border: none;
-      border-radius: 5px;
-      width: 100%;
-      height: 50px;
-      font-size: 20px;
-      font-weight: 700;
-      padding: 15px;
-      margin: 15px 0px 15px;
-      box-shadow: rgb(0 0 0 / 70%) 1px 7px 28px -15px;
-    }
-
-    footer {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-    }
-
-    #upper {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: black;
-      background-color: rgb(199, 212, 222);
-      border: none;
-      border-radius: 5px;
-      width: 100%;
-      font-size: 16px;
-      font-weight: 400;
-      padding: 15px;
-      margin: 15px;
-      text-decoration: none;
-    }
-
-    .output {
+    .output{
       width: 537px;
-      margin: 10px;
-      font-size: 16px;
-      padding-top: 19px;
     }
 
     #footer-anchor {
       display: flex;
       justify-content: center;
-      font-family: "Roboto", sans-serif;
       color: white;
       text-decoration: none;
       font-size: 20px;
       margin-bottom: 20px;
     }
+
     .social-media-buttons {
       display: flex;
       justify-content: center;
       margin: 20px;
     }
 
-    label > input {
+    label>input {
       font-weight: 600;
+    }
+
+    canvas {
+      width: 100%;
+      max-width: 700px
     }
   }
 
@@ -211,40 +239,16 @@
       display: flex;
       margin: 0;
       width: 100vw;
-      min-height: 97vh;
     }
 
-    body > div {
+    body>div {
       width: 100%;
     }
 
     .box {
       box-sizing: border-box;
-      position: relative;
-      font-family: "Roboto", sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       padding: 32px 32px 0px 32px;
-      background-color: white;
       width: 100%;
-    }
-
-    .icon-header {
-      height: 72px;
-      width: 72px;
-    }
-
-    h1,
-    p {
-      text-align: left;
-      width: 100%;
-      font-weight: 400;
-    }
-
-    h1 {
-      color: rgb(21, 62, 103);
-      margin-bottom: 4px;
     }
 
     #subtitle {
@@ -254,141 +258,33 @@
       color: rgb(66, 66, 66);
     }
 
-    p {
-      font-size: 20px;
-      color: #696969;
-      padding-left: 2px;
+    #upper {
+      padding: 7px 15px;
     }
 
-    #upper {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: black;
-      background-color: rgb(199, 212, 222);
-      border: none;
-      border-radius: 5px;
-      width: 100%;
-      font-size: 14px;
-      font-weight: 400;
-      padding: 7px 15px;
-      margin: 15px;
-      text-decoration: none;
+    .input {
+      margin: 20px 0px 20px 0px;
     }
 
     .input-title {
       margin-bottom: 0px;
-      text-align: center;
-    }
-
-    .input {
-      display: flex;
-      justify-content: space-evenly;
-      width: 100%;
-      margin: 20px 0px 20px 0px;
-    }
-
-    .calendar-label {
-      margin-bottom: 5px;
-      display: block;
-      text-align: center;
-      font-weight: 500;
-    }
-
-    #error {
-      width: 100%;
-      color: red;
-      margin-top: 0px;
-      margin-bottom: 0px;
-      text-align: center;
     }
 
     .calculate {
-      color: white;
-      background-color: rgb(0, 85, 133);
-      border: none;
-      border-radius: 5px;
-      width: 100%;
-      height: auto;
-      font-size: 15px;
-      font-weight: 700;
-      padding: 15px;
       margin: 10px 5px;
-      box-shadow: rgb(0 0 0 / 70%) 1px 7px 28px -15px;
+      width: 100%;
     }
 
     .calculate>span {
       display: block;
     }
 
-    .componentWrapper {
-      position: relative;
-      width: 100%;
-      margin: 15px 0px;
-      height: auto;
-      box-sizing: border-box;
-    }
-
     .componentWrapper .header {
-      position: absolute;
-      margin-top: -10px;
-      margin-left: 5px;
-      color: rgb(22, 29, 64);
-      background: white;
-      border-radius: 10px;
-      padding: 2px 5px;
       font-size: 14px;
-      font-weight: 500;
     }
 
-    .input-salary {
-      border: 2px solid rgb(239, 239, 239);
-      border-radius: 5px;
-      margin-left: 0px;
-      color: black;
-      font-size: 16px;
+    .output{
       width: 100%;
-      padding: 16px;
-      padding-left: 25px;
-      box-sizing: border-box;
-    }
-
-    .salary {
-      position: absolute;
-      top: 16px;
-      left: 12px;
-      border: 0;
-      color: grey;
-      font-size: 16px;
-      pointer-events: none;
-    }
-
-
-    .calculate {
-      color: white;
-      background-color: rgb(0, 85, 133);
-      border: none;
-      border-radius: 5px;
-      width: 100%;
-      height: 50px;
-      font-size: 20px;
-      font-weight: 700;
-      padding: 15px;
-      margin: 15px 0px 15px;
-      box-shadow: rgb(0 0 0 / 70%) 1px 7px 28px -15px;
-    }
-
-    footer {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-    }
-
-    .output {
-      width: 100%;
-      margin: 10px;
-      font-size: 16px;
-      padding-top: 19px;
     }
 
     #footer-anchor {
@@ -411,7 +307,12 @@
       margin: 20px;
     }
 
-    label > input {
+    label>input {
       font-weight: 600;
+    }
+
+    canvas {
+      width: 100%;
+      max-width: 700px
     }
   }
