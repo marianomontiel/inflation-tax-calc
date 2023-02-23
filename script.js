@@ -279,10 +279,6 @@ function calculateTax() {
     salaryFormData.append(salaryForm.name, salaryForm.value);
   });
   let salaryArray = Array.from(salaryFormData.values());
-  //convert Array input to number
-  salaryArray = salaryArray.map(function (v) {
-    return parseInt(v) || 0;
-  });
 
   //filter array to desired period
   inflationTable.forEach(function (element) {
