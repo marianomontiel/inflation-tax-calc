@@ -112,6 +112,7 @@ function monthList(a) {
     wrapper.appendChild(symbol);
 
     const input = document.createElement("input");
+    input.type = "number";
     input.setAttribute("name", `salary-${mes}`);
     input.setAttribute("class", "input-salary");
     wrapper.appendChild(input);
