@@ -93,9 +93,6 @@ p {
   box-shadow: rgb(0 0 0 / 70%) 1px 7px 28px -15px;
 }
 
-#input-list::-webkit-scrollbar-track{
-}
-
 #input-list::-webkit-scrollbar
 {
 width: 6px;
