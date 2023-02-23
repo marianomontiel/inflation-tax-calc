@@ -531,7 +531,7 @@ function createSalaryChart(dateArray,mappedSalary,inflationAdjustedSalary,accumu
     data: {
      labels: dateLabel,
      datasets: [{
-      label: 'Salario indexado x inflación',
+      label: 'Salario ajustado x inflación',
       backgroundColor: "rgba(255,0,0,0.3)",
       borderColor: "rgba(255,0,0,0.6)",
       data: inflationAdjustedSalary
@@ -545,11 +545,12 @@ function createSalaryChart(dateArray,mappedSalary,inflationAdjustedSalary,accumu
     options:{
       title: {
        display: true,
-       text: 'Evolucion salarial contra inflación'
-      }
+       text: 'Evolucion salarial contra inflación',
+      },
+      maintainAspectRatio: false
     }
   });
-  const chartTwo = document.querySelector("#adjustedChart");
+/*   const chartTwo = document.querySelector("#adjustedChart");
   if (chartTwo == null) {
     const adjustedChart = document.createElement("canvas");
     adjustedChart.setAttribute('id', 'adjustedChart');
@@ -584,5 +585,5 @@ new Chart("adjustedChart", {
        text: 'Perdidas totales'
       }
     }
-  });
+  }); */
 }

@@ -177,11 +177,6 @@
     font-weight: 600;
   }
 
-  canvas {
-    width: 100%;
-    max-width: 700px
-  }
-
   @media only screen and (min-width: 540px) {
     body {
       display: flex;
@@ -221,7 +216,6 @@
 
     .calculate {
       margin: 5px 0px 15px;
-      width: 250px;
     }
 
     .calculate>span {
@@ -236,6 +230,11 @@
       color: white;
     }
 
+    canvas {
+      max-height: 350px;
+      width: 100%;
+      max-width: 700px
+    }
   }
 
   @media only screen and (max-width: 540px) {
@@ -298,5 +297,9 @@
     .chart {
       height: 200px;
       width: auto;
+    }
+
+    canvas {
+      max-height: 300px;
     }
   }
