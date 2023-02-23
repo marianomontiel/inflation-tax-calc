@@ -526,8 +526,10 @@ function createSalaryChart(dateArray, mappedSalary, inflationAdjustedSalary, acc
   });
   const dateLabel = dateArray.map((index) => index.label);
   
-let posColour = 'rgba(0, 0, 255, .3)',
-  negColour = 'rgba(255, 0, 0, .3)';
+let posColour = 'rgba(52, 152, 219, .3)',
+  negColour = 'rgba(255, 87, 51, .3)',
+    posBackgroundColour = 'rgba(52, 152, 219, .6)',
+  negBackgroundColour = 'rgba(255, 87, 51, .6)'
 
   new Chart("myChart", {
     type: "line",
@@ -536,16 +538,16 @@ let posColour = 'rgba(0, 0, 255, .3)',
       datasets: [{
         label: 'Salario ajustado x inflación',
         fill: {target: 'origin',above: negColour},
-        backgroundColor: "rgba(255,0,0,0.6)",
-        borderColor: "rgba(255,0,0,0.6)",
+        backgroundColor: negBackgroundColour,
+        borderColor: negBackgroundColour,
         data: inflationAdjustedSalary,
         tension: '0.5',
         pointRadius: '0'
       }, {
         label: 'Salario',
         fill: {target: 'origin',above: posColour},
-        backgroundColor: "rgba(0,0,255,0.6)",
-        borderColor: "rgba(0,0,255,0.6)",
+        backgroundColor: posBackgroundColour,
+        borderColor: posBackgroundColour,
         data: mappedSalary,
         tension: '0.5',
         pointRadius: '0',
@@ -585,8 +587,8 @@ let posColour = 'rgba(0, 0, 255, .3)',
      }, */
         {
           label: 'Perdidas/Ganancias',
-          backgroundColor: "rgba(255,0,0,0.6)",
-          borderColor: "rgba(255,0,0,0.6)",
+          backgroundColor: negBackgroundColour,
+          borderColor: negBackgroundColour,
           fill: {target: 'origin',above: posColour,below: negColour},
           data: invertedAdjustedLosses,
           tension: '0.5',
