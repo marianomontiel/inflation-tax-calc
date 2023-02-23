@@ -345,8 +345,8 @@ function calculateTax() {
   const box = document.querySelector(".box");
   const output = document.querySelector(".output");
   output.setAttribute("style", "padding-top: 0px; color: black; font-size: 20px;");
-  output.innerText = `Según INDEC tu salario acumula una perdida de $${calculation} respecto de la inflación en el periodo comprendido entre ${getDateName(startMonth, startYear)} y ${getDateName(endMonth, endYear)}.`;
-  const twitText = `Según INDEC mi salario acumula una perdida de $${calculation} respecto de la inflación en el periodo comprendido entre ${getDateName(startMonth, startYear)} y ${getDateName(endMonth, endYear)}.`;
+  output.innerText = `Según INDEC tu salario acumula una perdida de $${numberWithCommas(calculation)} respecto de la inflación en el periodo comprendido entre ${getDateName(startMonth, startYear)} y ${getDateName(endMonth, endYear)}.`;
+  const twitText = `Según INDEC mi salario acumula una perdida de $${numberWithCommas(calculation)} respecto de la inflación en el periodo comprendido entre ${getDateName(startMonth, startYear)} y ${getDateName(endMonth, endYear)}.`;
   box.appendChild(output);
 
   //set twit button settings
@@ -443,13 +443,17 @@ function calculateMinimumWage() {
   const box = document.querySelector(".box");
   const output = document.querySelector(".output");
   output.setAttribute("style", "padding-top: 0px; color: black; font-size: 20px;");
-  output.innerText = `Según INDEC el Salario Minimo Vital y Movil acumula una perdida de $${calculation} respecto de la inflación en el periodo comprendido entre ${getDateName(startMonth, startYear)} y ${getDateName(endMonth, endYear)}.`;
+  output.innerText = `Según INDEC el Salario Minimo Vital y Movil acumula una perdida de $${numberWithCommas(calculation)} respecto de la inflación en el periodo comprendido entre ${getDateName(startMonth, startYear)} y ${getDateName(endMonth, endYear)}.`;
   const twitText = output.innerText;
   box.appendChild(output);
   tweetButton(twitText);
 
   //new charts
   createSalaryChart(filterTable, wageMapped, salaryAdjusted, accumulatedLosses, finalAdjustedLosses);
+}
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 }
 
 function tweetButton(outputInnerText) {
@@ -521,7 +525,9 @@ function createSalaryChart(dateArray, mappedSalary, inflationAdjustedSalary, acc
     element.label = element.Mes + "/" + element.Año;
   });
   const dateLabel = dateArray.map((index) => index.label);
-
+  
+let posColour = 'rgba(0, 0, 255, .3)',
+  negColour = 'rgba(255, 0, 0, .3)';
 
   new Chart("myChart", {
     type: "line",
@@ -529,14 +535,18 @@ function createSalaryChart(dateArray, mappedSalary, inflationAdjustedSalary, acc
       labels: dateLabel,
       datasets: [{
         label: 'Salario ajustado x inflación',
-        backgroundColor: "rgba(255,0,0,0.3)",
+        fill: {target: 'origin',above: negColour},
         borderColor: "rgba(255,0,0,0.6)",
-        data: inflationAdjustedSalary
+        data: inflationAdjustedSalary,
+        tension: '0.5',
+        pointRadius: '0'
       }, {
         label: 'Salario',
-        backgroundColor: "rgba(0,0,255,0.3)",
+        fill: {target: 'origin',above: posColour},
         borderColor: "rgba(0,0,255,0.6)",
-        data: mappedSalary
+        data: mappedSalary,
+        tension: '0.5',
+        pointRadius: '0',
       }]
     },
     options: {
@@ -561,7 +571,6 @@ function createSalaryChart(dateArray, mappedSalary, inflationAdjustedSalary, acc
     adjustedChart.setAttribute('id', 'adjustedChart');
     box.appendChild(adjustedChart);
   }
-
   new Chart("adjustedChart", {
     type: "line",
     data: {
@@ -573,10 +582,11 @@ function createSalaryChart(dateArray, mappedSalary, inflationAdjustedSalary, acc
       data: accumulatedLosses
      }, */
         {
-          // label: 'Perdidas totales ajustadas a "valor actual"',
-          backgroundColor: "rgba(255,0,0,0.3)",
-          borderColor: "rgba(255,0,0,0.6)",
-          data: invertedAdjustedLosses
+          label: 'Perdidas/Ganancias',
+          fill: {target: 'origin',above: posColour,below: negColour},
+          data: invertedAdjustedLosses,
+          tension: '0.5',
+          pointRadius: '0',
         }]
     },
     options: {
@@ -587,14 +597,7 @@ function createSalaryChart(dateArray, mappedSalary, inflationAdjustedSalary, acc
       maintainAspectRatio: false,
       legend: {
         display: false
-      },
-      tooltips: {
-        callbacks: {
-          label: function (tooltipItem) {
-            return tooltipItem.yLabel;
-          }
-        }
       }
-    }
+     }
   });
 }
