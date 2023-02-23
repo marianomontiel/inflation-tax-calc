@@ -59,7 +59,7 @@ function monthList(a) {
   let mes = 0;
 
   //remove inputs before adding newones
-  const box = document.querySelector(".box");
+  const box = document.querySelector("#input-list");
   const salary = document.querySelectorAll(".componentWrapper");
   salary.forEach((salary) => {
     box.removeChild(salary);
@@ -91,11 +91,11 @@ function monthList(a) {
   //create inputs
   for (let i = 0; i < a; i++, monthCount++, mes++) {
     //content wrapper
-    const box = document.querySelector(".box");
+    const box = document.querySelector("#input-list");
     const wrapper = document.createElement("label");
     const calculate = document.querySelector("#calculate");
     wrapper.setAttribute("class", "componentWrapper");
-    box.insertBefore(wrapper, calculate);
+    box.appendChild(wrapper);
 
     const header = document.createElement("span");
     header.setAttribute("class", "header");
