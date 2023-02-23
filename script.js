@@ -547,6 +547,8 @@ function createSalaryChart(dateArray, mappedSalary, inflationAdjustedSalary, acc
       maintainAspectRatio: false
     }
   });
+  
+  let invertedAdjustedLosses = finalAdjustedLosses.map(value => value * (-1));
   const chartTwo = document.querySelector("#adjustedChart");
   if (chartTwo == null) {
     const adjustedChart = document.createElement("canvas");
@@ -574,13 +576,13 @@ function createSalaryChart(dateArray, mappedSalary, inflationAdjustedSalary, acc
           // label: 'Perdidas totales ajustadas a "valor actual"',
           backgroundColor: "rgba(255,0,0,0.3)",
           borderColor: "rgba(255,0,0,0.6)",
-          data: finalAdjustedLosses
+          data: invertedAdjustedLosses
         }]
     },
     options: {
       title: {
         display: true,
-        text: 'Perdidas ajustadas por inflación'
+        text: 'Ganancias/Perdidas ajustadas por inflación'
       },
       maintainAspectRatio: false,
       legend: {
