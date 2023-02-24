@@ -345,8 +345,8 @@ function calculateTax() {
   const box = document.querySelector(".box");
   const output = document.querySelector(".output");
   output.setAttribute("style", "padding-top: 0px; color: black; font-size: 20px;");
-  output.innerText = `Según INDEC tu salario acumula una perdida de $${numberWithCommas(calculation)} respecto de la inflación en el periodo comprendido entre ${getDateName(startMonth, startYear)} y ${getDateName(endMonth, endYear)}.`;
-  const twitText = `Según INDEC mi salario acumula una perdida de $${numberWithCommas(calculation)} respecto de la inflación en el periodo comprendido entre ${getDateName(startMonth, startYear)} y ${getDateName(endMonth, endYear)}.`;
+  output.innerText = `Según INDEC tu salario acumuló una perdida total de $${numberWithCommas(calculation)} respecto de la inflación en el periodo comprendido entre ${getDateName(startMonth, startYear)} y ${getDateName(endMonth, endYear)}.`;
+  const twitText = `Según INDEC mi salario acumuló una perdida total de $${numberWithCommas(calculation)} respecto de la inflación en el periodo comprendido entre ${getDateName(startMonth, startYear)} y ${getDateName(endMonth, endYear)}.`;
   box.appendChild(output);
 
   //set twit button settings
@@ -443,7 +443,7 @@ function calculateMinimumWage() {
   const box = document.querySelector(".box");
   const output = document.querySelector(".output");
   output.setAttribute("style", "padding-top: 0px; color: black; font-size: 20px;");
-  output.innerText = `Según INDEC el Salario Minimo Vital y Movil acumula una perdida de $${numberWithCommas(calculation)} respecto de la inflación en el periodo comprendido entre ${getDateName(startMonth, startYear)} y ${getDateName(endMonth, endYear)}.`;
+  output.innerText = `Según INDEC el Salario Minimo Vital y Movil acumuló una perdida total de $${numberWithCommas(calculation)} respecto de la inflación en el periodo comprendido entre ${getDateName(startMonth, startYear)} y ${getDateName(endMonth, endYear)}.`;
   const twitText = output.innerText;
   box.appendChild(output);
   tweetButton(twitText);
