@@ -7,11 +7,11 @@ inflacion.value = lastInflation;
 
 function compoundInflation() {
     const mesesValue = 12;
-    let finalInflation = (1 + lastInflation/ 100);
+    let finalInflation = (1 + lastInflation / 100);
     for (let i = 1, meses = mesesValue; i < meses; i++) {
-        finalInflation = (lastInflation/ 100 + 1) * finalInflation;
+        finalInflation = (lastInflation / 100 + 1) * finalInflation;
     };
-    finalInflation = Math.floor((finalInflation-1) * 1000)/10;
+    finalInflation = Math.floor((finalInflation - 1) * 1000) / 10;
     console.log(finalInflation);
     return finalInflation;
 }
@@ -26,11 +26,19 @@ calculate.addEventListener('click', () => {
     const mesesInput = document.querySelector('input[name="meses-faltantes"]');
     const mesesValue = mesesInput.value;
     const inflacion = document.querySelector('input[name="inflacion-estimada"]');
-    let finalInflation = (1 + inflacion.value / 100);
-    for (let i = 1, meses = mesesValue; i < meses; i++) {
-        finalInflation = (inflacion.value / 100 + 1) * finalInflation;
-        console.log(inflacion.value, finalInflation)
+    let finalInflation = 0;
+    const priceIndex = Array(mesesValue);
+    const monthLabel = Array(mesesValue);
+    for (let i = 0, meses = mesesValue; i < meses; i++) {
+        if (i < 1) {
+            finalInflation = (1 + inflacion.value / 100)
+        } else {
+            finalInflation = (inflacion.value / 100 + 1) * finalInflation;
+        }
+        monthLabel[i] = i;
+        priceIndex[i] = finalInflation;
     }
+    console.table(priceIndex);
     let calculation = (finalInflation * precio.value)
 
     const box = document.querySelector(".box");
@@ -38,4 +46,59 @@ calculate.addEventListener('click', () => {
     output.setAttribute("style", "padding-top: 0px; color: black; font-size: 20px;");
     output.innerText = `Necesitas ahorrar un total de $${calculation} para comprar tu producto en ${mesesValue} meses`;
     box.appendChild(output);
+
+    createSalaryChart(priceIndex, monthLabel)
 });
+
+function createSalaryChart(priceIndex, monthLabel) {
+    const chartOne = document.querySelector("#price-index");
+    const box = document.querySelector('.box');
+    if (chartOne == null) {
+        const priceIndex = document.createElement("canvas");
+        priceIndex.setAttribute('id', 'price-index');
+        box.appendChild(priceIndex);
+    }
+    else {
+        box.removeChild(chartOne);
+        const priceIndex = document.createElement("canvas");
+        priceIndex.setAttribute('id', 'price-index');
+        box.appendChild(priceIndex);
+    }
+    //set month label array
+
+
+    let posColour = 'rgba(52, 152, 219, .3)',
+        negColour = 'rgba(255, 87, 51, .3)',
+        posBackgroundColour = 'rgba(52, 152, 219, .6)',
+        negBackgroundColour = 'rgba(255, 87, 51, .6)'
+
+    new Chart("price-index", {
+        type: "line",
+        data: {
+            labels: monthLabel,
+            datasets: [{
+                label: 'Salario ajustado x inflación',
+                fill: { target: 'origin', above: negColour },
+                backgroundColor: negBackgroundColour,
+                borderColor: negBackgroundColour,
+                data: priceIndex,
+                tension: '0.5',
+                pointRadius: '0'
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'Evolucion de precio estimada',
+            },
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false,
+                }
+            }
+        },
+    });
+
+
+}
