@@ -611,7 +611,12 @@ function createSalaryChart(dateArray, mappedSalary, inflationAdjustedSalary, acc
         legend: {
             display: false,
         }
-    }
+    },
+    scales: {
+      y: {  
+         beginAtZero: true
+         }
+      },
     }
   });
 }
