@@ -39,16 +39,20 @@ calculate.addEventListener('click', () => {
         priceIndex[i] = finalInflation;
     }
     console.table(priceIndex);
-    let calculation = (finalInflation * precio.value)
+    let calculation = Math.floor(finalInflation * precio.value*100)/100
 
     const box = document.querySelector(".box");
     const output = document.querySelector(".output");
     output.setAttribute("style", "padding-top: 0px; color: black; font-size: 20px;");
-    output.innerText = `Necesitas ahorrar un total de $${calculation} para comprar tu producto en ${mesesValue} meses`;
+    output.innerText = `Necesitas ahorrar un total de $${numberWithCommas(calculation)} para comprar tu producto en ${mesesValue} meses`;
     box.appendChild(output);
 
     createSalaryChart(priceIndex, monthLabel)
 });
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+  }
 
 function createSalaryChart(priceIndex, monthLabel) {
     const chartOne = document.querySelector("#price-index");
