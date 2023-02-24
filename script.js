@@ -453,7 +453,7 @@ function calculateMinimumWage() {
 }
 
 function numberWithCommas(x) {
-    return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+  return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 }
 
 function tweetButton(outputInnerText) {
@@ -525,11 +525,11 @@ function createSalaryChart(dateArray, mappedSalary, inflationAdjustedSalary, acc
     element.label = element.Mes + "/" + element.Año;
   });
   const dateLabel = dateArray.map((index) => index.label);
-  
-let posColour = 'rgba(52, 152, 219, .3)',
-  negColour = 'rgba(255, 87, 51, .3)',
+
+  let posColour = 'rgba(52, 152, 219, .3)',
+    negColour = 'rgba(255, 87, 51, .3)',
     posBackgroundColour = 'rgba(52, 152, 219, .6)',
-  negBackgroundColour = 'rgba(255, 87, 51, .6)'
+    negBackgroundColour = 'rgba(255, 87, 51, .6)'
 
   new Chart("myChart", {
     type: "line",
@@ -537,7 +537,7 @@ let posColour = 'rgba(52, 152, 219, .3)',
       labels: dateLabel,
       datasets: [{
         label: 'Salario ajustado x inflación',
-        fill: {target: 'origin',above: negColour},
+        fill: { target: 'origin', above: negColour },
         backgroundColor: negBackgroundColour,
         borderColor: negBackgroundColour,
         data: inflationAdjustedSalary,
@@ -545,7 +545,7 @@ let posColour = 'rgba(52, 152, 219, .3)',
         pointRadius: '0'
       }, {
         label: 'Salario',
-        fill: {target: 'origin',above: posColour},
+        fill: { target: 'origin', above: posColour },
         backgroundColor: posBackgroundColour,
         borderColor: posBackgroundColour,
         data: mappedSalary,
@@ -554,14 +554,16 @@ let posColour = 'rgba(52, 152, 219, .3)',
       }]
     },
     options: {
-      title: {
-        display: true,
-        text: 'Evolucion salarial contra inflación',
+      plugins: {
+        title: {
+          display: true,
+          text: 'Evolucion salarial contra inflación',
+        },
       },
-      maintainAspectRatio: false
+      maintainAspectRatio: false,
     }
   });
-  
+
   let invertedAdjustedLosses = finalAdjustedLosses.map(value => value * (-1));
   const chartTwo = document.querySelector("#adjustedChart");
   if (chartTwo == null) {
@@ -589,7 +591,7 @@ let posColour = 'rgba(52, 152, 219, .3)',
           label: 'Perdidas/Ganancias',
           backgroundColor: negBackgroundColour,
           borderColor: negBackgroundColour,
-          fill: {target: 'origin',above: posColour,below: negColour},
+          fill: { target: 'origin', above: posColour, below: negColour },
           data: invertedAdjustedLosses,
           tension: '0.5',
           pointRadius: '0',
@@ -601,9 +603,15 @@ let posColour = 'rgba(52, 152, 219, .3)',
         text: 'Ganancias/Perdidas ajustadas por inflación'
       },
       maintainAspectRatio: false,
-      legend: {
-        display: false
-      }
-     }
+      plugins: {
+        title: {
+          display: true,
+          text: 'Ganancias/Perdidas ajustadas por inflación'
+        },
+        legend: {
+            display: false,
+        }
+    }
+    }
   });
 }
