@@ -342,8 +342,8 @@ function calculateTax() {
   calculation = Math.floor(totalLosses * 100) / 100;
 
   //output value on DOM
-  const box = document.querySelector(".box");
-  const output = document.querySelector(".output");
+  const box = document.querySelector(".box > .tax");
+  const output = document.querySelector(".tax > .output");
   output.setAttribute("style", "padding-top: 0px; color: black; font-size: 20px;");
   output.innerText = `Según INDEC tu salario acumuló una perdida total de $${numberWithCommas(calculation)} respecto de la inflación en el periodo comprendido entre ${getDateName(startMonth, startYear)} y ${getDateName(endMonth, endYear)}.`;
   const twitText = `Según INDEC mi salario acumuló una perdida total de $${numberWithCommas(calculation)} respecto de la inflación en el periodo comprendido entre ${getDateName(startMonth, startYear)} y ${getDateName(endMonth, endYear)}.`;
@@ -440,8 +440,8 @@ function calculateMinimumWage() {
   calculation = Math.floor(totalLosses * 100) / 100;
 
   //output value on DOM
-  const box = document.querySelector(".box");
-  const output = document.querySelector(".output");
+  const box = document.querySelector(".box > .tax");
+  const output = document.querySelector(".tax > .output");
   output.setAttribute("style", "padding-top: 0px; color: black; font-size: 20px;");
   output.innerText = `Según INDEC el Salario Minimo Vital y Movil acumuló una perdida total de $${numberWithCommas(calculation)} respecto de la inflación en el periodo comprendido entre ${getDateName(startMonth, startYear)} y ${getDateName(endMonth, endYear)}.`;
   const twitText = output.innerText;
@@ -508,7 +508,7 @@ minimumWageButton.addEventListener("click", () => {
 
 function createSalaryChart(dateArray, mappedSalary, inflationAdjustedSalary, accumulatedLosses, finalAdjustedLosses) {
   const chartOne = document.querySelector("#myChart");
-  const box = document.querySelector('.box');
+  const box = document.querySelector('.box > .tax');
   if (chartOne == null) {
     const myChart = document.createElement("canvas");
     myChart.setAttribute('id', 'myChart');
