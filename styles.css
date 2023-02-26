@@ -3,7 +3,6 @@
 
 /* start tab styling */
 .tabs {
-  border-radius: 10px;
   background-color: rgb(199 212 222/50%);
   display: flex;
   justify-content: space-around;
@@ -21,7 +20,6 @@
 }
 
 .tab.active{
-  border-radius: 10px 10px 0px 0px;
   background-color: white;
   border-bottom: 3px solid #F1C40F;
 }
@@ -50,10 +48,6 @@
   background-color: white;
 }
 
-.tax, .price {
- padding: 16px 64px;
-}
-
 body {
   min-height: 100vh;
 }
@@ -65,7 +59,7 @@ body {
 
 h1,
 p {
-  text-align: center;
+  /* text-align: center; */
   width: 100%;
   font-weight: 400;
 }
@@ -75,9 +69,16 @@ h1 {
   margin-bottom: 4px;
 }
 
+#subtitle{
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: 500;
+  color: #1e2a36;
+}
+
 p {
   font-size: 20px;
-  color: #696969;
+  color: #1e2a36;
   padding-left: 2px;
 }
 
@@ -86,7 +87,7 @@ p {
   justify-content: center;
   align-items: center;
   color: black;
-  background-color: rgb(199, 212, 222);
+  background-color: rgb(255, 255, 255);
   border: none;
   border-radius: 5px;
   width: 100%;
@@ -163,7 +164,7 @@ p {
   font-weight: 500;
 }
 
-.input-salary {
+.number-input {
   border: 2px solid rgb(239, 239, 239);
   border-radius: 5px;
   margin-left: 0px;
@@ -218,39 +219,45 @@ label>input {
 
 @media only screen and (min-width: 540px) {
   body {
+    margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     background-color: #2C3E50;
   }
 
+  header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* position: relative; */
+    background-color: #1e2a36;
+    width: 100%;
+    height: 200px;
+  }
+  
   .box {
-    margin-top: 72px;
+    margin-top: 0px;
     margin-bottom: 32px;
     padding: 0px 0px 32px;
-    border-radius: 10px;
+    border-radius: 0px 0px 10px 10px;
     min-width: 350px;
-    max-width: 650px;
+    max-width: 700px;
     box-shadow: 1px 7px 30px -10px rgb(0 0 0 / 77%);
   }
 
+  .tax, .price {
+    padding: 16px 64px;
+   }
+  
   h1 {
+    width: 340px;
+    margin-top: 0;
     color: white;
     margin-bottom: 4px;
     font-size: 4em;
-    padding-left: 45px;
-  }
-
-  .icon-header {
-    position: absolute;
-    top: 3px;
-    left: -90px;
-  }
-
-  #title {
-    position: relative;
-  }
+    padding-left: 5px;
+  }  
 
   #upper {
     padding: 15px;
@@ -292,23 +299,47 @@ label>input {
     display: flex;
     margin: 0;
     width: 100vw;
+    background-color:#1e2a36;
   }
 
   body>div {
     width: 100%;
   }
 
+  header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* position: relative; */
+    width: 100%;
+    height: 200px;
+  }
+
+  h1 {
+    width: 260px;
+    margin-top: 0;
+    color: white;
+    margin-bottom: 4px;
+    font-size: 3em;
+    padding-top: 10px;
+    padding-left: 5px;
+  } 
+
   .box {
     box-sizing: border-box;
-    padding: 32px 32px 0px 32px;
+    padding: 0px;
     width: 100%;
   }
+
+  .tax, .price {
+    padding: 16px 32px;
+   }
 
   #subtitle {
     font-size: 24px;
     padding: 4px 0px 16px;
     margin: 0;
-    color: rgb(66, 66, 66);
   }
 
   #upper {
@@ -341,7 +372,7 @@ label>input {
   }
 
   #footer-anchor {
-    color: black;
+    color: white;
   }
 
   .chart {

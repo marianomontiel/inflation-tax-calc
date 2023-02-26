@@ -60,7 +60,7 @@ function monthList(a) {
 
   //remove inputs before adding newones
   const box = document.querySelector("#input-list");
-  const salary = document.querySelectorAll(".componentWrapper");
+  const salary = document.querySelectorAll("#input-list > .componentWrapper");
   salary.forEach((salary) => {
     box.removeChild(salary);
   });
@@ -114,7 +114,8 @@ function monthList(a) {
     const input = document.createElement("input");
     input.type = "number";
     input.setAttribute("name", `salary-${mes}`);
-    input.setAttribute("class", "input-salary");
+    input.setAttribute("class", "number-input");
+    input.classList.add("tax-input");
     wrapper.appendChild(input);
   }
 }
@@ -273,7 +274,7 @@ const minimumWage = [
 let calculation = 0;
 function calculateTax() {
   //convert form into Array
-  const salaryForm = document.querySelectorAll(".input-salary");
+  const salaryForm = document.querySelectorAll(".number-input");
   const salaryFormData = new FormData();
   salaryForm.forEach((salaryForm) => {
     salaryFormData.append(salaryForm.name, salaryForm.value);
@@ -356,12 +357,11 @@ function calculateTax() {
 }
 //Fills the entire input list with the salary values used
 function fillAll(Array) {
-  let inputArray = [...document.querySelectorAll("input")];
-  console.log(inputArray);
-  for (let i = 2; i < inputArray.length; i++) {
+  let inputArray = [...document.querySelectorAll(".tax-input")];
+  for (let i = 0; i < inputArray.length; i++) {
     if (inputArray[i].getAttribute("type") != "month") {
-      inputArray[i].value = Array[i - 2];
-      console.log(Array[i - 2]);
+      inputArray[i].value = Array[i];
+      console.log(Array[i]);
     }
   }
 }

@@ -12,10 +12,10 @@
 
 <body>
   <div>
-    <h1><span id="title">
+    <header>
       <img class="icon-header" src="./icons/money-printer.png" alt="money-printer">
-    </span><strong>Impuestazo</strong></h1>
-    
+      <h1><strong>Impuestazo</strong></h1>
+    </header>
     <div class='box'>
       <ul class="tabs">
         <li class="tab active" data-tab-target="#tax">Impuesto inflacionario</li>
@@ -41,23 +41,22 @@
           <label class="componentWrapper">
           <span class="header">Salario Noviembre 2022</span>
           <span name="salary-0" class="salary">$</span>
-          <input name="salary-0" type="number" class="input-salary">
+          <input name="salary-0" type="number" class="number-input tax-input">
           </label>
           <label class="componentWrapper">
           <span class="header">Salario Diciembre 2022</span>
           <span name="salary-1" class="salary">$</span>
-          <input name="salary-1" type="number" class="input-salary">
+          <input name="salary-1" type="number" class="number-input tax-input">
           </label>
           <label class="componentWrapper">
           <span class="header">Salario Enero 2023</span>
           <span name="salary-2" class="salary">$</span>
-          <input name="salary-2" type="number" class="input-salary">
+          <input name="salary-2" type="number" class="number-input tax-input">
         </label>
         </div>
   
         <button id='calculate' class="calculate">CALCULAR</button>
         <p class='output'></p>
-        <!--  <canvas id="myChart" style="width:100%;max-width:700px"></canvas>  -->
       </div>
       <div id="price" class="price" data-tab-content>
           <!-- <img class="icon-header" src="./icons/money-printer.png" alt="money-printer"> -->
@@ -66,19 +65,19 @@
           <label class="componentWrapper">
               <span class="header">Precio actual</span>
               <span name="Precio" class="salary">$</span>
-              <input name="Precio" class="input-salary">
+              <input name="Precio" class="number-input">
           </label>
     
           <label class="componentWrapper">
               <span class="header">¿Cuantos meses faltan para la compra?</span>
               <span name="meses-faltantes" class="salary"></span>
-              <input name="meses-faltantes" class="input-salary">
+              <input name="meses-faltantes" class="number-input">
           </label>
     
           <label id="indec">
               <span class="header">Inflación mensual estimada<span id="inflacionEstimada" style="display: block; font-size: 0.75em;"> </span></span>
               <span name="inflacion-estimada" class="salary">%</span>
-              <input name="inflacion-estimada" class="input-salary">
+              <input name="inflacion-estimada" class="number-input">
           </label>
     
           <button id='calculate-price' class="calculate">CALCULAR</button>
@@ -97,7 +96,6 @@
     </div>
     <div>
       <a href="./funcionamiento.html" id="footer-anchor">¿Como realizamos los calculos?</a>
-      <a href="./calculadora-de-compras.html" id="footer-anchor">Calcula el costo de futuras compras</a>
     </div>
   </div>
   </div>

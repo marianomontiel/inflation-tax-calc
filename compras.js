@@ -47,14 +47,14 @@ calculate.addEventListener('click', () => {
     output.innerText = `Necesitas ahorrar un total de $${numberWithCommas(calculation)} para comprar tu producto en ${mesesValue} meses`;
     box.appendChild(output);
 
-    createSalaryChart(priceIndex, monthLabel)
+    createPriceChart(priceIndex, monthLabel)
 });
 
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
   }
 
-function createSalaryChart(priceIndex, monthLabel) {
+function createPriceChart(priceIndex, monthLabel) {
     const chartOne = document.querySelector("#price-index");
     const box = document.querySelector('.box > .price');
     if (chartOne == null) {
