@@ -455,6 +455,7 @@ function numberWithCommas(x) {
 function tweetButton(outputInnerText) {
   const taxDiv = document.querySelector('.tax')
   const tweetAnchor = document.querySelector("#tweet-button");
+  tweetAnchor.classList.add('tweet-button')
   const tweetInnerText = outputInnerText+" Esto fue calculado usando el sitio web:"
     tweetAnchor.innerText = 'Twitear resultados';
     const tweetImage = document.createElement('img');
