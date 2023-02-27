@@ -17,12 +17,14 @@
   padding-bottom: 10px;
   text-align: center;
   width: 50%;
+  border-bottom: 3px solid rgb(199 212 222/0%);
+  transition: border-bottom .3s;
 }
 
 .tab.active{
   background-color: white;
   border-bottom: 3px solid #F1C40F;
-}
+  }
 
 [data-tab-content] {
   display: none;
