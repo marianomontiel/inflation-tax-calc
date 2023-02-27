@@ -199,6 +199,24 @@ footer {
   padding-top: 19px;
 }
 
+#tweet-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 160px;
+  height: 30px;
+  text-decoration: none;
+  color: white;
+  background-color: #1da1f2;
+  border-radius: 10px;
+  padding: 5px;  
+}
+
+#tweet-button > img {
+  margin: 3px;
+}
+
 #footer-anchor {
   display: flex;
   justify-content: center;
