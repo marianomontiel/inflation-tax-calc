@@ -473,7 +473,7 @@ calculateButton.addEventListener("click", () => {
 const minimumWageButton = document.querySelector("#calculate-1");
 minimumWageButton.addEventListener("click", () => {
   calculateMinimumWage();
-  // window.scrollTo(0, document.body.scrollHeight, "smooth");
+  window.scrollTo(0, 896, "smooth");
 });
 
 function createSalaryChart(dateArray, mappedSalary, inflationAdjustedSalary, accumulatedLosses, finalAdjustedLosses) {
