@@ -440,7 +440,7 @@ function calculateMinimumWage() {
   const output = document.querySelector(".tax > .output");
   output.setAttribute("style", "padding-top: 0px; color: black; font-size: 20px;");
   output.innerText = `Según INDEC el Salario Minimo Vital y Movil acumuló una perdida total de $${numberWithCommas(calculation)} respecto de la inflación en el periodo comprendido entre ${getDateName(startMonth, startYear)} y ${getDateName(endMonth, endYear)}.`;
-  const twitText = output.innerText;
+  const twitText = encodeURIComponent(output.innerText);
   box.appendChild(output);
   tweetButton(twitText);
 
@@ -453,42 +453,15 @@ function numberWithCommas(x) {
 }
 
 function tweetButton(outputInnerText) {
-  const mediaButtonsDiv = document.querySelector(".social-media-buttons");
-  const iframe = document.querySelector("iframe");
-  if (iframe == null) {
-    const twit = document.querySelector("#twitter");
-    twit.setAttribute("class", "twitter-share-button");
-    twit.setAttribute(
-      "data-text",
-      `${outputInnerText} Esto fue calculado usando el sitio web:`
-    );
-
-    let addScript = document.createElement("script");
-    addScript.setAttribute("id", "tweet-script");
-    addScript.setAttribute("src", "https://platform.twitter.com/widgets.js");
-    document.head.appendChild(addScript);
-  } else {
-    mediaButtonsDiv.removeChild(iframe);
-    // document.head.removeChild(addScript);
-    const tweetButton = document.createElement("a");
-    tweetButton.setAttribute("class", "twitter-share-button");
-    tweetButton.setAttribute(
-      "data-text",
-      `${outputInnerText} Esto fue calculado usando el sitio web:`
-    );
-    tweetButton.setAttribute("href", "https://twitter.com/intent/tweet");
-    tweetButton.setAttribute("data-size", "large");
-    tweetButton.setAttribute("data-url", "https://impuestazo.com.ar");
-    tweetButton.setAttribute("data-hashtags", "impuestazo");
-    tweetButton.setAttribute("data-lang", "es");
-    tweetButton.setAttribute("data-show-count", "true");
-    mediaButtonsDiv.appendChild(tweetButton);
-
-    var addScript = document.createElement("script");
-    addScript.setAttribute("id", "tweet-script");
-    addScript.setAttribute("src", "https://platform.twitter.com/widgets.js");
-    document.head.appendChild(addScript);
-  }
+  const taxDiv = document.querySelector('.tax')
+  const tweetAnchor = document.querySelector("#tweet-button");
+  const tweetInnerText = outputInnerText+" Esto fue calculado usando el sitio web:"
+    tweetAnchor.innerText = 'Twitear resultados';
+    const tweetImage = document.createElement('img');
+    tweetImage.setAttribute('src', './icons/twitter-white.svg');
+    tweetAnchor.setAttribute("href", `https://twitter.com/intent/tweet?hashtags=impuestazo&original_referer=https%3A%2F%2Fwww.impuestazo.com.ar%2F&ref_src=twsrc%5Etfw%7Ctwcamp%5Ebuttonembed%7Ctwterm%5Eshare%7Ctwgr%5E&text=${tweetInnerText}&url=https%3A%2F%2Fimpuestazo.com.ar`);
+    taxDiv.appendChild(tweetAnchor);
+    tweetAnchor.appendChild(tweetImage);
 }
 
 const calculateButton = document.querySelector("#calculate");
