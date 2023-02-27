@@ -199,13 +199,13 @@ footer {
   padding-top: 19px;
 }
 
-#tweet-button {
+.tweet-button {
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  width: 170px;
-  height: 25px;
+  width: 160px;
+  height: 30px;
   text-decoration: none;
   color: white;
   background-color: #1da1f2;
