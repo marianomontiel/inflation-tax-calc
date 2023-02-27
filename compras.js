@@ -12,7 +12,6 @@ function compoundInflation() {
         finalInflation = (lastInflation / 100 + 1) * finalInflation;
     };
     finalInflation = Math.floor((finalInflation - 1) * 1000) / 10;
-    console.log(finalInflation);
     return finalInflation;
 }
 const span = document.querySelector('#indec')
@@ -38,7 +37,6 @@ calculate.addEventListener('click', () => {
         monthLabel[i] = i;
         priceIndex[i] = finalInflation;
     }
-    console.table(priceIndex);
     let calculation = Math.floor(finalInflation * precio.value*100)/100
 
     const box = document.querySelector(".box > .price");

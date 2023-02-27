@@ -311,7 +311,6 @@ function calculateTax() {
   for (let i = 0, length = inflationArray.length; i < length; i++) {
     accumulatedLosses[i] = salaryAdjusted[i] - salaryArray[i];
   }
-  console.table(accumulatedLosses);
   // const totalLosses = accumulatedLosses.reduce((total, salaries) => total + salaries, 0);
 
   //Calculate the final $ amount and adjust it to the end of the period value(present value)
@@ -331,10 +330,6 @@ function calculateTax() {
       indexesToAdjustInflation[indexesToAdjustInflation.length - 1] *
       accumulatedLosses[i];
   }
-  console.table(salaryArray);
-  console.table(salaryAdjusted);
-  console.table(finalAdjustedLosses);
-
   const totalLosses = finalAdjustedLosses.reduce(
     (total, monthlylosses) => total + monthlylosses,
     0
@@ -361,7 +356,6 @@ function fillAll(Array) {
   for (let i = 0; i < inputArray.length; i++) {
     if (inputArray[i].getAttribute("type") != "month") {
       inputArray[i].value = Array[i];
-      console.log(Array[i]);
     }
   }
 }
