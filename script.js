@@ -408,7 +408,6 @@ function calculateMinimumWage() {
   for (let i = 0, length = inflationArray.length; i < length; i++) {
     accumulatedLosses[i] = salaryAdjusted[i] - wageMapped[i];
   }
-  console.table(accumulatedLosses);
   // const totalLosses = accumulatedLosses.reduce((total, salaries) => total + salaries, 0);
 
   //Calculate the final $ amount and adjust it to the end of the period value(present value)
@@ -428,9 +427,6 @@ function calculateMinimumWage() {
       indexesToAdjustInflation[indexesToAdjustInflation.length - 1] *
       accumulatedLosses[i];
   }
-  console.table(wageMapped);
-  console.table(salaryAdjusted);
-  console.table(finalAdjustedLosses);
 
   const totalLosses = finalAdjustedLosses.reduce(
     (total, monthlylosses) => total + monthlylosses,
@@ -503,7 +499,7 @@ calculateButton.addEventListener("click", () => {
 const minimumWageButton = document.querySelector("#calculate-1");
 minimumWageButton.addEventListener("click", () => {
   calculateMinimumWage();
-  window.scrollTo(0, document.body.scrollHeight, "smooth");
+  // window.scrollTo(0, document.body.scrollHeight, "smooth");
 });
 
 function createSalaryChart(dateArray, mappedSalary, inflationAdjustedSalary, accumulatedLosses, finalAdjustedLosses) {
