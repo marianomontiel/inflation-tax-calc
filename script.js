@@ -202,7 +202,7 @@ const inflationTable = [
 let calculation = 0;
 function calculateTax() {
   //convert form into Array
-  const salaryForm = document.querySelectorAll(".number-input");
+  const salaryForm = document.querySelectorAll(".tax-input");
   const salaryFormData = new FormData();
   salaryForm.forEach((salaryForm) => {
     salaryFormData.append(salaryForm.name, salaryForm.value);
@@ -275,8 +275,12 @@ function calculateTax() {
 
   //set twit button settings
   tweetButton(twitText);
+  
+  //dolarize
+  const dolarizedInflationAdjustedSalary = dolarizedSalary(salaryAdjusted);
+  const dolarizedSalaries = dolarizedSalary(salaryArray);  
   //new charts
-  createSalaryChart(filterTable, salaryArray, salaryAdjusted, accumulatedLosses, finalAdjustedLosses);
+  createSalaryChart(filterTable, salaryArray, salaryAdjusted, accumulatedLosses, finalAdjustedLosses, dolarizedInflationAdjustedSalary, dolarizedSalaries);
 }
 
 //Fuente https://datos.gob.ar/dataset/sspm-salario-minimo-vital-movil-pesos-corrientes/archivo/sspm_57.1
@@ -2116,7 +2120,12 @@ function createSalaryChart(dateArray, mappedSalary, inflationAdjustedSalary, acc
         },
       },
       maintainAspectRatio: false,
-    }
+      scales: {
+        y: {  
+          grace: '100%'
+        }
+      },
+    },
   });
 
     //dolar chart
@@ -2162,6 +2171,11 @@ function createSalaryChart(dateArray, mappedSalary, inflationAdjustedSalary, acc
         },
       },
       maintainAspectRatio: false,
+      scales: {
+        y: {  
+          grace: '100%'
+        }
+      },
     }
   });
 
