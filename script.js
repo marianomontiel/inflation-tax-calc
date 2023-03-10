@@ -2122,7 +2122,7 @@ function createSalaryChart(dateArray, mappedSalary, inflationAdjustedSalary, acc
       maintainAspectRatio: false,
       scales: {
         y: {  
-          grace: '100%'
+          beginAtZero:false
         }
       },
     },
@@ -2173,7 +2173,7 @@ function createSalaryChart(dateArray, mappedSalary, inflationAdjustedSalary, acc
       maintainAspectRatio: false,
       scales: {
         y: {  
-          grace: '100%'
+          beginAtZero:false
         }
       },
     }
