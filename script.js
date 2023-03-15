@@ -7,8 +7,8 @@ let startInput = document.querySelector("#start");
 let endInput = document.querySelector("#end");
 
 //assign initial values
-startInput.value = "2022-11";
-endInput.value = "2023-01";
+startInput.value = "2022-12";
+endInput.value = "2023-02";
 let startMonth = parseInt(startInput.value.slice(-2));
 let startYear = parseInt(startInput.value.slice(0, 4));
 let endMonth = parseInt(endInput.value.slice(-2));
@@ -196,7 +196,8 @@ const inflationTable = [
   { Mes: 10, Año: 2022, Index: 6.3 },
   { Mes: 11, Año: 2022, Index: 4.9 },
   { Mes: 12, Año: 2022, Index: 5.1 },
-  { Mes: 1, Año: 2023, Index: 6.0 }
+  { Mes: 1, Año: 2023, Index: 6.0 },
+  { Mes: 2, Año: 2023, Index: 6.6 }
 ];
 
 let calculation = 0;
