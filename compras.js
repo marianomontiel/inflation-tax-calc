@@ -16,7 +16,7 @@ function compoundInflation() {
 }
 const span = document.querySelector('#indec')
 const predeterminedInflation = document.querySelector('#inflacionEstimada');
-predeterminedInflation.innerText = `(${lastInflation}% Enero INDEC) - (${compoundInflation()}% anual)`
+predeterminedInflation.innerText = `(${lastInflation}% Febrero INDEC) - (${compoundInflation()}% anual)`
 
 
 const calculate = document.querySelector('#calculate-price');
