@@ -1,5 +1,5 @@
 //Populate span with last inflation value on database
-const lastInflation = 6
+const lastInflation = 6.6
 
 const precio = document.querySelector('input[name="Precio"]');
 const inflacion = document.querySelector('input[name="inflacion-estimada"]')
