@@ -7,8 +7,8 @@ let startInput = document.querySelector("#start");
 let endInput = document.querySelector("#end");
 
 //assign initial values
-startInput.value = "2022-12";
-endInput.value = "2023-02";
+startInput.value = "2023-01";
+endInput.value = "2023-03";
 let startMonth = parseInt(startInput.value.slice(-2));
 let startYear = parseInt(startInput.value.slice(0, 4));
 let endMonth = parseInt(endInput.value.slice(-2));
@@ -197,7 +197,8 @@ const inflationTable = [
   { Mes: 11, Año: 2022, Index: 4.9 },
   { Mes: 12, Año: 2022, Index: 5.1 },
   { Mes: 1, Año: 2023, Index: 6.0 },
-  { Mes: 2, Año: 2023, Index: 6.6 }
+  { Mes: 2, Año: 2023, Index: 6.6 },
+  { Mes: 3, Año: 2023, Index: 7.7 }
 ];
 
 let calculation = 0;
@@ -448,7 +449,33 @@ function calculateMinimumWage() {
   createSalaryChart(filterTable, wageMapped, salaryAdjusted, accumulatedLosses, finalAdjustedLosses, dolarizedInflationAdjustedSalary, dolarizedSalaries);
 }
 function dolarizedSalary(filteredSalaryArray) {
-  const dolarHistorico = [{"Fecha":"08/03/2023","Compra":367.00,"Venta":371.00},
+  const dolarHistorico =
+[{"Fecha":"14/04/2023","Compra":396.00,"Venta":400.00},
+{"Fecha":"13/04/2023","Compra":394.00,"Venta":398.00},
+{"Fecha":"12/04/2023","Compra":390.00,"Venta":394.00},
+{"Fecha":"11/04/2023","Compra":387.00,"Venta":391.00},
+{"Fecha":"10/04/2023","Compra":388.00,"Venta":392.00},
+{"Fecha":"05/04/2023","Compra":388.00,"Venta":392.00},
+{"Fecha":"04/04/2023","Compra":388.00,"Venta":392.00},
+{"Fecha":"03/04/2023","Compra":391.00,"Venta":395.00},
+{"Fecha":"31/03/2023","Compra":388.00,"Venta":393.00},
+{"Fecha":"30/03/2023","Compra":389.00,"Venta":393.00},
+{"Fecha":"29/03/2023","Compra":393.00,"Venta":397.00},
+{"Fecha":"28/03/2023","Compra":386.00,"Venta":390.00},
+{"Fecha":"28/03/2023","Compra":386.00,"Venta":390.00},
+{"Fecha":"27/03/2023","Compra":385.00,"Venta":389.00},
+{"Fecha":"23/03/2023","Compra":387.00,"Venta":391.00},
+{"Fecha":"22/03/2023","Compra":390.00,"Venta":394.00},
+{"Fecha":"21/03/2023","Compra":382.00,"Venta":386.00},
+{"Fecha":"20/03/2023","Compra":379.00,"Venta":383.00},
+{"Fecha":"17/03/2023","Compra":379.00,"Venta":383.00},
+{"Fecha":"16/03/2023","Compra":375.00,"Venta":379.00},
+{"Fecha":"15/03/2023","Compra":373.00,"Venta":377.00},
+{"Fecha":"14/03/2023","Compra":373.00,"Venta":377.00},
+{"Fecha":"13/03/2023","Compra":369.00,"Venta":373.00},
+{"Fecha":"10/03/2023","Compra":369.00,"Venta":373.00},
+{"Fecha":"09/03/2023","Compra":374.00,"Venta":378.00},
+{"Fecha":"08/03/2023","Compra":367.00,"Venta":371.00},
 {"Fecha":"07/03/2023","Compra":368.00,"Venta":372.00},
 {"Fecha":"06/03/2023","Compra":371.00,"Venta":375.00},
 {"Fecha":"03/03/2023","Compra":373.00,"Venta":377.00},
