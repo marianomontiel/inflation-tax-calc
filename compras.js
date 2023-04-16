@@ -1,5 +1,5 @@
 //Populate span with last inflation value on database
-const lastInflation = 6.6
+const lastInflation = 7.7
 
 const precio = document.querySelector('input[name="Precio"]');
 const inflacion = document.querySelector('input[name="inflacion-estimada"]')
@@ -16,7 +16,7 @@ function compoundInflation() {
 }
 const span = document.querySelector('#indec')
 const predeterminedInflation = document.querySelector('#inflacionEstimada');
-predeterminedInflation.innerText = `(${lastInflation}% Febrero INDEC) - (${compoundInflation()}% anual)`
+predeterminedInflation.innerText = `(${lastInflation}% Marzo INDEC) - (${compoundInflation()}% anual)`
 
 
 const calculate = document.querySelector('#calculate-price');
