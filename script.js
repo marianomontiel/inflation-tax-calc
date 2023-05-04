@@ -450,7 +450,19 @@ function calculateMinimumWage() {
 }
 function dolarizedSalary(filteredSalaryArray) {
   const dolarHistorico =
-[{"Fecha":"14/04/2023","Compra":396.00,"Venta":400.00},
+[[{"Fecha":"03/05/2023","Compra":467.00,"Venta":472.00},
+{"Fecha":"03/05/2023","Compra":469.00,"Venta":474.00},
+{"Fecha":"02/05/2023","Compra":464.00,"Venta":469.00},
+{"Fecha":"27/04/2023","Compra":462.00,"Venta":467.00},
+{"Fecha":"26/04/2023","Compra":469.00,"Venta":474.00},
+{"Fecha":"25/04/2023","Compra":490.00,"Venta":495.00},
+{"Fecha":"24/04/2023","Compra":457.00,"Venta":462.00},
+{"Fecha":"21/04/2023","Compra":437.00,"Venta":442.00},
+{"Fecha":"20/04/2023","Compra":427.00,"Venta":432.00},
+{"Fecha":"19/04/2023","Compra":418.00,"Venta":423.00},
+{"Fecha":"18/04/2023","Compra":413.00,"Venta":418.00},
+{"Fecha":"17/04/2023","Compra":403.00,"Venta":408.00},
+{"Fecha":"14/04/2023","Compra":396.00,"Venta":400.00},
 {"Fecha":"13/04/2023","Compra":394.00,"Venta":398.00},
 {"Fecha":"12/04/2023","Compra":390.00,"Venta":394.00},
 {"Fecha":"11/04/2023","Compra":387.00,"Venta":391.00},
