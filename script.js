@@ -7,8 +7,8 @@ let startInput = document.querySelector("#start");
 let endInput = document.querySelector("#end");
 
 //assign initial values
-startInput.value = "2023-01";
-endInput.value = "2023-03";
+startInput.value = "2023-02";
+endInput.value = "2023-04";
 let startMonth = parseInt(startInput.value.slice(-2));
 let startYear = parseInt(startInput.value.slice(0, 4));
 let endMonth = parseInt(endInput.value.slice(-2));
@@ -198,7 +198,8 @@ const inflationTable = [
   { Mes: 12, Año: 2022, Index: 5.1 },
   { Mes: 1, Año: 2023, Index: 6.0 },
   { Mes: 2, Año: 2023, Index: 6.6 },
-  { Mes: 3, Año: 2023, Index: 7.7 }
+  { Mes: 3, Año: 2023, Index: 7.7 },
+  { Mes: 4, Año: 2023, Index: 8.4 }
 ];
 
 let calculation = 0;
@@ -361,7 +362,10 @@ const minimumWage = [
 {Mes:12,Año:2022,Sueldo:61953.0},
 {Mes:1,Año:2023,Sueldo:65427.0},
 {Mes:2,Año:2023,Sueldo:67743.0},
-{Mes:3,Año:2023,Sueldo:69500.0}
+{Mes:3,Año:2023,Sueldo:69500.0},
+{Mes:4,Año:2023,Sueldo:80342.0},
+{Mes:5,Año:2023,Sueldo:84512.0},
+{Mes:6,Año:2023,Sueldo:87987.0}
 ];
 
 function calculateMinimumWage() {
@@ -450,7 +454,15 @@ function calculateMinimumWage() {
 }
 function dolarizedSalary(filteredSalaryArray) {
   const dolarHistorico =
-[{"Fecha":"03/05/2023","Compra":467.00,"Venta":472.00},
+[{"Fecha":"12/05/2023","Compra":469.00,"Venta":474.00},
+{"Fecha":"12/05/2023","Compra":470.00,"Venta":475.00},
+{"Fecha":"11/05/2023","Compra":467.00,"Venta":472.00},
+{"Fecha":"10/05/2023","Compra":466.00,"Venta":471.00},
+{"Fecha":"09/05/2023","Compra":465.00,"Venta":470.00},
+{"Fecha":"08/05/2023","Compra":464.00,"Venta":469.00},
+{"Fecha":"05/05/2023","Compra":463.00,"Venta":468.00},
+{"Fecha":"04/05/2023","Compra":464.00,"Venta":469.00},
+{"Fecha":"03/05/2023","Compra":467.00,"Venta":472.00},
 {"Fecha":"03/05/2023","Compra":469.00,"Venta":474.00},
 {"Fecha":"02/05/2023","Compra":464.00,"Venta":469.00},
 {"Fecha":"27/04/2023","Compra":462.00,"Venta":467.00},
