@@ -1,453 +1,158 @@
 //I should import a json to make script shorter
 //import myJson from './example.json' assert {type: 'json'};
 
-const salary = document.querySelector("#salary");
-
-let startInput = document.querySelector("#start");
-let endInput = document.querySelector("#end");
-
-//assign initial values
-startInput.value = "2022-11";
-endInput.value = "2023-01";
-let startMonth = parseInt(startInput.value.slice(-2));
-let startYear = parseInt(startInput.value.slice(0, 4));
-let endMonth = parseInt(endInput.value.slice(-2));
-let endYear = parseInt(endInput.value.slice(0, 4));
-
-startInput.addEventListener("change", () => {
-  startMonth = parseInt(startInput.value.slice(-2));
-  startYear = parseInt(startInput.value.slice(0, 4));
-  endMonth = parseInt(endInput.value.slice(-2));
-  endYear = parseInt(endInput.value.slice(0, 4));
-  const listLenght =
-    endYear * 12 + endMonth - (startYear * 12 + startMonth) + 1;
-  errorMessage(listLenght);
-});
-endInput.addEventListener("change", () => {
-  startMonth = parseInt(startInput.value.slice(-2));
-  startYear = parseInt(startInput.value.slice(0, 4));
-  endMonth = parseInt(endInput.value.slice(-2));
-  endYear = parseInt(endInput.value.slice(0, 4));
-  const listLenght =
-    endYear * 12 + endMonth - (startYear * 12 + startMonth) + 1;
-  errorMessage(listLenght);
-});
-
-function errorMessage(listLenght) {
-  if (listLenght >= 1) {
-    const inputs = document.querySelectorAll(".componentWrapper > input");
-    inputs.forEach((input) => (input.disabled = true));
-    const dateError = document.querySelector("#error");
-    dateError.innerText = "";
-    monthList(listLenght);
-  } else {
-    const dateError = document.querySelector("#error");
-    dateError.innerText = "Por favor, seleccione una fecha valida.";
-
-    const inputs = document.querySelectorAll(".componentWrapper > input");
-    inputs.forEach((input) => (input.disabled = true));
-  }
-}
-
-function getDateName(month, year) {
-  const date = new Date();
-  date.setMonth(month - 1);
-  date.setFullYear(year);
-
-  const name = date.toLocaleString("es", { month: "long" }) + " " + year;
-  return name;
-}
-
-function monthList(a) {
-  let mes = 0;
-
-  //remove inputs before adding newones
-  const box = document.querySelector("#input-list");
-  const salary = document.querySelectorAll("#input-list > .componentWrapper");
-  salary.forEach((salary) => {
-    box.removeChild(salary);
-  });
-
-  //convert month number to string
-  function getMonthName(monthNumber) {
-    const date = new Date();
-    date.setMonth(monthNumber - 1);
-
-    const name = date.toLocaleString("es", { month: "long" });
-    const upper = name.slice(0, 1).toUpperCase();
-    const lower = name.slice(1);
-    return upper + lower;
-  }
-
-  let monthCount = startMonth; //counter for labeling inputs
-  let yearCount = startYear;
-  function getYear(initialYearNumber) {
-    if (monthCount > 12) {
-      monthCount = monthCount - 12;
-      yearCount++;
-      return yearCount;
-    } else {
-      return yearCount;
-    }
-  }
-
-  //create inputs
-  for (let i = 0; i < a; i++, monthCount++, mes++) {
-    //content wrapper
-    const box = document.querySelector("#input-list");
-    const wrapper = document.createElement("label");
-    const calculate = document.querySelector("#calculate");
-    wrapper.setAttribute("class", "componentWrapper");
-    box.appendChild(wrapper);
-
-    const header = document.createElement("span");
-    header.setAttribute("class", "header");
-    header.innerText = `Salario ${getMonthName(monthCount)} ${getYear(
-      yearCount
-    )}`;
-    wrapper.appendChild(header);
-
-    //salary inputs
-    const symbol = document.createElement("span");
-    symbol.setAttribute("name", `salary-${mes}`);
-    symbol.setAttribute("class", "salary");
-    symbol.innerText = "$";
-    wrapper.appendChild(symbol);
-
-    const input = document.createElement("input");
-    input.type = "number";
-    input.setAttribute("name", `salary-${mes}`);
-    input.setAttribute("class", "number-input");
-    input.classList.add("tax-input");
-    wrapper.appendChild(input);
-  }
-}
 //inflation array database
 const inflationTable = [
-  { Mes: 1, Año: 2017, Index: 1.6 },
-  { Mes: 2, Año: 2017, Index: 2.1 },
-  { Mes: 3, Año: 2017, Index: 2.4 },
-  { Mes: 4, Año: 2017, Index: 2.7 },
-  { Mes: 5, Año: 2017, Index: 1.4 },
-  { Mes: 6, Año: 2017, Index: 1.2 },
-  { Mes: 7, Año: 2017, Index: 1.7 },
-  { Mes: 8, Año: 2017, Index: 1.4 },
-  { Mes: 9, Año: 2017, Index: 1.9 },
-  { Mes: 10, Año: 2017, Index: 1.5 },
-  { Mes: 11, Año: 2017, Index: 1.4 },
-  { Mes: 12, Año: 2017, Index: 3.1 },
-  { Mes: 1, Año: 2018, Index: 1.8 },
-  { Mes: 2, Año: 2018, Index: 2.4 },
-  { Mes: 3, Año: 2018, Index: 2.3 },
-  { Mes: 4, Año: 2018, Index: 2.7 },
-  { Mes: 5, Año: 2018, Index: 2.1 },
-  { Mes: 6, Año: 2018, Index: 3.7 },
-  { Mes: 7, Año: 2018, Index: 3.1 },
-  { Mes: 8, Año: 2018, Index: 3.9 },
-  { Mes: 9, Año: 2018, Index: 6.5 },
-  { Mes: 10, Año: 2018, Index: 5.4 },
-  { Mes: 11, Año: 2018, Index: 3.2 },
-  { Mes: 12, Año: 2018, Index: 2.6 },
-  { Mes: 1, Año: 2019, Index: 2.9 },
-  { Mes: 2, Año: 2019, Index: 3.8 },
-  { Mes: 3, Año: 2019, Index: 4.7 },
-  { Mes: 4, Año: 2019, Index: 3.4 },
-  { Mes: 5, Año: 2019, Index: 3.1 },
-  { Mes: 6, Año: 2019, Index: 2.7 },
-  { Mes: 7, Año: 2019, Index: 2.2 },
-  { Mes: 8, Año: 2019, Index: 4 },
-  { Mes: 9, Año: 2019, Index: 5.9 },
-  { Mes: 10, Año: 2019, Index: 3.3 },
-  { Mes: 11, Año: 2019, Index: 4.3 },
-  { Mes: 12, Año: 2019, Index: 3.7 },
-  { Mes: 1, Año: 2020, Index: 2.3 },
-  { Mes: 2, Año: 2020, Index: 2 },
-  { Mes: 3, Año: 2020, Index: 3.3 },
-  { Mes: 4, Año: 2020, Index: 1.5 },
-  { Mes: 5, Año: 2020, Index: 1.5 },
-  { Mes: 6, Año: 2020, Index: 2.2 },
-  { Mes: 7, Año: 2020, Index: 1.9 },
-  { Mes: 8, Año: 2020, Index: 2.7 },
-  { Mes: 9, Año: 2020, Index: 2.8 },
-  { Mes: 10, Año: 2020, Index: 3.8 },
-  { Mes: 11, Año: 2020, Index: 3.2 },
-  { Mes: 12, Año: 2020, Index: 4 },
-  { Mes: 1, Año: 2021, Index: 4 },
-  { Mes: 2, Año: 2021, Index: 3.6 },
-  { Mes: 3, Año: 2021, Index: 4.8 },
-  { Mes: 4, Año: 2021, Index: 4.1 },
-  { Mes: 5, Año: 2021, Index: 3.3 },
-  { Mes: 6, Año: 2021, Index: 3.2 },
-  { Mes: 7, Año: 2021, Index: 3 },
-  { Mes: 8, Año: 2021, Index: 2.5 },
-  { Mes: 9, Año: 2021, Index: 3.5 },
-  { Mes: 10, Año: 2021, Index: 3.5 },
-  { Mes: 11, Año: 2021, Index: 2.5 },
-  { Mes: 12, Año: 2021, Index: 3.8 },
-  { Mes: 1, Año: 2022, Index: 3.9 },
-  { Mes: 2, Año: 2022, Index: 4.7 },
-  { Mes: 3, Año: 2022, Index: 6.7 },
-  { Mes: 4, Año: 2022, Index: 6 },
-  { Mes: 5, Año: 2022, Index: 5.1 },
-  { Mes: 6, Año: 2022, Index: 5.3 },
-  { Mes: 7, Año: 2022, Index: 7.4 },
-  { Mes: 8, Año: 2022, Index: 7 },
-  { Mes: 9, Año: 2022, Index: 6.2 },
-  { Mes: 10, Año: 2022, Index: 6.3 },
-  { Mes: 11, Año: 2022, Index: 4.9 },
-  { Mes: 12, Año: 2022, Index: 5.1 },
-  { Mes: 1, Año: 2023, Index: 6.0 }
+  { Mes:"01", Año: 2017, Index: 1.6 },
+  { Mes:"02", Año: 2017, Index: 2.1 },
+  { Mes:"03", Año: 2017, Index: 2.4 },
+  { Mes:"04", Año: 2017, Index: 2.7 },
+  { Mes:"05", Año: 2017, Index: 1.4 },
+  { Mes:"06", Año: 2017, Index: 1.2 },
+  { Mes:"07", Año: 2017, Index: 1.7 },
+  { Mes:"08", Año: 2017, Index: 1.4 },
+  { Mes:"09", Año: 2017, Index: 1.9 },
+  { Mes:"10", Año: 2017, Index: 1.5 },
+  { Mes:"11", Año: 2017, Index: 1.4 },
+  { Mes:"12", Año: 2017, Index: 3.1 },
+  { Mes:"01", Año: 2018, Index: 1.8 },
+  { Mes:"02", Año: 2018, Index: 2.4 },
+  { Mes:"03", Año: 2018, Index: 2.3 },
+  { Mes:"04", Año: 2018, Index: 2.7 },
+  { Mes:"05", Año: 2018, Index: 2.1 },
+  { Mes:"06", Año: 2018, Index: 3.7 },
+  { Mes:"07", Año: 2018, Index: 3.1 },
+  { Mes:"08", Año: 2018, Index: 3.9 },
+  { Mes:"09", Año: 2018, Index: 6.5 },
+  { Mes:"10", Año: 2018, Index: 5.4 },
+  { Mes:"11", Año: 2018, Index: 3.2 },
+  { Mes:"12", Año: 2018, Index: 2.6 },
+  { Mes:"01", Año: 2019, Index: 2.9 },
+  { Mes:"02", Año: 2019, Index: 3.8 },
+  { Mes:"03", Año: 2019, Index: 4.7 },
+  { Mes:"04", Año: 2019, Index: 3.4 },
+  { Mes:"05", Año: 2019, Index: 3.1 },
+  { Mes:"06", Año: 2019, Index: 2.7 },
+  { Mes:"07", Año: 2019, Index: 2.2 },
+  { Mes:"08", Año: 2019, Index: 4 },
+  { Mes:"09", Año: 2019, Index: 5.9 },
+  { Mes:"10", Año: 2019, Index: 3.3 },
+  { Mes:"11", Año: 2019, Index: 4.3 },
+  { Mes:"12", Año: 2019, Index: 3.7 },
+  { Mes:"01", Año: 2020, Index: 2.3 },
+  { Mes:"02", Año: 2020, Index: 2 },
+  { Mes:"03", Año: 2020, Index: 3.3 },
+  { Mes:"04", Año: 2020, Index: 1.5 },
+  { Mes:"05", Año: 2020, Index: 1.5 },
+  { Mes:"06", Año: 2020, Index: 2.2 },
+  { Mes:"07", Año: 2020, Index: 1.9 },
+  { Mes:"08", Año: 2020, Index: 2.7 },
+  { Mes:"09", Año: 2020, Index: 2.8 },
+  { Mes:"10", Año: 2020, Index: 3.8 },
+  { Mes:"11", Año: 2020, Index: 3.2 },
+  { Mes:"12", Año: 2020, Index: 4 },
+  { Mes:"01", Año: 2021, Index: 4 },
+  { Mes:"02", Año: 2021, Index: 3.6 },
+  { Mes:"03", Año: 2021, Index: 4.8 },
+  { Mes:"04", Año: 2021, Index: 4.1 },
+  { Mes:"05", Año: 2021, Index: 3.3 },
+  { Mes:"06", Año: 2021, Index: 3.2 },
+  { Mes:"07", Año: 2021, Index: 3 },
+  { Mes:"08", Año: 2021, Index: 2.5 },
+  { Mes:"09", Año: 2021, Index: 3.5 },
+  { Mes:"10", Año: 2021, Index: 3.5 },
+  { Mes:"11", Año: 2021, Index: 2.5 },
+  { Mes:"12", Año: 2021, Index: 3.8 },
+  { Mes:"01", Año: 2022, Index: 3.9 },
+  { Mes:"02", Año: 2022, Index: 4.7 },
+  { Mes:"03", Año: 2022, Index: 6.7 },
+  { Mes:"04", Año: 2022, Index: 6 },
+  { Mes:"05", Año: 2022, Index: 5.1 },
+  { Mes:"06", Año: 2022, Index: 5.3 },
+  { Mes:"07", Año: 2022, Index: 7.4 },
+  { Mes:"08", Año: 2022, Index: 7 },
+  { Mes:"09", Año: 2022, Index: 6.2 },
+  { Mes:"10", Año: 2022, Index: 6.3 },
+  { Mes:"11", Año: 2022, Index: 4.9 },
+  { Mes:"12", Año: 2022, Index: 5.1 },
+  { Mes:"01", Año: 2023, Index: 6.0 },
+  { Mes:"02", Año: 2023, Index: 6.6 },
+  { Mes:"03", Año: 2023, Index: 7.7 },
+  { Mes:"04", Año: 2023, Index: 8.4 },
+  { Mes:"05", Año: 2023, Index: 7.8 }
 ];
-
-let calculation = 0;
-function calculateTax() {
-  //convert form into Array
-  const salaryForm = document.querySelectorAll(".tax-input");
-  const salaryFormData = new FormData();
-  salaryForm.forEach((salaryForm) => {
-    salaryFormData.append(salaryForm.name, salaryForm.value);
-  });
-  let salaryArray = Array.from(salaryFormData.values());
-
-  //filter array to desired period
-  inflationTable.forEach(function (element) {
-    element.date = element.Mes + element.Año * 12;
-  });
-
-  const startDate = startMonth + startYear * 12;
-  const endDate = endMonth + endYear * 12;
-  const filterTable = inflationTable.filter(
-    (element) => element.date >= startDate && element.date <= endDate
-  );
-
-  //return array of inflation values
-  const inflationArray = filterTable.map((index) => index.Index);
-  //create inflation salary index
-  let inflationIndex = Array(inflationArray.length);
-  let salaryAdjusted = Array(inflationArray.length);
-  for (let i = 0, length = inflationArray.length; i < length; i++) {
-    if (i < 1) {
-      inflationIndex[0] = inflationArray[0] / 100 + 1;
-    } else {
-      inflationIndex[i] = inflationIndex[i - 1] * (inflationArray[i] / 100 + 1);
-    }
-    salaryAdjusted[i] = inflationIndex[i] * salaryArray[0];
-  }
-
-  //Calculate the final $ amount and adjust it to the end of the period value(present value)
-  let accumulatedLosses = Array(inflationArray.length);
-  for (let i = 0, length = inflationArray.length; i < length; i++) {
-    accumulatedLosses[i] = salaryAdjusted[i] - salaryArray[i];
-  }
-  // const totalLosses = accumulatedLosses.reduce((total, salaries) => total + salaries, 0);
-
-  //Calculate the final $ amount and adjust it to the end of the period value(present value)
-  let finalAdjustedLosses = Array(inflationArray.length);
-  let indexesToAdjustInflation = Array(inflationArray.length);
-
-  for (let i = 0, length = inflationArray.length; i < length; i++) {
-    for (let b = i, length = inflationArray.length; b < length; b++) {
-      if (b === i) {
-        indexesToAdjustInflation[i] = (inflationArray[b] / 100 + 1);// it was 1 before realizing inflation ocurrs also the final month
-      } else {
-        indexesToAdjustInflation[b] =
-          (inflationArray[b] / 100 + 1) * indexesToAdjustInflation[b - 1];
-      }
-    }
-    finalAdjustedLosses[i] =
-      indexesToAdjustInflation[indexesToAdjustInflation.length - 1] *
-      accumulatedLosses[i];
-  }
-  const totalLosses = finalAdjustedLosses.reduce(
-    (total, monthlylosses) => total + monthlylosses,
-    0
-  );
-
-  calculation = Math.floor(totalLosses * 100) / 100;
-
-  //output value on DOM
-  const box = document.querySelector(".box > .tax");
-  const output = document.querySelector(".tax > .output");
-  output.setAttribute("style", "padding-top: 0px; color: black; font-size: 20px;");
-  output.innerText = `Según INDEC tu salario acumuló una perdida total de $${numberWithCommas(calculation)} respecto de la inflación en el periodo comprendido entre ${getDateName(startMonth, startYear)} y ${getDateName(endMonth, endYear)}.`;
-  const twitText = `Según INDEC mi salario acumuló una perdida total de $${numberWithCommas(calculation)} respecto de la inflación en el periodo comprendido entre ${getDateName(startMonth, startYear)} y ${getDateName(endMonth, endYear)}.`;
-  box.appendChild(output);
-
-  //set twit button settings
-  tweetButton(twitText);
-  
-  //dolarize
-  const dolarizedInflationAdjustedSalary = dolarizedSalary(salaryAdjusted);
-  const dolarizedSalaries = dolarizedSalary(salaryArray);  
-  //new charts
-  createSalaryChart(filterTable, salaryArray, salaryAdjusted, accumulatedLosses, finalAdjustedLosses, dolarizedInflationAdjustedSalary, dolarizedSalaries);
-}
-
-//Fuente https://datos.gob.ar/dataset/sspm-salario-minimo-vital-movil-pesos-corrientes/archivo/sspm_57.1
-const minimumWage = [
-{Mes:1,Año:2017,Sueldo:8060.0},
-{Mes:2,Año:2017,Sueldo:8060.0},
-{Mes:3,Año:2017,Sueldo:8060.0},
-{Mes:4,Año:2017,Sueldo:8060.0},
-{Mes:5,Año:2017,Sueldo:8060.0},
-{Mes:6,Año:2017,Sueldo:8060.0},
-{Mes:7,Año:2017,Sueldo:8860.0},
-{Mes:8,Año:2017,Sueldo:8860.0},
-{Mes:9,Año:2017,Sueldo:8860.0},
-{Mes:10,Año:2017,Sueldo:8860.0},
-{Mes:11,Año:2017,Sueldo:8860.0},
-{Mes:12,Año:2017,Sueldo:8860.0},
-{Mes:1,Año:2018,Sueldo:9500.0},
-{Mes:2,Año:2018,Sueldo:9500.0},
-{Mes:3,Año:2018,Sueldo:9500.0},
-{Mes:4,Año:2018,Sueldo:9500.0},
-{Mes:5,Año:2018,Sueldo:9500.0},
-{Mes:6,Año:2018,Sueldo:9500.0},
-{Mes:7,Año:2018,Sueldo:10000.0},
-{Mes:8,Año:2018,Sueldo:10000.0},
-{Mes:9,Año:2018,Sueldo:10700.0},
-{Mes:10,Año:2018,Sueldo:10700.0},
-{Mes:11,Año:2018,Sueldo:10700.0},
-{Mes:12,Año:2018,Sueldo:11300.0},
-{Mes:1,Año:2019,Sueldo:11300.0},
-{Mes:2,Año:2019,Sueldo:11300.0},
-{Mes:3,Año:2019,Sueldo:12500.0},
-{Mes:4,Año:2019,Sueldo:12500.0},
-{Mes:5,Año:2019,Sueldo:12500.0},
-{Mes:6,Año:2019,Sueldo:12500.0},
-{Mes:7,Año:2019,Sueldo:12500.0},
-{Mes:8,Año:2019,Sueldo:14125.0},
-{Mes:9,Año:2019,Sueldo:15625.0},
-{Mes:10,Año:2019,Sueldo:16875.0},
-{Mes:11,Año:2019,Sueldo:16875.0},
-{Mes:12,Año:2019,Sueldo:16875.0},
-{Mes:1,Año:2020,Sueldo:16875.0},
-{Mes:2,Año:2020,Sueldo:16875.0},
-{Mes:3,Año:2020,Sueldo:16875.0},
-{Mes:4,Año:2020,Sueldo:16875.0},
-{Mes:5,Año:2020,Sueldo:16875.0},
-{Mes:6,Año:2020,Sueldo:16875.0},
-{Mes:7,Año:2020,Sueldo:16875.0},
-{Mes:8,Año:2020,Sueldo:16875.0},
-{Mes:9,Año:2020,Sueldo:16875.0},
-{Mes:10,Año:2020,Sueldo:18900.0},
-{Mes:11,Año:2020,Sueldo:18900.0},
-{Mes:12,Año:2020,Sueldo:20587.5},
-{Mes:1,Año:2021,Sueldo:20587.5},
-{Mes:2,Año:2021,Sueldo:20587.5},
-{Mes:3,Año:2021,Sueldo:21600.0},
-{Mes:4,Año:2021,Sueldo:23544.0},
-{Mes:5,Año:2021,Sueldo:24407.999999999996},
-{Mes:6,Año:2021,Sueldo:25272.0},
-{Mes:7,Año:2021,Sueldo:27216.0},
-{Mes:8,Año:2021,Sueldo:28080.0},
-{Mes:9,Año:2021,Sueldo:31104.0},
-{Mes:10,Año:2021,Sueldo:32000.0},
-{Mes:11,Año:2021,Sueldo:32000.0},
-{Mes:12,Año:2021,Sueldo:32000.0},
-{Mes:1,Año:2022,Sueldo:32000.0},
-{Mes:2,Año:2022,Sueldo:33000.0},
-{Mes:3,Año:2022,Sueldo:33000.0},
-{Mes:4,Año:2022,Sueldo:38940.0},
-{Mes:5,Año:2022,Sueldo:38940.0},
-{Mes:6,Año:2022,Sueldo:45540.0},
-{Mes:7,Año:2022,Sueldo:45540.0},
-{Mes:8,Año:2022,Sueldo:47850.0},
-{Mes:9,Año:2022,Sueldo:51200.0},
-{Mes:10,Año:2022,Sueldo:54550.0},
-{Mes:11,Año:2022,Sueldo:57900.0},
-{Mes:12,Año:2022,Sueldo:61953.0},
-{Mes:1,Año:2023,Sueldo:65427.0},
-{Mes:2,Año:2023,Sueldo:67743.0},
-{Mes:3,Año:2023,Sueldo:69500.0}
-];
-
-function calculateMinimumWage() {
-  //convert form into Array
-  minimumWage.forEach(function (element) {
-    element.date = element.Mes + element.Año * 12;
-  });
-
-  const startDate = startMonth + startYear * 12;
-  const endDate = endMonth + endYear * 12;
-  const wageFiltered = minimumWage.filter(
-    (element) => element.date >= startDate && element.date <= endDate
-  );
-
-  const wageMapped = wageFiltered.map((value) => value.Sueldo);
-  fillAll(wageMapped);
-  //filter array to desired period
-  inflationTable.forEach(function (element) {
-    element.date = element.Mes + element.Año * 12;
-  });
-
-  const filterTable = inflationTable.filter(
-    (element) => element.date >= startDate && element.date <= endDate
-  );
-
-  //return array of inflation values
-  const inflationArray = filterTable.map((index) => index.Index);
-  //create inflation salary index
-  let inflationIndex = Array(inflationArray.length);
-  let salaryAdjusted = Array(inflationArray.length);
-  for (let i = 0, length = inflationArray.length; i < length; i++) {
-    if (i < 1) {
-      inflationIndex[0] = inflationArray[0] / 100 + 1;
-    } else {
-      inflationIndex[i] = inflationIndex[i - 1] * (inflationArray[i] / 100 + 1);
-    }
-    salaryAdjusted[i] = inflationIndex[i] * wageMapped[0];
-  }
-
-  //Calculate the final $ amount and adjust it to the end of the period value(present value)
-  let accumulatedLosses = Array(inflationArray.length);
-  for (let i = 0, length = inflationArray.length; i < length; i++) {
-    accumulatedLosses[i] = salaryAdjusted[i] - wageMapped[i];
-  }
-  // const totalLosses = accumulatedLosses.reduce((total, salaries) => total + salaries, 0);
-
-  //Calculate the final $ amount and adjust it to the end of the period value(present value)
-  let finalAdjustedLosses = Array(inflationArray.length);
-  let indexesToAdjustInflation = Array(inflationArray.length);
-
-  for (let i = 0, length = inflationArray.length; i < length; i++) {
-    for (let b = i, length = inflationArray.length; b < length; b++) {
-      if (b === i) {
-        indexesToAdjustInflation[i] = (inflationArray[b] / 100 + 1);// it was 1 before realizing inflation ocurrs also the final month
-      } else {
-        indexesToAdjustInflation[b] =
-          (inflationArray[b] / 100 + 1) * indexesToAdjustInflation[b - 1];
-      }
-    }
-    finalAdjustedLosses[i] =
-      indexesToAdjustInflation[indexesToAdjustInflation.length - 1] *
-      accumulatedLosses[i];
-  }
-
-  const totalLosses = finalAdjustedLosses.reduce(
-    (total, monthlylosses) => total + monthlylosses,
-    0
-  );
-
-  calculation = Math.floor(totalLosses * 100) / 100;
-
-  //output value on DOM
-  const box = document.querySelector(".box > .tax");
-  const output = document.querySelector(".tax > .output");
-  output.setAttribute("style", "padding-top: 0px; color: black; font-size: 20px;");
-  output.innerText = `Según INDEC el Salario Minimo Vital y Movil acumuló una perdida total de $${numberWithCommas(calculation)} respecto de la inflación en el periodo comprendido entre ${getDateName(startMonth, startYear)} y ${getDateName(endMonth, endYear)}.`;
-  const twitText = encodeURIComponent(output.innerText);
-  box.appendChild(output);
-  tweetButton(twitText);
-
-  //dolarize 
-  const dolarizedInflationAdjustedSalary = dolarizedSalary(salaryAdjusted);
-  const dolarizedSalaries = dolarizedSalary(wageMapped);
-  //new charts
-  createSalaryChart(filterTable, wageMapped, salaryAdjusted, accumulatedLosses, finalAdjustedLosses, dolarizedInflationAdjustedSalary, dolarizedSalaries);
-}
-function dolarizedSalary(filteredSalaryArray) {
-  const dolarHistorico = [{"Fecha":"08/03/2023","Compra":367.00,"Venta":371.00},
+//dolar historicoTable
+const dolarHistorico = [
+{"Fecha":"16/06/2023","Compra":487.00,"Venta":492.00},
+{"Fecha":"15/06/2023","Compra":482.00,"Venta":487.00},
+{"Fecha":"14/06/2023","Compra":491.00,"Venta":496.00},
+{"Fecha":"13/06/2023","Compra":484.00,"Venta":489.00},
+{"Fecha":"12/06/2023","Compra":479.00,"Venta":484.00},
+{"Fecha":"09/06/2023","Compra":478.00,"Venta":483.00},
+{"Fecha":"08/06/2023","Compra":479.00,"Venta":484.00},
+{"Fecha":"07/06/2023","Compra":479.00,"Venta":484.00},
+{"Fecha":"06/06/2023","Compra":480.00,"Venta":485.00},
+{"Fecha":"05/06/2023","Compra":481.00,"Venta":486.00},
+{"Fecha":"05/06/2023","Compra":485.00,"Venta":490.00},
+{"Fecha":"02/06/2023","Compra":485.00,"Venta":490.00},
+{"Fecha":"01/06/2023","Compra":485.00,"Venta":490.00},
+{"Fecha":"31/05/2023","Compra":485.00,"Venta":490.00},
+{"Fecha":"31/05/2023","Compra":488.00,"Venta":493.00},
+{"Fecha":"30/05/2023","Compra":487.00,"Venta":492.00},
+{"Fecha":"29/05/2023","Compra":488.00,"Venta":493.00},
+{"Fecha":"24/05/2023","Compra":487.00,"Venta":492.00},
+{"Fecha":"23/05/2023","Compra":485.00,"Venta":490.00},
+{"Fecha":"22/05/2023","Compra":481.00,"Venta":486.00},
+{"Fecha":"19/05/2023","Compra":483.00,"Venta":488.00},
+{"Fecha":"18/05/2023","Compra":482.00,"Venta":487.00},
+{"Fecha":"17/05/2023","Compra":483.00,"Venta":488.00},
+{"Fecha":"16/05/2023","Compra":478.00,"Venta":483.00},
+{"Fecha":"15/05/2023","Compra":469.00,"Venta":474.00},
+{"Fecha":"12/05/2023","Compra":470.00,"Venta":475.00},
+{"Fecha":"11/05/2023","Compra":467.00,"Venta":472.00},
+{"Fecha":"10/05/2023","Compra":466.00,"Venta":471.00},
+{"Fecha":"09/05/2023","Compra":465.00,"Venta":470.00},
+{"Fecha":"08/05/2023","Compra":464.00,"Venta":469.00},
+{"Fecha":"05/05/2023","Compra":463.00,"Venta":468.00},
+{"Fecha":"04/05/2023","Compra":464.00,"Venta":469.00},
+{"Fecha":"03/05/2023","Compra":467.00,"Venta":472.00},
+{"Fecha":"03/05/2023","Compra":469.00,"Venta":474.00},
+{"Fecha":"02/05/2023","Compra":464.00,"Venta":469.00},
+{"Fecha":"27/04/2023","Compra":462.00,"Venta":467.00},
+{"Fecha":"26/04/2023","Compra":469.00,"Venta":474.00},
+{"Fecha":"25/04/2023","Compra":490.00,"Venta":495.00},
+{"Fecha":"24/04/2023","Compra":457.00,"Venta":462.00},
+{"Fecha":"21/04/2023","Compra":437.00,"Venta":442.00},
+{"Fecha":"20/04/2023","Compra":427.00,"Venta":432.00},
+{"Fecha":"19/04/2023","Compra":418.00,"Venta":423.00},
+{"Fecha":"18/04/2023","Compra":413.00,"Venta":418.00},
+{"Fecha":"17/04/2023","Compra":403.00,"Venta":408.00},
+{"Fecha":"14/04/2023","Compra":396.00,"Venta":400.00},
+{"Fecha":"13/04/2023","Compra":394.00,"Venta":398.00},
+{"Fecha":"12/04/2023","Compra":390.00,"Venta":394.00},
+{"Fecha":"11/04/2023","Compra":387.00,"Venta":391.00},
+{"Fecha":"10/04/2023","Compra":388.00,"Venta":392.00},
+{"Fecha":"05/04/2023","Compra":388.00,"Venta":392.00},
+{"Fecha":"04/04/2023","Compra":388.00,"Venta":392.00},
+{"Fecha":"03/04/2023","Compra":391.00,"Venta":395.00},
+{"Fecha":"31/03/2023","Compra":388.00,"Venta":393.00},
+{"Fecha":"30/03/2023","Compra":389.00,"Venta":393.00},
+{"Fecha":"29/03/2023","Compra":393.00,"Venta":397.00},
+{"Fecha":"28/03/2023","Compra":386.00,"Venta":390.00},
+{"Fecha":"28/03/2023","Compra":386.00,"Venta":390.00},
+{"Fecha":"27/03/2023","Compra":385.00,"Venta":389.00},
+{"Fecha":"23/03/2023","Compra":387.00,"Venta":391.00},
+{"Fecha":"22/03/2023","Compra":390.00,"Venta":394.00},
+{"Fecha":"21/03/2023","Compra":382.00,"Venta":386.00},
+{"Fecha":"20/03/2023","Compra":379.00,"Venta":383.00},
+{"Fecha":"17/03/2023","Compra":379.00,"Venta":383.00},
+{"Fecha":"16/03/2023","Compra":375.00,"Venta":379.00},
+{"Fecha":"15/03/2023","Compra":373.00,"Venta":377.00},
+{"Fecha":"14/03/2023","Compra":373.00,"Venta":377.00},
+{"Fecha":"13/03/2023","Compra":369.00,"Venta":373.00},
+{"Fecha":"10/03/2023","Compra":369.00,"Venta":373.00},
+{"Fecha":"09/03/2023","Compra":374.00,"Venta":378.00},
+{"Fecha":"08/03/2023","Compra":367.00,"Venta":371.00},
 {"Fecha":"07/03/2023","Compra":368.00,"Venta":372.00},
 {"Fecha":"06/03/2023","Compra":371.00,"Venta":375.00},
 {"Fecha":"03/03/2023","Compra":373.00,"Venta":377.00},
@@ -1984,7 +1689,393 @@ function dolarizedSalary(filteredSalaryArray) {
 {"Fecha":"12/01/2017","Compra":16.42,"Venta":16.82},
 {"Fecha":"11/01/2017","Compra":16.41,"Venta":16.81},
 {"Fecha":"10/01/2017","Compra":16.45,"Venta":16.85},
-{"Fecha":"09/01/2017","Compra":16.48,"Venta":16.88}];
+{"Fecha":"09/01/2017","Compra":16.48,"Venta":16.88}
+];
+
+//Fuente https://datos.gob.ar/dataset/sspm-salario-minimo-vital-movil-pesos-corrientes/archivo/sspm_57.1
+const minimumWage = [
+  {Mes:1,Año:2017,Sueldo:8060.0},
+  {Mes:2,Año:2017,Sueldo:8060.0},
+  {Mes:3,Año:2017,Sueldo:8060.0},
+  {Mes:4,Año:2017,Sueldo:8060.0},
+  {Mes:5,Año:2017,Sueldo:8060.0},
+  {Mes:6,Año:2017,Sueldo:8060.0},
+  {Mes:7,Año:2017,Sueldo:8860.0},
+  {Mes:8,Año:2017,Sueldo:8860.0},
+  {Mes:9,Año:2017,Sueldo:8860.0},
+  {Mes:10,Año:2017,Sueldo:8860.0},
+  {Mes:11,Año:2017,Sueldo:8860.0},
+  {Mes:12,Año:2017,Sueldo:8860.0},
+  {Mes:1,Año:2018,Sueldo:9500.0},
+  {Mes:2,Año:2018,Sueldo:9500.0},
+  {Mes:3,Año:2018,Sueldo:9500.0},
+  {Mes:4,Año:2018,Sueldo:9500.0},
+  {Mes:5,Año:2018,Sueldo:9500.0},
+  {Mes:6,Año:2018,Sueldo:9500.0},
+  {Mes:7,Año:2018,Sueldo:10000.0},
+  {Mes:8,Año:2018,Sueldo:10000.0},
+  {Mes:9,Año:2018,Sueldo:10700.0},
+  {Mes:10,Año:2018,Sueldo:10700.0},
+  {Mes:11,Año:2018,Sueldo:10700.0},
+  {Mes:12,Año:2018,Sueldo:11300.0},
+  {Mes:1,Año:2019,Sueldo:11300.0},
+  {Mes:2,Año:2019,Sueldo:11300.0},
+  {Mes:3,Año:2019,Sueldo:12500.0},
+  {Mes:4,Año:2019,Sueldo:12500.0},
+  {Mes:5,Año:2019,Sueldo:12500.0},
+  {Mes:6,Año:2019,Sueldo:12500.0},
+  {Mes:7,Año:2019,Sueldo:12500.0},
+  {Mes:8,Año:2019,Sueldo:14125.0},
+  {Mes:9,Año:2019,Sueldo:15625.0},
+  {Mes:10,Año:2019,Sueldo:16875.0},
+  {Mes:11,Año:2019,Sueldo:16875.0},
+  {Mes:12,Año:2019,Sueldo:16875.0},
+  {Mes:1,Año:2020,Sueldo:16875.0},
+  {Mes:2,Año:2020,Sueldo:16875.0},
+  {Mes:3,Año:2020,Sueldo:16875.0},
+  {Mes:4,Año:2020,Sueldo:16875.0},
+  {Mes:5,Año:2020,Sueldo:16875.0},
+  {Mes:6,Año:2020,Sueldo:16875.0},
+  {Mes:7,Año:2020,Sueldo:16875.0},
+  {Mes:8,Año:2020,Sueldo:16875.0},
+  {Mes:9,Año:2020,Sueldo:16875.0},
+  {Mes:10,Año:2020,Sueldo:18900.0},
+  {Mes:11,Año:2020,Sueldo:18900.0},
+  {Mes:12,Año:2020,Sueldo:20587.5},
+  {Mes:1,Año:2021,Sueldo:20587.5},
+  {Mes:2,Año:2021,Sueldo:20587.5},
+  {Mes:3,Año:2021,Sueldo:21600.0},
+  {Mes:4,Año:2021,Sueldo:23544.0},
+  {Mes:5,Año:2021,Sueldo:24407.99},
+  {Mes:6,Año:2021,Sueldo:25272.0},
+  {Mes:7,Año:2021,Sueldo:27216.0},
+  {Mes:8,Año:2021,Sueldo:28080.0},
+  {Mes:9,Año:2021,Sueldo:31104.0},
+  {Mes:10,Año:2021,Sueldo:32000.0},
+  {Mes:11,Año:2021,Sueldo:32000.0},
+  {Mes:12,Año:2021,Sueldo:32000.0},
+  {Mes:1,Año:2022,Sueldo:32000.0},
+  {Mes:2,Año:2022,Sueldo:33000.0},
+  {Mes:3,Año:2022,Sueldo:33000.0},
+  {Mes:4,Año:2022,Sueldo:38940.0},
+  {Mes:5,Año:2022,Sueldo:38940.0},
+  {Mes:6,Año:2022,Sueldo:45540.0},
+  {Mes:7,Año:2022,Sueldo:45540.0},
+  {Mes:8,Año:2022,Sueldo:47850.0},
+  {Mes:9,Año:2022,Sueldo:51200.0},
+  {Mes:10,Año:2022,Sueldo:54550.0},
+  {Mes:11,Año:2022,Sueldo:57900.0},
+  {Mes:12,Año:2022,Sueldo:61953.0},
+  {Mes:1,Año:2023,Sueldo:65427.0},
+  {Mes:2,Año:2023,Sueldo:67743.0},
+  {Mes:3,Año:2023,Sueldo:69500.0},
+  {Mes:4,Año:2023,Sueldo:80342},
+  {Mes:5,Año:2023,Sueldo:84512},
+  {Mes:6,Año:2023,Sueldo:87987}
+  ];
+  
+const salary = document.querySelector("#salary");
+
+let startInput = document.querySelector("#start");
+let endInput = document.querySelector("#end");
+
+//assign initial values to calendar
+startInput.value = `${inflationTable[inflationTable.length - 3].Año}-${inflationTable[inflationTable.length - 3].Mes}`;
+endInput.value = `${inflationTable[inflationTable.length - 1].Año}-${inflationTable[inflationTable.length - 1].Mes}`;
+
+startInput.max = `${inflationTable[inflationTable.length - 1].Año}-${inflationTable[inflationTable.length - 1].Mes}`;
+endInput.max = `${inflationTable[inflationTable.length - 1].Año}-${inflationTable[inflationTable.length - 1].Mes}`;
+
+let startMonth = parseInt(startInput.value.slice(-2));
+let startYear = parseInt(startInput.value.slice(0, 4));
+let endMonth = parseInt(endInput.value.slice(-2));
+let endYear = parseInt(endInput.value.slice(0, 4));
+
+//Assign month name to inputs
+startLenght = endYear * 12 + endMonth - (startYear * 12 + startMonth) + 1
+monthList(startLenght);
+
+//Check for input change in calendar and populate with new inputs
+startInput.addEventListener("change", () => {
+  startMonth = parseInt(startInput.value.slice(-2));
+  startYear = parseInt(startInput.value.slice(0, 4));
+  endMonth = parseInt(endInput.value.slice(-2));
+  endYear = parseInt(endInput.value.slice(0, 4));
+  const listLenght =
+    endYear * 12 + endMonth - (startYear * 12 + startMonth) + 1;
+  errorMessage(listLenght);
+});
+endInput.addEventListener("change", () => {
+  startMonth = parseInt(startInput.value.slice(-2));
+  startYear = parseInt(startInput.value.slice(0, 4));
+  endMonth = parseInt(endInput.value.slice(-2));
+  endYear = parseInt(endInput.value.slice(0, 4));
+  const listLenght =
+    endYear * 12 + endMonth - (startYear * 12 + startMonth) + 1;
+  errorMessage(listLenght);
+});
+
+function errorMessage(listLenght) {
+  if (listLenght >= 1) {
+    const inputs = document.querySelectorAll(".componentWrapper > input");
+    inputs.forEach((input) => (input.disabled = true));
+    const dateError = document.querySelector("#error");
+    dateError.innerText = "";
+    monthList(listLenght);
+  } else {
+    const dateError = document.querySelector("#error");
+    dateError.innerText = "Por favor, seleccione una fecha valida.";
+
+    const inputs = document.querySelectorAll(".componentWrapper > input");
+    inputs.forEach((input) => (input.disabled = true));
+  }
+}
+
+function getDateName(month, year) {
+  const date = new Date();
+  date.setMonth(month - 1);
+  date.setFullYear(year);
+
+  const name = date.toLocaleString("es", { month: "long" }) + " " + year;
+  return name;
+}
+
+function monthList(a) {
+  let mes = 0;
+
+  //remove inputs before adding newones
+  const box = document.querySelector("#input-list");
+  const salary = document.querySelectorAll("#input-list > .componentWrapper");
+  salary.forEach((salary) => {
+    box.removeChild(salary);
+  });
+
+  //convert month number to string
+  function getMonthName(monthNumber) {
+    const date = new Date();
+    date.setMonth(monthNumber - 1);
+
+    const name = date.toLocaleString("es", { month: "long" });
+    const upper = name.slice(0, 1).toUpperCase();
+    const lower = name.slice(1);
+    return upper + lower;
+  }
+
+  let monthCount = startMonth; //counter for labeling inputs
+  let yearCount = startYear;
+  function getYear(initialYearNumber) {
+    if (monthCount > 12) {
+      monthCount = monthCount - 12;
+      yearCount++;
+      return yearCount;
+    } else {
+      return yearCount;
+    }
+  }
+
+  //create inputs
+  for (let i = 0; i < a; i++, monthCount++, mes++) {
+    //content wrapper
+    const box = document.querySelector("#input-list");
+    const wrapper = document.createElement("label");
+    const calculate = document.querySelector("#calculate");
+    wrapper.setAttribute("class", "componentWrapper");
+    box.appendChild(wrapper);
+
+    const header = document.createElement("span");
+    header.setAttribute("class", "header");
+    header.innerText = `Salario ${getMonthName(monthCount)} ${getYear(
+      yearCount
+    )}`;
+    wrapper.appendChild(header);
+
+    //salary inputs
+    const symbol = document.createElement("span");
+    symbol.setAttribute("name", `salary-${mes}`);
+    symbol.setAttribute("class", "salary");
+    symbol.innerText = "$";
+    wrapper.appendChild(symbol);
+
+    const input = document.createElement("input");
+    input.type = "number";
+    input.setAttribute("name", `salary-${mes}`);
+    input.setAttribute("class", "number-input");
+    input.classList.add("tax-input");
+    wrapper.appendChild(input);
+  }
+}
+
+
+
+let calculation = 0;
+function calculateTax() {
+  //convert form into Array
+  const salaryForm = document.querySelectorAll(".tax-input");
+  const salaryFormData = new FormData();
+  salaryForm.forEach((salaryForm) => {
+    salaryFormData.append(salaryForm.name, salaryForm.value);
+  });
+  let salaryArray = Array.from(salaryFormData.values());
+
+  //filter array to desired period
+  inflationTable.forEach(function (element) {
+    element.date = element.Mes + element.Año * 12;
+  });
+
+  const startDate = startMonth + startYear * 12;
+  const endDate = endMonth + endYear * 12;
+  const filterTable = inflationTable.filter(
+    (element) => element.date >= startDate && element.date <= endDate
+  );
+
+  //return array of inflation values
+  const inflationArray = filterTable.map((index) => index.Index);
+  //create inflation salary index
+  let inflationIndex = Array(inflationArray.length);
+  let salaryAdjusted = Array(inflationArray.length);
+  for (let i = 0, length = inflationArray.length; i < length; i++) {
+    if (i < 1) {
+      inflationIndex[0] = inflationArray[0] / 100 + 1;
+    } else {
+      inflationIndex[i] = inflationIndex[i - 1] * (inflationArray[i] / 100 + 1);
+    }
+    salaryAdjusted[i] = inflationIndex[i] * salaryArray[0];
+  }
+
+  //Calculate the final $ amount and adjust it to the end of the period value(present value)
+  let accumulatedLosses = Array(inflationArray.length);
+  for (let i = 0, length = inflationArray.length; i < length; i++) {
+    accumulatedLosses[i] = salaryAdjusted[i] - salaryArray[i];
+  }
+  // const totalLosses = accumulatedLosses.reduce((total, salaries) => total + salaries, 0);
+
+  //Calculate the final $ amount and adjust it to the end of the period value(present value)
+  let finalAdjustedLosses = Array(inflationArray.length);
+  let indexesToAdjustInflation = Array(inflationArray.length);
+
+  for (let i = 0, length = inflationArray.length; i < length; i++) {
+    for (let b = i, length = inflationArray.length; b < length; b++) {
+      if (b === i) {
+        indexesToAdjustInflation[i] = (inflationArray[b] / 100 + 1);// it was 1 before realizing inflation ocurrs also the final month
+      } else {
+        indexesToAdjustInflation[b] =
+          (inflationArray[b] / 100 + 1) * indexesToAdjustInflation[b - 1];
+      }
+    }
+    finalAdjustedLosses[i] =
+      indexesToAdjustInflation[indexesToAdjustInflation.length - 1] *
+      accumulatedLosses[i];
+  }
+  const totalLosses = finalAdjustedLosses.reduce(
+    (total, monthlylosses) => total + monthlylosses,
+    0
+  );
+
+  calculation = Math.floor(totalLosses * 100) / 100;
+
+  //output value on DOM
+  const box = document.querySelector(".box > .tax");
+  const output = document.querySelector(".tax > .output");
+  output.setAttribute("style", "padding-top: 0px; color: black; font-size: 20px;");
+  output.innerText = `Según INDEC tu salario acumuló una perdida total de $${numberWithCommas(calculation)} respecto de la inflación en el periodo comprendido entre ${getDateName(startMonth, startYear)} y ${getDateName(endMonth, endYear)}.`;
+  const twitText = `Según INDEC mi salario acumuló una perdida total de $${numberWithCommas(calculation)} respecto de la inflación en el periodo comprendido entre ${getDateName(startMonth, startYear)} y ${getDateName(endMonth, endYear)}.`;
+  box.appendChild(output);
+
+  //set twit button settings
+  tweetButton(twitText);
+  
+  //dolarize
+  const dolarizedInflationAdjustedSalary = dolarizedSalary(salaryAdjusted);
+  const dolarizedSalaries = dolarizedSalary(salaryArray);  
+  //new charts
+  createSalaryChart(filterTable, salaryArray, salaryAdjusted, accumulatedLosses, finalAdjustedLosses, dolarizedInflationAdjustedSalary, dolarizedSalaries);
+}
+
+function calculateMinimumWage() {
+  //convert form into Array
+  minimumWage.forEach(function (element) {
+    element.date = element.Mes + element.Año * 12;
+  });
+
+  const startDate = startMonth + startYear * 12;
+  const endDate = endMonth + endYear * 12;
+  const wageFiltered = minimumWage.filter(
+    (element) => element.date >= startDate && element.date <= endDate
+  );
+
+  const wageMapped = wageFiltered.map((value) => value.Sueldo);
+  fillAll(wageMapped);
+  //filter array to desired period
+  inflationTable.forEach(function (element) {
+    element.date = element.Mes + element.Año * 12;
+  });
+
+  const filterTable = inflationTable.filter(
+    (element) => element.date >= startDate && element.date <= endDate
+  );
+
+  //return array of inflation values
+  const inflationArray = filterTable.map((index) => index.Index);
+  //create inflation salary index
+  let inflationIndex = Array(inflationArray.length);
+  let salaryAdjusted = Array(inflationArray.length);
+  for (let i = 0, length = inflationArray.length; i < length; i++) {
+    if (i < 1) {
+      inflationIndex[0] = inflationArray[0] / 100 + 1;
+    } else {
+      inflationIndex[i] = inflationIndex[i - 1] * (inflationArray[i] / 100 + 1);
+    }
+    salaryAdjusted[i] = inflationIndex[i] * wageMapped[0];
+  }
+
+  //Calculate the final $ amount and adjust it to the end of the period value(present value)
+  let accumulatedLosses = Array(inflationArray.length);
+  for (let i = 0, length = inflationArray.length; i < length; i++) {
+    accumulatedLosses[i] = salaryAdjusted[i] - wageMapped[i];
+  }
+  // const totalLosses = accumulatedLosses.reduce((total, salaries) => total + salaries, 0);
+
+  //Calculate the final $ amount and adjust it to the end of the period value(present value)
+  let finalAdjustedLosses = Array(inflationArray.length);
+  let indexesToAdjustInflation = Array(inflationArray.length);
+
+  for (let i = 0, length = inflationArray.length; i < length; i++) {
+    for (let b = i, length = inflationArray.length; b < length; b++) {
+      if (b === i) {
+        indexesToAdjustInflation[i] = (inflationArray[b] / 100 + 1);// it was 1 before realizing inflation ocurrs also the final month
+      } else {
+        indexesToAdjustInflation[b] =
+          (inflationArray[b] / 100 + 1) * indexesToAdjustInflation[b - 1];
+      }
+    }
+    finalAdjustedLosses[i] =
+      indexesToAdjustInflation[indexesToAdjustInflation.length - 1] *
+      accumulatedLosses[i];
+  }
+
+  const totalLosses = finalAdjustedLosses.reduce(
+    (total, monthlylosses) => total + monthlylosses,
+    0
+  );
+
+  calculation = Math.floor(totalLosses * 100) / 100;
+
+  //output value on DOM
+  const box = document.querySelector(".box > .tax");
+  const output = document.querySelector(".tax > .output");
+  output.setAttribute("style", "padding-top: 0px; color: black; font-size: 20px;");
+  output.innerText = `Según INDEC el Salario Minimo Vital y Movil acumuló una perdida total de $${numberWithCommas(calculation)} respecto de la inflación en el periodo comprendido entre ${getDateName(startMonth, startYear)} y ${getDateName(endMonth, endYear)}.`;
+  const twitText = encodeURIComponent(output.innerText);
+  box.appendChild(output);
+  tweetButton(twitText);
+
+  //dolarize 
+  const dolarizedInflationAdjustedSalary = dolarizedSalary(salaryAdjusted);
+  const dolarizedSalaries = dolarizedSalary(wageMapped);
+  //new charts
+  createSalaryChart(filterTable, wageMapped, salaryAdjusted, accumulatedLosses, finalAdjustedLosses, dolarizedInflationAdjustedSalary, dolarizedSalaries);
+}
+function dolarizedSalary(filteredSalaryArray) {
 
   const startDate = startMonth + startYear * 12;
   const endDate = endMonth + endYear * 12;
@@ -2020,8 +2111,6 @@ function dolarizedSalary(filteredSalaryArray) {
   const filterTable = lastVentaValues.filter((element) => (element.month+element.year*12) >= startDate && (element.month+element.year*12) <= endDate);
 
   const dolarArray = filterTable.map((index) => index.lastVentaValue);
-  console.log(dolarArray);
-  //console.log(dolarArray);
   const dolarWage = Array(dolarArray.length);
   for (let i=0,length = dolarArray.length; i<length; i++){
     dolarWage[i] = Math.floor(filteredSalaryArray[i] / dolarArray[length-i-1]*100)/100;
