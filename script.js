@@ -3,83 +3,83 @@
 
 //inflation array database
 const inflationTable = [
-  { Mes:"01", Año: 2017, Index: 1.6 },
-  { Mes:"02", Año: 2017, Index: 2.1 },
-  { Mes:"03", Año: 2017, Index: 2.4 },
-  { Mes:"04", Año: 2017, Index: 2.7 },
-  { Mes:"05", Año: 2017, Index: 1.4 },
-  { Mes:"06", Año: 2017, Index: 1.2 },
-  { Mes:"07", Año: 2017, Index: 1.7 },
-  { Mes:"08", Año: 2017, Index: 1.4 },
-  { Mes:"09", Año: 2017, Index: 1.9 },
-  { Mes:"10", Año: 2017, Index: 1.5 },
-  { Mes:"11", Año: 2017, Index: 1.4 },
-  { Mes:"12", Año: 2017, Index: 3.1 },
-  { Mes:"01", Año: 2018, Index: 1.8 },
-  { Mes:"02", Año: 2018, Index: 2.4 },
-  { Mes:"03", Año: 2018, Index: 2.3 },
-  { Mes:"04", Año: 2018, Index: 2.7 },
-  { Mes:"05", Año: 2018, Index: 2.1 },
-  { Mes:"06", Año: 2018, Index: 3.7 },
-  { Mes:"07", Año: 2018, Index: 3.1 },
-  { Mes:"08", Año: 2018, Index: 3.9 },
-  { Mes:"09", Año: 2018, Index: 6.5 },
-  { Mes:"10", Año: 2018, Index: 5.4 },
-  { Mes:"11", Año: 2018, Index: 3.2 },
-  { Mes:"12", Año: 2018, Index: 2.6 },
-  { Mes:"01", Año: 2019, Index: 2.9 },
-  { Mes:"02", Año: 2019, Index: 3.8 },
-  { Mes:"03", Año: 2019, Index: 4.7 },
-  { Mes:"04", Año: 2019, Index: 3.4 },
-  { Mes:"05", Año: 2019, Index: 3.1 },
-  { Mes:"06", Año: 2019, Index: 2.7 },
-  { Mes:"07", Año: 2019, Index: 2.2 },
-  { Mes:"08", Año: 2019, Index: 4 },
-  { Mes:"09", Año: 2019, Index: 5.9 },
-  { Mes:"10", Año: 2019, Index: 3.3 },
-  { Mes:"11", Año: 2019, Index: 4.3 },
-  { Mes:"12", Año: 2019, Index: 3.7 },
-  { Mes:"01", Año: 2020, Index: 2.3 },
-  { Mes:"02", Año: 2020, Index: 2 },
-  { Mes:"03", Año: 2020, Index: 3.3 },
-  { Mes:"04", Año: 2020, Index: 1.5 },
-  { Mes:"05", Año: 2020, Index: 1.5 },
-  { Mes:"06", Año: 2020, Index: 2.2 },
-  { Mes:"07", Año: 2020, Index: 1.9 },
-  { Mes:"08", Año: 2020, Index: 2.7 },
-  { Mes:"09", Año: 2020, Index: 2.8 },
-  { Mes:"10", Año: 2020, Index: 3.8 },
-  { Mes:"11", Año: 2020, Index: 3.2 },
-  { Mes:"12", Año: 2020, Index: 4 },
-  { Mes:"01", Año: 2021, Index: 4 },
-  { Mes:"02", Año: 2021, Index: 3.6 },
-  { Mes:"03", Año: 2021, Index: 4.8 },
-  { Mes:"04", Año: 2021, Index: 4.1 },
-  { Mes:"05", Año: 2021, Index: 3.3 },
-  { Mes:"06", Año: 2021, Index: 3.2 },
-  { Mes:"07", Año: 2021, Index: 3 },
-  { Mes:"08", Año: 2021, Index: 2.5 },
-  { Mes:"09", Año: 2021, Index: 3.5 },
-  { Mes:"10", Año: 2021, Index: 3.5 },
-  { Mes:"11", Año: 2021, Index: 2.5 },
-  { Mes:"12", Año: 2021, Index: 3.8 },
-  { Mes:"01", Año: 2022, Index: 3.9 },
-  { Mes:"02", Año: 2022, Index: 4.7 },
-  { Mes:"03", Año: 2022, Index: 6.7 },
-  { Mes:"04", Año: 2022, Index: 6 },
-  { Mes:"05", Año: 2022, Index: 5.1 },
-  { Mes:"06", Año: 2022, Index: 5.3 },
-  { Mes:"07", Año: 2022, Index: 7.4 },
-  { Mes:"08", Año: 2022, Index: 7 },
-  { Mes:"09", Año: 2022, Index: 6.2 },
-  { Mes:"10", Año: 2022, Index: 6.3 },
-  { Mes:"11", Año: 2022, Index: 4.9 },
-  { Mes:"12", Año: 2022, Index: 5.1 },
-  { Mes:"01", Año: 2023, Index: 6.0 },
-  { Mes:"02", Año: 2023, Index: 6.6 },
-  { Mes:"03", Año: 2023, Index: 7.7 },
-  { Mes:"04", Año: 2023, Index: 8.4 },
-  { Mes:"05", Año: 2023, Index: 7.8 }
+  { Mes:1, Año: 2017, Index: 1.6 },
+  { Mes:2, Año: 2017, Index: 2.1 },
+  { Mes:3, Año: 2017, Index: 2.4 },
+  { Mes:4, Año: 2017, Index: 2.7 },
+  { Mes:5, Año: 2017, Index: 1.4 },
+  { Mes:6, Año: 2017, Index: 1.2 },
+  { Mes:7, Año: 2017, Index: 1.7 },
+  { Mes:8, Año: 2017, Index: 1.4 },
+  { Mes:9, Año: 2017, Index: 1.9 },
+  { Mes:10, Año: 2017, Index: 1.5 },
+  { Mes:11, Año: 2017, Index: 1.4 },
+  { Mes:12, Año: 2017, Index: 3.1 },
+  { Mes:1, Año: 2018, Index: 1.8 },
+  { Mes:2, Año: 2018, Index: 2.4 },
+  { Mes:3, Año: 2018, Index: 2.3 },
+  { Mes:4, Año: 2018, Index: 2.7 },
+  { Mes:5, Año: 2018, Index: 2.1 },
+  { Mes:6, Año: 2018, Index: 3.7 },
+  { Mes:7, Año: 2018, Index: 3.1 },
+  { Mes:8, Año: 2018, Index: 3.9 },
+  { Mes:9, Año: 2018, Index: 6.5 },
+  { Mes:10, Año: 2018, Index: 5.4 },
+  { Mes:11, Año: 2018, Index: 3.2 },
+  { Mes:12, Año: 2018, Index: 2.6 },
+  { Mes:1, Año: 2019, Index: 2.9 },
+  { Mes:2, Año: 2019, Index: 3.8 },
+  { Mes:3, Año: 2019, Index: 4.7 },
+  { Mes:4, Año: 2019, Index: 3.4 },
+  { Mes:5, Año: 2019, Index: 3.1 },
+  { Mes:6, Año: 2019, Index: 2.7 },
+  { Mes:7, Año: 2019, Index: 2.2 },
+  { Mes:8, Año: 2019, Index: 4 },
+  { Mes:9, Año: 2019, Index: 5.9 },
+  { Mes:10, Año: 2019, Index: 3.3 },
+  { Mes:11, Año: 2019, Index: 4.3 },
+  { Mes:12, Año: 2019, Index: 3.7 },
+  { Mes:1, Año: 2020, Index: 2.3 },
+  { Mes:2, Año: 2020, Index: 2 },
+  { Mes:3, Año: 2020, Index: 3.3 },
+  { Mes:4, Año: 2020, Index: 1.5 },
+  { Mes:5, Año: 2020, Index: 1.5 },
+  { Mes:6, Año: 2020, Index: 2.2 },
+  { Mes:7, Año: 2020, Index: 1.9 },
+  { Mes:8, Año: 2020, Index: 2.7 },
+  { Mes:9, Año: 2020, Index: 2.8 },
+  { Mes:10, Año: 2020, Index: 3.8 },
+  { Mes:11, Año: 2020, Index: 3.2 },
+  { Mes:12, Año: 2020, Index: 4 },
+  { Mes:1, Año: 2021, Index: 4 },
+  { Mes:2, Año: 2021, Index: 3.6 },
+  { Mes:3, Año: 2021, Index: 4.8 },
+  { Mes:4, Año: 2021, Index: 4.1 },
+  { Mes:5, Año: 2021, Index: 3.3 },
+  { Mes:6, Año: 2021, Index: 3.2 },
+  { Mes:7, Año: 2021, Index: 3 },
+  { Mes:8, Año: 2021, Index: 2.5 },
+  { Mes:9, Año: 2021, Index: 3.5 },
+  { Mes:10, Año: 2021, Index: 3.5 },
+  { Mes:11, Año: 2021, Index: 2.5 },
+  { Mes:12, Año: 2021, Index: 3.8 },
+  { Mes:1, Año: 2022, Index: 3.9 },
+  { Mes:2, Año: 2022, Index: 4.7 },
+  { Mes:3, Año: 2022, Index: 6.7 },
+  { Mes:4, Año: 2022, Index: 6 },
+  { Mes:5, Año: 2022, Index: 5.1 },
+  { Mes:6, Año: 2022, Index: 5.3 },
+  { Mes:7, Año: 2022, Index: 7.4 },
+  { Mes:8, Año: 2022, Index: 7 },
+  { Mes:9, Año: 2022, Index: 6.2 },
+  { Mes:10, Año: 2022, Index: 6.3 },
+  { Mes:11, Año: 2022, Index: 4.9 },
+  { Mes:12, Año: 2022, Index: 5.1 },
+  { Mes:1, Año: 2023, Index: 6.0 },
+  { Mes:2, Año: 2023, Index: 6.6 },
+  { Mes:3, Año: 2023, Index: 7.7 },
+  { Mes:4, Año: 2023, Index: 8.4 },
+  { Mes:5, Año: 2023, Index: 7.8 }
 ];
 //dolar historicoTable
 const dolarHistorico = [
@@ -1779,12 +1779,13 @@ const salary = document.querySelector("#salary");
 let startInput = document.querySelector("#start");
 let endInput = document.querySelector("#end");
 
-//assign initial values to calendar
-startInput.value = `${inflationTable[inflationTable.length - 3].Año}-${inflationTable[inflationTable.length - 3].Mes}`;
-endInput.value = `${inflationTable[inflationTable.length - 1].Año}-${inflationTable[inflationTable.length - 1].Mes}`;
 
-startInput.max = `${inflationTable[inflationTable.length - 1].Año}-${inflationTable[inflationTable.length - 1].Mes}`;
-endInput.max = `${inflationTable[inflationTable.length - 1].Año}-${inflationTable[inflationTable.length - 1].Mes}`;
+//assign initial values to calendar
+startInput.value = `${inflationTable[inflationTable.length - 3].Año}-${String(inflationTable[inflationTable.length - 3].Mes).padStart(2,"0")}`;
+endInput.value = `${inflationTable[inflationTable.length - 1].Año}-${String(inflationTable[inflationTable.length - 1].Mes).padStart(2,"0")}`;
+
+startInput.max = `${inflationTable[inflationTable.length - 1].Año}-${String(inflationTable[inflationTable.length - 1].Mes).padStart(2,"0")}`;
+endInput.max = `${inflationTable[inflationTable.length - 1].Año}-${String(inflationTable[inflationTable.length - 1].Mes).padStart(2,"0")}`;
 
 let startMonth = parseInt(startInput.value.slice(-2));
 let startYear = parseInt(startInput.value.slice(0, 4));
@@ -1792,7 +1793,7 @@ let endMonth = parseInt(endInput.value.slice(-2));
 let endYear = parseInt(endInput.value.slice(0, 4));
 
 //Assign month name to inputs
-startLenght = endYear * 12 + endMonth - (startYear * 12 + startMonth) + 1
+const startLenght = endYear * 12 + endMonth - (startYear * 12 + startMonth) + 1
 monthList(startLenght);
 
 //Check for input change in calendar and populate with new inputs
@@ -1947,7 +1948,6 @@ function calculateTax() {
   for (let i = 0, length = inflationArray.length; i < length; i++) {
     accumulatedLosses[i] = salaryAdjusted[i] - salaryArray[i];
   }
-  // const totalLosses = accumulatedLosses.reduce((total, salaries) => total + salaries, 0);
 
   //Calculate the final $ amount and adjust it to the end of the period value(present value)
   let finalAdjustedLosses = Array(inflationArray.length);
@@ -1972,7 +1972,7 @@ function calculateTax() {
   );
 
   calculation = Math.floor(totalLosses * 100) / 100;
-
+  
   //output value on DOM
   const box = document.querySelector(".box > .tax");
   const output = document.querySelector(".tax > .output");
@@ -2143,6 +2143,7 @@ function tweetButton(outputInnerText) {
     taxDiv.appendChild(tweetAnchor);
     tweetAnchor.appendChild(tweetImage);
 }
+
 
 const calculateButton = document.querySelector("#calculate");
 calculateButton.addEventListener("click", () => {
