@@ -1,5 +1,16 @@
 //Populate span with last inflation value on database
-const lastInflation = 8.4
+const lastInflation = inflationTable[inflationTable.length - 1].Index;
+const monthName = getMonthName(inflationTable[inflationTable.length - 1].Mes)
+
+function getMonthName(monthNumber) {
+    const date = new Date();
+    date.setMonth(monthNumber - 1);
+
+    const name = date.toLocaleString("es", { month: "long" });
+    const upper = name.slice(0, 1).toUpperCase();
+    const lower = name.slice(1);
+    return upper + lower;
+  }
 
 const precio = document.querySelector('input[name="Precio"]');
 const inflacion = document.querySelector('input[name="inflacion-estimada"]')
@@ -16,7 +27,7 @@ function compoundInflation() {
 }
 const span = document.querySelector('#indec')
 const predeterminedInflation = document.querySelector('#inflacionEstimada');
-predeterminedInflation.innerText = `(${lastInflation}% Abril INDEC) - (${compoundInflation()}% anual)`
+predeterminedInflation.innerText = `(${lastInflation}% ${monthName} INDEC) - (${compoundInflation()}% anual)`
 
 
 const calculate = document.querySelector('#calculate-price');

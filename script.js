@@ -1,6 +1,6 @@
 //I should import a json to make script shorter
 //import myJson from './example.json' assert {type: 'json'};
-
+/* 
 //inflation array database
 const inflationTable = [
   { Mes:1, Año: 2017, Index: 1.6 },
@@ -1773,7 +1773,7 @@ const minimumWage = [
   {Mes:5,Año:2023,Sueldo:84512},
   {Mes:6,Año:2023,Sueldo:87987}
 ];
-  
+   */
 const salary = document.querySelector("#salary");
 
 let startInput = document.querySelector("#start");

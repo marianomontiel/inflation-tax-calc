@@ -1,5 +1,5 @@
 //inflation array database
-const inflationTable = [
+inflationTable = [
     { Mes:1, Año: 2017, Index: 1.6 },
     { Mes:2, Año: 2017, Index: 2.1 },
     { Mes:3, Año: 2017, Index: 2.4 },
@@ -76,10 +76,10 @@ const inflationTable = [
     { Mes:2, Año: 2023, Index: 6.6 },
     { Mes:3, Año: 2023, Index: 7.7 },
     { Mes:4, Año: 2023, Index: 8.4 },
-    { Mes:5, Año: 2023, Index: 7.8 }
+    // { Mes:5, Año: 2023, Index: 7.8 }
   ];
   //dolar historicoTable
-  const dolarHistorico = [
+dolarHistorico = [
   {"Fecha":"16/06/2023","Compra":487.00,"Venta":492.00},
   {"Fecha":"15/06/2023","Compra":482.00,"Venta":487.00},
   {"Fecha":"14/06/2023","Compra":491.00,"Venta":496.00},
@@ -1690,7 +1690,7 @@ const inflationTable = [
   ];
   
   //Fuente https://datos.gob.ar/dataset/sspm-salario-minimo-vital-movil-pesos-corrientes/archivo/sspm_57.1
-  const minimumWage = [
+minimumWage = [
     {Mes:1,Año:2017,Sueldo:8060.0},
     {Mes:2,Año:2017,Sueldo:8060.0},
     {Mes:3,Año:2017,Sueldo:8060.0},
