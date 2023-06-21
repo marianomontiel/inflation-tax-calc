@@ -10,6 +10,16 @@
   <link rel="icon" href="./icons/money-printer.png">
 </head>
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L1JCM2RMHY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+
+  gtag('config', 'G-L1JCM2RMHY');
+</script>
+
 <body>
   <div>
     <header>
@@ -37,59 +47,61 @@
         <p id="error"></p>
         <button id='calculate-1' class="calculate">Calcular salario minimo</button>
         <!-- <button id='calculate-2'>Calcular jubilaciones</button>    -->
-        <div id="input-list" style="max-height:600px; width:100%; display: flex; flex-direction:column;overflow:scroll; overflow-x: hidden;margin: 10px">
+        <div id="input-list"
+          style="max-height:600px; width:100%; display: flex; flex-direction:column;overflow:scroll; overflow-x: hidden;margin: 10px">
           <label class="componentWrapper">
-          <span class="header">Salario Febrero 2023</span>
-          <span name="salary-0" class="salary">$</span>
-          <input name="salary-0" type="number" class="number-input tax-input">
+            <span class="header">Salario Febrero 2023</span>
+            <span name="salary-0" class="salary">$</span>
+            <input name="salary-0" type="number" class="number-input tax-input">
           </label>
           <label class="componentWrapper">
-          <span class="header">Salario Marzo 2023</span>
-          <span name="salary-1" class="salary">$</span>
-          <input name="salary-1" type="number" class="number-input tax-input">
+            <span class="header">Salario Marzo 2023</span>
+            <span name="salary-1" class="salary">$</span>
+            <input name="salary-1" type="number" class="number-input tax-input">
           </label>
           <label class="componentWrapper">
-          <span class="header">Salario Abril 2023</span>
-          <span name="salary-2" class="salary">$</span>
-          <input name="salary-2" type="number" class="number-input tax-input">
-        </label>
+            <span class="header">Salario Abril 2023</span>
+            <span name="salary-2" class="salary">$</span>
+            <input name="salary-2" type="number" class="number-input tax-input">
+          </label>
         </div>
-  
+
         <button id='calculate' class="calculate">CALCULAR</button>
         <p class='output'></p>
         <a id="tweet-button" href=""></a>
       </div>
       <div id="price" class="price" data-tab-content>
-          <!-- <img class="icon-header" src="./icons/money-printer.png" alt="money-printer"> -->
-          <!-- <h1>¿Queres planificar una compra dentro de unos meses?</h1> -->
-          <p id="subtitle">Descubrí cuanto te conviene ahorrar por mes!</p>
-          <label class="componentWrapper">
-              <span class="header">Precio actual</span>
-              <span name="Precio" class="salary">$</span>
-              <input name="Precio" class="number-input">
-          </label>
-    
-          <label class="componentWrapper">
-              <span class="header">¿Cuantos meses faltan para la compra?</span>
-              <span name="meses-faltantes" class="salary"></span>
-              <input name="meses-faltantes" class="number-input">
-          </label>
-    
-          <label id="indec">
-              <span class="header">Inflación mensual estimada<span id="inflacionEstimada" style="display: block; font-size: 0.75em;"> </span></span>
-              <span name="inflacion-estimada" class="salary">%</span>
-              <input name="inflacion-estimada" class="number-input">
-          </label>
-    
-          <button id='calculate-price' class="calculate">CALCULAR</button>
-          <p class='output'></p>
+        <!-- <img class="icon-header" src="./icons/money-printer.png" alt="money-printer"> -->
+        <!-- <h1>¿Queres planificar una compra dentro de unos meses?</h1> -->
+        <p id="subtitle">Descubrí cuanto te conviene ahorrar por mes!</p>
+        <label class="componentWrapper">
+          <span class="header">Precio actual</span>
+          <span name="Precio" class="salary">$</span>
+          <input name="Precio" class="number-input">
+        </label>
+
+        <label class="componentWrapper">
+          <span class="header">¿Cuantos meses faltan para la compra?</span>
+          <span name="meses-faltantes" class="salary"></span>
+          <input name="meses-faltantes" class="number-input">
+        </label>
+
+        <label id="indec">
+          <span class="header">Inflación mensual estimada<span id="inflacionEstimada"
+              style="display: block; font-size: 0.75em;"> </span></span>
+          <span name="inflacion-estimada" class="salary">%</span>
+          <input name="inflacion-estimada" class="number-input">
+        </label>
+
+        <button id='calculate-price' class="calculate">CALCULAR</button>
+        <p class='output'></p>
       </div>
     </div>
     <footer>
-      <a href="https://cafecito.app/impuestazo" id='upper' target="_blank">Invitame un cafecito <img src="./icons/cafecito.svg"
-          alt="cafecito"></a>
-      <a href="https://twitter.com/impuestazo_ar" id='upper' target="_blank">Seguime en Twitter <img src="./icons/twitter.svg"
-          alt="twitter"></a>
+      <a href="https://cafecito.app/impuestazo" id='upper' target="_blank">Invitame un cafecito <img
+          src="./icons/cafecito.svg" alt="cafecito"></a>
+      <a href="https://twitter.com/impuestazo_ar" id='upper' target="_blank">Seguime en Twitter <img
+          src="./icons/twitter.svg" alt="twitter"></a>
     </footer>
     <div>
       <a href="./funcionamiento.html" id="footer-anchor">¿Como realizamos los calculos?</a>
@@ -101,9 +113,8 @@
   <script src="./script.js" defer></script>
   <script src="./compras.js" defer></script>
   <script src="./tabs.js" defer></script>
-  <script
-src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.js">
-</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.6.0/chart.js">
+  </script>
 </body>
 
 </html>
