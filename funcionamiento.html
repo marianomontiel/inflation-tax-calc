@@ -1,29 +1,41 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Impuestazo Inflacionario</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="./icons/money-printer.png">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impuestazo Inflacionario</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="./icons/money-printer.png">
 </head>
 
 <body>
+  <div>
+    <header>
+      <img class="icon-header" src="./icons/money-printer.png" alt="money-printer">
+      <h1><strong>Impuestazo</strong></h1>
+    </header>
     <div class="box">
-        <h1>¿Como calculamos las perdidas contra la inflación?</h1>
-        <p>Primero tomamos la evolución salarial ingresada para el periodo determinado (en este caso el salario minimo). Una vez hecho eso tomamos el primer salario y creamos un salario hipotetico ajustado por inflación para el periodo seleccionado.</p>
+      <h2>¿Como calculamos las perdidas contra la inflación?</h2>
+      <div class="tax">
+        <p>Primero tomamos la evolución salarial ingresada para el periodo determinado (en este caso el salario minimo).
+          Una vez hecho eso tomamos el primer salario y creamos un salario hipotetico ajustado por inflación para el
+          periodo seleccionado.</p>
         <img src="./images/salario-vs-inflacion.png" alt="" class="chart">
         <p>Una vez con esos datos procedemos a calcular la diferencia entre ambos (se resta uno con el otro)</p>
         <img src="./images/diferencia.png" alt="" class="chart">
-        <p>Y finalmente, previo a sumar dicha diferencia, se ajustan por inflacion todos los salarios a la ùltima fecha del periodo seleccionado.</p>
+        <p>Y finalmente, previo a sumar dicha diferencia, se ajustan por inflacion todos los salarios a la ùltima fecha
+          del periodo seleccionado.</p>
         <img src="./images/diferencia-ajustada.png" alt="" class="chart">
-        <p style="font-size: 15px;"><em>Este ultimo gráfico debería ser mucho más horizontal. Nos están mintiendo sobre la inflación?</em></p>
-    </div>
-    <div>
-        <a href="./index.html" id="footer-anchor">Calculá tu impuesto inflacionario</a>
       </div>
+    </div>
+  </div>
+  <div>
+    <a href="./index.html" id="footer-anchor">Calculá tu impuesto inflacionario</a>
+  </div>
+
+
+
 </body>
 
 </html>
