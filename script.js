@@ -335,6 +335,8 @@ function dolarizedSalary(filteredSalaryArray) {
   }
 });
 
+console.log(dolarHistorico)
+
   const filterTable = lastVentaValues.filter((element) => (element.month+element.year*12) >= startDate && (element.month+element.year*12) <= endDate);
 
   const dolarArray = filterTable.map((index) => index.lastVentaValue);
@@ -439,7 +441,7 @@ function createSalaryChart(dateArray, mappedSalary, inflationAdjustedSalary, acc
       maintainAspectRatio: false,
       scales: {
         y: {  
-          grace: '100%'
+          grace: '0%'
         }
       },
     },
@@ -490,7 +492,7 @@ function createSalaryChart(dateArray, mappedSalary, inflationAdjustedSalary, acc
       maintainAspectRatio: false,
       scales: {
         y: {  
-          grace: '100%'
+          grace: '0%'
         }
       },
     }
