@@ -19,6 +19,7 @@
   width: 50%;
   border-bottom: 3px solid rgb(199 212 222/0%);
   transition: border-bottom .3s;
+  user-select: none;
 }
 
 .tab.active{
