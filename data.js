@@ -76,7 +76,7 @@ inflationTable = [
     { Mes:2, Año: 2023, Index: 6.6 },
     { Mes:3, Año: 2023, Index: 7.7 },
     { Mes:4, Año: 2023, Index: 8.4 },
-    // { Mes:5, Año: 2023, Index: 7.8 }
+    { Mes:5, Año: 2023, Index: 7.8 }
   ];
   //dolar historicoTable
 dolarHistorico = [
