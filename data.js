@@ -77,10 +77,42 @@ inflationTable = [
     { Mes:3, Año: 2023, Index: 7.7 },
     { Mes:4, Año: 2023, Index: 8.4 },
     { Mes:5, Año: 2023, Index: 7.8 },
-    { Mes:6, Año: 2023, Index: 6.0 }    
+    { Mes:6, Año: 2023, Index: 6.0 },
+    { Mes:7, Año: 2023, Index: 6.3 }
   ];
-  //dolar historicoTable
+  //dolar historicoTable https://www.ambito.com/contenidos/dolar-informal-historico.html
+  //data converter https://shancarter.github.io/mr-data-converter/
 dolarHistorico = [
+{"Fecha":"15/08/2023","Compra":720.00,"Venta":730.00},
+{"Fecha":"14/08/2023","Compra":665.00,"Venta":685.00},
+{"Fecha":"11/08/2023","Compra":595.00,"Venta":605.00},
+{"Fecha":"10/08/2023","Compra":597.00,"Venta":602.00},
+{"Fecha":"09/08/2023","Compra":595.00,"Venta":600.00},
+{"Fecha":"09/08/2023","Compra":595.00,"Venta":600.00},
+{"Fecha":"09/08/2023","Compra":595.00,"Venta":600.00},
+{"Fecha":"09/08/2023","Compra":595.00,"Venta":600.00},
+{"Fecha":"09/08/2023","Compra":595.00,"Venta":600.00},
+{"Fecha":"09/08/2023","Compra":595.00,"Venta":600.00},
+{"Fecha":"09/08/2023","Compra":595.00,"Venta":600.00},
+{"Fecha":"09/08/2023","Compra":595.00,"Venta":600.00},
+{"Fecha":"09/08/2023","Compra":595.00,"Venta":600.00},
+{"Fecha":"09/08/2023","Compra":595.00,"Venta":600.00},
+{"Fecha":"09/08/2023","Compra":595.00,"Venta":600.00},
+{"Fecha":"09/08/2023","Compra":595.00,"Venta":600.00},
+{"Fecha":"07/08/2023","Compra":591.00,"Venta":596.00},
+{"Fecha":"04/08/2023","Compra":569.00,"Venta":574.00},
+{"Fecha":"03/08/2023","Compra":565.00,"Venta":570.00},
+{"Fecha":"02/08/2023","Compra":555.00,"Venta":560.00},
+{"Fecha":"01/08/2023","Compra":555.00,"Venta":560.00},
+{"Fecha":"31/07/2023","Compra":545.00,"Venta":550.00},
+{"Fecha":"28/07/2023","Compra":546.00,"Venta":551.00},
+{"Fecha":"27/07/2023","Compra":548.00,"Venta":553.00},
+{"Fecha":"26/07/2023","Compra":541.00,"Venta":546.00},
+{"Fecha":"25/07/2023","Compra":531.00,"Venta":536.00},
+{"Fecha":"24/07/2023","Compra":547.00,"Venta":552.00},
+{"Fecha":"21/07/2023","Compra":524.00,"Venta":529.00},
+{"Fecha":"20/07/2023","Compra":520.00,"Venta":525.00},
+{"Fecha":"19/07/2023","Compra":520.00,"Venta":525.00},
 {"Fecha":"18/07/2023","Compra":515.00,"Venta":520.00},
 {"Fecha":"17/07/2023","Compra":515.00,"Venta":520.00},
 {"Fecha":"14/07/2023","Compra":518.00,"Venta":522.00},
@@ -1713,6 +1745,7 @@ dolarHistorico = [
   ];
   
   //Fuente https://datos.gob.ar/dataset/sspm-salario-minimo-vital-movil-pesos-corrientes/archivo/sspm_57.1
+  //http://estudiodelamo.com/evolucion-salario-minimo-vital-movil-argentina/
 minimumWage = [
     {Mes:1,Año:2017,Sueldo:8060.0},
     {Mes:2,Año:2017,Sueldo:8060.0},
@@ -1791,5 +1824,8 @@ minimumWage = [
     {Mes:3,Año:2023,Sueldo:69500.0},
     {Mes:4,Año:2023,Sueldo:80342},
     {Mes:5,Año:2023,Sueldo:84512},
-    {Mes:6,Año:2023,Sueldo:87987}
+    {Mes:6,Año:2023,Sueldo:87987},
+    {Mes:7,Año:2023,Sueldo:105500},
+    {Mes:8,Año:2023,Sueldo:112500},
+    {Mes:9,Año:2023,Sueldo:118000}
   ];
