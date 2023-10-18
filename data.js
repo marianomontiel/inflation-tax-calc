@@ -79,7 +79,8 @@ inflationTable = [
     { Mes:5, Año: 2023, Index: 7.8 },
     { Mes:6, Año: 2023, Index: 6.0 },
     { Mes:7, Año: 2023, Index: 6.3 },
-    { Mes:8, Año: 2023, Index: 12.4 }
+    { Mes:8, Año: 2023, Index: 12.4 },
+    { Mes:9, Año: 2023, Index: 12.7 }
   ];
     
   //Fuente https://datos.gob.ar/dataset/sspm-salario-minimo-vital-movil-pesos-corrientes/archivo/sspm_57.1
@@ -165,12 +166,48 @@ minimumWage = [
   {Mes:6,Año:2023,Sueldo:87987},
   {Mes:7,Año:2023,Sueldo:105500},
   {Mes:8,Año:2023,Sueldo:112500},
-  {Mes:9,Año:2023,Sueldo:118000}
+  {Mes:9,Año:2023,Sueldo:118000},
+  {Mes:10,Año:2023,Sueldo:132000},
+  {Mes:11,Año:2023,Sueldo:146000},
+  {Mes:12,Año:2023,Sueldo:156000},
 ];
 
   //dolar historicoTable https://www.ambito.com/contenidos/dolar-informal-historico.html
   //data converter https://shancarter.github.io/mr-data-converter/
 dolarHistorico = [
+{"Fecha":"17/10/2023","Compra":965.00,"Venta":985.00},
+{"Fecha":"12/10/2023","Compra":960.00,"Venta":980.00},
+{"Fecha":"11/10/2023","Compra":990.00,"Venta":1010.00},
+{"Fecha":"10/10/2023","Compra":990.00,"Venta":1010.00},
+{"Fecha":"09/10/2023","Compra":935.00,"Venta":945.00},
+{"Fecha":"06/10/2023","Compra":870.00,"Venta":880.00},
+{"Fecha":"06/10/2023","Compra":870.00,"Venta":880.00},
+{"Fecha":"06/10/2023","Compra":870.00,"Venta":880.00},
+{"Fecha":"06/10/2023","Compra":870.00,"Venta":880.00},
+{"Fecha":"06/10/2023","Compra":870.00,"Venta":880.00},
+{"Fecha":"06/10/2023","Compra":870.00,"Venta":880.00},
+{"Fecha":"06/10/2023","Compra":870.00,"Venta":880.00},
+{"Fecha":"06/10/2023","Compra":870.00,"Venta":880.00},
+{"Fecha":"06/10/2023","Compra":870.00,"Venta":880.00},
+{"Fecha":"06/10/2023","Compra":870.00,"Venta":880.00},
+{"Fecha":"06/10/2023","Compra":870.00,"Venta":880.00},
+{"Fecha":"06/10/2023","Compra":870.00,"Venta":880.00},
+{"Fecha":"05/10/2023","Compra":833.00,"Venta":843.00},
+{"Fecha":"03/10/2023","Compra":800.00,"Venta":810.00},
+{"Fecha":"02/10/2023","Compra":790.00,"Venta":800.00},
+{"Fecha":"29/09/2023","Compra":790.00,"Venta":800.00},
+{"Fecha":"28/09/2023","Compra":780.00,"Venta":790.00},
+{"Fecha":"27/09/2023","Compra":763.00,"Venta":773.00},
+{"Fecha":"26/09/2023","Compra":748.00,"Venta":758.00},
+{"Fecha":"25/09/2023","Compra":735.00,"Venta":745.00},
+{"Fecha":"22/09/2023","Compra":735.00,"Venta":745.00},
+{"Fecha":"21/09/2023","Compra":735.00,"Venta":745.00},
+{"Fecha":"20/09/2023","Compra":725.00,"Venta":735.00},
+{"Fecha":"19/09/2023","Compra":730.00,"Venta":740.00},
+{"Fecha":"18/09/2023","Compra":728.00,"Venta":738.00},
+{"Fecha":"15/09/2023","Compra":720.00,"Venta":730.00},
+{"Fecha":"14/09/2023","Compra":712.00,"Venta":722.00},
+{"Fecha":"13/09/2023","Compra":725.00,"Venta":735.00},
 {"Fecha":"12/09/2023","Compra":720.00,"Venta":730.00},
 {"Fecha":"11/09/2023","Compra":707.00,"Venta":717.00},
 {"Fecha":"08/09/2023","Compra":700.00,"Venta":710.00},
