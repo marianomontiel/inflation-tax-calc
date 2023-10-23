@@ -437,6 +437,10 @@ function createSalaryChart(dateArray, mappedSalary, inflationAdjustedSalary, acc
           display: true,
           text: 'Evolucion salarial vs "inflación" (ARS)',
         },
+        legend: {
+          display: true,
+          onClick: (e) => e.stopPropagation()
+      }
       },
       maintainAspectRatio: false,
       scales: {
@@ -488,6 +492,10 @@ function createSalaryChart(dateArray, mappedSalary, inflationAdjustedSalary, acc
           display: true,
           text: 'Evolucion salarial vs "inflación" (USD)',
         },
+        legend: {
+          display: true,
+          onClick: (e) => e.stopPropagation()
+      }
       },
       maintainAspectRatio: false,
       scales: {
@@ -538,6 +546,7 @@ function createSalaryChart(dateArray, mappedSalary, inflationAdjustedSalary, acc
         },
         legend: {
             display: false,
+            onClick: (e) => e.stopPropagation()
         }
     },
     scales: {
