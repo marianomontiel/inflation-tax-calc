@@ -84,7 +84,7 @@ inflationTable = [
     { Mes:10, Año: 2023, Index: 8.3 },
     { Mes:11, Año: 2023, Index: 12.8 },
     { Mes:12, Año: 2023, Index: 25.5 },
-    { Mes:1, Año: 2024, Index: 20.6 }
+    { Mes:1, Año: 2024, Index: 20.6 },
     { Mes:2, Año: 2024, Index: 13.2 }
   ];
     
