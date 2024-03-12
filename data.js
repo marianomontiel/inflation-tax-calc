@@ -85,6 +85,7 @@ inflationTable = [
     { Mes:11, Año: 2023, Index: 12.8 },
     { Mes:12, Año: 2023, Index: 25.5 },
     { Mes:1, Año: 2024, Index: 20.6 }
+    { Mes:2, Año: 2024, Index: 13.2 }
   ];
     
   //Fuente https://datos.gob.ar/dataset/sspm-salario-minimo-vital-movil-pesos-corrientes/archivo/sspm_57.1
